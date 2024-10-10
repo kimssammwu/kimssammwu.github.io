@@ -5,6 +5,7 @@ import Header from "../components/common/Header"
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main>
+      <Header/>
     </main>
   )
 }
