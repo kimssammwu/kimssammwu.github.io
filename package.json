@@ -8,6 +8,7 @@
     "gatsby"
   ],
   "scripts": {
+    "deploy": "gatsby build && gh-pages -d public -b master -r 'git@github.com:kimssammwu/kimssammwu.github.io.git'",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
