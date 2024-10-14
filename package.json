@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "deploy": "gatsby build && gh-pages -d public -b master -r 'git@github.com:kimssammwu/kimssammwu.github.io.git'",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -20,6 +20,7 @@
     "autoprefixer": "^10.4.20",
     "gatsby": "^5.13.7",
     "gatsby-plugin-postcss": "^6.13.1",
+    "gatsby-source-filesystem": "^5.13.1",
     "postcss": "^8.4.47",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
