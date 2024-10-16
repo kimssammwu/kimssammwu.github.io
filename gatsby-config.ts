@@ -10,19 +10,22 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-postcss",
+    `gatsby-plugin-postcss`,
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: "markdown-pages",
-        path: `${__dirname}/src/content/`,
+        name: `markdown-pages`,
+        path: `${__dirname}/content/`,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: { extensions: [".mdx", ".md"] } 
     },
-    "gatsby-transformer-remark",
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ]
 };
 
