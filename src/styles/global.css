@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Pretendard', sans-serif;
-  }
+  font-family: 'Pretendard', sans-serif;
+  background-color: #fefefe;
+}
