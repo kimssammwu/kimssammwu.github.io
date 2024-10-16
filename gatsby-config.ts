@@ -11,14 +11,18 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-postcss",
-    "gatsby-transformer-remark",
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `pages`,
-        path: `${__dirname}/static/pages/`,
+        name: "markdown-pages",
+        path: `${__dirname}/src/content/`,
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: { extensions: [".mdx", ".md"] } 
+    },
+    "gatsby-transformer-remark",
   ]
 };
 
