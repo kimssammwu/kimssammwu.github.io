@@ -20,9 +20,31 @@ const config: GatsbyConfig = {
     },
     {
       resolve: `gatsby-plugin-mdx`,
-      options: { extensions: [".mdx", ".md"] } 
+      options: { 
+        extensions: [".mdx", ".md"], 
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+          },
+        ],
+      } 
     },
-    `gatsby-transformer-remark`,
+    // `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: "carbon",
+              theme: "blackboard",
+              lineNumbers: true,
+            },
+          },
+        ],
+      },
+    },  
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
