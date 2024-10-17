@@ -34,6 +34,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-notice-block`,
           {
             resolve: `gatsby-remark-highlight-code`,
             options: {

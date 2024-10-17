@@ -1,0 +1,6 @@
+{
+    "name": "gatsby-remark-notice-block",
+    "version": "1.0.0",
+    "description": "This plugin processes custom Markdown syntax for notes, tips, warnings, and cautions, converting them into styled HTML blocks for enhanced readability.",
+    "main": "index.js"
+}
