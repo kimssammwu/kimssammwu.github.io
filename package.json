@@ -27,13 +27,16 @@
     "gatsby-plugin-postcss": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-remark-highlight-code": "^3.3.0",
+    "gatsby-remark-katex": "^7.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "katex": "^0.13.24",
     "postcss": "^8.4.47",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.13",
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
