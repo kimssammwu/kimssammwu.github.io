@@ -103,4 +103,9 @@ const LandingPage = () => {
 export default LandingPage;
 
 
-export const Head: HeadFC = () => <title>KIMSSAMMWU BLOG</title>
+export const Head: HeadFC = () => (
+  <>
+    <title>KIMSSAMMWU BLOG</title>
+    <meta name="google-site-verification" content="4-rsllo56teB73PBKZShvSFjQS76vIUBKnE06ZPjCTo" />
+  </>
+);
