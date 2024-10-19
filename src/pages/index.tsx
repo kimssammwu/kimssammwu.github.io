@@ -12,7 +12,7 @@ type Node = {
     title: string;
     description: string;
     date: string;
-    thumbnail: string;
+    slug: string;
   };
 };
 
@@ -22,24 +22,20 @@ type MarkdownFile = {
 
 type MarkdownFiles = MarkdownFile[];
 
-const MarkdownFilesList = () => {
+const LandingPage = () => {
   const data = useStaticQuery(graphql`
   { allMdx {
       edges {
         node {
-          id, frontmatter { title, description, date, thumbnail }
+          id, frontmatter { title, description, date, slug },
+          internal { contentFilePath }
         } 
       }
     }
     allFile(filter: { extension: { regex: "/(png|jpg|jpeg|gif)/" } }) {
       edges {
         node {
-          id
-          name
-          publicURL
-          childImageSharp {
-            gatsbyImageData(width: 144)
-          }
+          id, name, publicURL, childImageSharp { gatsbyImageData(width: 144) }
         }
       }
     }
@@ -66,9 +62,10 @@ const MarkdownFilesList = () => {
             {
               markdownFiles.length > 0 ? (
               markdownFiles.map(({node}) => {
-                const thumbnailImage = images[node.frontmatter.thumbnail];
+                const fileName = node.internal.contentFilePath.split('/').pop().split('.')[0];
+                const thumbnailImage = images[fileName];
                 const thumbnail = thumbnailImage ? (
-                      <div className="w-36 h-24 rounded border border-gray-100 overflow-clip mr-4">
+                      <div className="w-36 h-24 rounded border border-gray-200 overflow-clip mr-4">
                         <GatsbyImage className="w-36 h-24 transition duration-300 ease-in-out group-hover:scale-125" image={thumbnailImage} alt={node.frontmatter.title} />
                       </div> )
                       : <div className="w-36 h-24 rounded bg-gray-200 mr-4"></div>
@@ -79,12 +76,16 @@ const MarkdownFilesList = () => {
                               post_description={node.frontmatter.description}
                               written_date={node.frontmatter.date}
                               thumbnail_img={thumbnail}
+                              slug={node.frontmatter.slug}
                     />
                 </li>
               ) }
             ))
             : (<div></div>)
           }
+
+
+
           </ul>
           
           {/* 추가 데이터 블록 */}
@@ -99,7 +100,7 @@ const MarkdownFilesList = () => {
   );
 };
 
-export default MarkdownFilesList;
+export default LandingPage;
 
 
 export const Head: HeadFC = () => <title>KIMSSAMMWU BLOG</title>
