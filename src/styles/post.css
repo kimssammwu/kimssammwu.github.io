@@ -179,3 +179,7 @@ th, td {
     align-items: center;
     color: var(--text-color-normal);
 }
+
+#post .footnotes  {
+    margin-top: 50px;
+}
