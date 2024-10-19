@@ -11,14 +11,8 @@ const getNestedListItems = (element: HTMLElement): HTMLElement[] => {
 
   const liElements = element.getElementsByTagName('li');
   for (const li of liElements) {
-    listItems.push(li); // 현재 <li>를 추가
-    const nestedLists = li.getElementsByTagName('ul'); // 하위 <ul> 탐색
-
-    for (const ul of nestedLists) {
-      listItems.push(...getNestedListItems(ul)); // 재귀적으로 하위 <ul>에서 <li> 추가
-    }
+    listItems.push(li);
   }
-
   return listItems;
 };
 
@@ -56,13 +50,11 @@ const TableOfContentElement: React.FC<NativeHtml> = ({ nativeHtml }) => {
       if (TOC == null) { return ; }
       const allListItems = getNestedListItems(TOC);
       
-      if (allListItems.length >= 5) {
-        allListItems.forEach((list) => {
-          list.classList.remove("current-toc")
-        })
-        const targetList = allListItems[nearestIndex];
-        targetList.classList.add("current-toc")
-      }
+      allListItems.forEach((list) => {
+        list.classList.remove("current-toc")
+      })
+      const targetList = allListItems[nearestIndex];
+      targetList.classList.add("current-toc")
     }
   }
 
