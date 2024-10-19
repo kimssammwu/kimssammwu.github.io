@@ -1,6 +1,7 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import Header from "../components/common/Header"
+import Comment from "../components/common/Comment"
 
 import { graphql, useStaticQuery } from 'gatsby';
 
@@ -87,6 +88,8 @@ const PostPage = ({ pageContext, data }) => {
 
           <div id="post" className="mb-20">
             <div dangerouslySetInnerHTML={{ __html: posts[0].node.html }} />
+
+            <Comment />
           </div>
         </div>
       </div>
