@@ -1,13 +1,36 @@
-#post {
+html {
     --text-color-normal: #2C3540;
     --text-color-header: #2F3B4E;
-    --text-color-disable: #4F5969;;
+    --text-color-disable: #4F5969;
+    --text-color-faint-disable: #B3B8B9;
 
     --hl-color-accent: #1f6feb;
     --hl-color-success: #3fb950;
     --hl-color-done: #8957e5;
     --hl-color-attention: #d29922;
     --hl-color-danger: #da3633;
+}
+
+#toc::after {
+    width: 350px;
+    margin: 400px;
+}
+#toc {
+    width: 250px;
+    top: 100px;
+    margin-left: calc(700px + 5rem);
+    position: fixed;
+    padding-left: 20px;
+    color: var(--text-color-faint-disable);
+    border-left: solid 1px rgba(30, 30, 30, 0.1)
+}
+#toc li {
+    margin: 5px 0 5px 10px;
+}
+#toc .current-toc p, #toc .current-toc > a {
+    font-weight: bold;
+    color: var(--text-color-normal);
+    transition: color 0.5s ease;
 }
 
 

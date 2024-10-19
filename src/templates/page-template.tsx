@@ -9,6 +9,7 @@ import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/
 
 import "../styles/post.css"
 import { GatsbyImage } from "gatsby-plugin-image";
+import TOC from "../components/common/TOC";
 
 
 deckDeckGoHighlightElement();
@@ -32,9 +33,9 @@ export const query = graphql`
     allMarkdownRemark {
       edges {
         node {
-          id, fileAbsolutePath
+          id, fileAbsolutePath, html, tableOfContents
           frontmatter { slug, date }
-          html
+          
         }
       }
     }
@@ -86,12 +87,16 @@ const PostPage = ({ pageContext, data }) => {
             <p> 약 {expectedReadTime(posts[0].node.html)}분 소요 · {formatDate(posts[0].node.frontmatter.date)}</p>
           </div>
 
+
+          <TOC nativeHtml={posts[0].node.tableOfContents} />
+
+
           <div id="post" className="mb-20">
             <div dangerouslySetInnerHTML={{ __html: posts[0].node.html }} />
-
             <Comment />
           </div>
         </div>
+
       </div>
     </div>
   );

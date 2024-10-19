@@ -48,6 +48,16 @@ const config: GatsbyConfig = {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
               strict: `ignore`
             }
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `100`,
+              className: `toc-linked-header`,
+              maintainCase: true,
+              removeAccents: true,
+              elements: [`h1`, `h2`, `h3`],
+            },
           }
         ],
       },
