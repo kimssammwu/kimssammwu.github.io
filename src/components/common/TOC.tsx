@@ -76,23 +76,22 @@ const TableOfContentElement: React.FC<NativeHtml> = ({ nativeHtml }) => {
     });
 
     setHeaders(realHeaderArray);
-    
+  }, []);
+
+  useEffect(() => {
+    if (headers.length <= 0) { return ; }
     const TOC = document.getElementById("toc");
     if (TOC == null) { return ; }
     const allListItems = getNestedListItems(TOC);
     allListItems.forEach((list, index) => {
-      const targetHeader = headersArray[index];
+      const targetHeader = headers[index];
       const targetHeaderPosTop = targetHeader.getBoundingClientRect().top + window.scrollY;
       list.addEventListener('click', e => {
         e.preventDefault()
         window.scroll({ top: targetHeaderPosTop, behavior: 'smooth' })
       })
     })
-    
 
-  }, []);
-
-  useEffect(() => {
     updateTOC();
     window.addEventListener('scroll', onScroll);
     return () => { window.removeEventListener('scroll', onScroll); };
