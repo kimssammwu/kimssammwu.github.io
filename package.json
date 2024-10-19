@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "deploy": "gatsby build && gh-pages -d public -b master -r 'git@github.com:kimssammwu/kimssammwu.github.io.git'",
+    "deploy": "gatsby build && gh-pages -d public -b deploy -r 'git@github.com:kimssammwu/kimssammwu.github.io.git'",
     "develop": "gatsby develop --H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -46,6 +46,7 @@
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "gh-pages": "^6.2.0",
     "typescript": "^5.3.3"
   }
 }
