@@ -24,7 +24,7 @@ type MarkdownFiles = MarkdownFile[];
 
 const LandingPage = () => {
   const data = useStaticQuery(graphql`
-  { allMdx {
+  { allMdx(filter: { frontmatter: { private: { ne: true } } }) {
       edges {
         node {
           id, frontmatter { title, description, date, slug },
