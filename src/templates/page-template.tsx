@@ -73,7 +73,7 @@ const PostPage = ({ pageContext, data }) => {
       <Header/>
 
       <div className="flex justify-center">
-        <div className="w-[700px] mt-8">
+        <div className="w-[700px] mt-8 mb-20 px-12 sm:px-0">
 
           {/* 썸네일 이미지 */}
           <div className="h-40 rounded flex items-center justify-center overflow-clip">
@@ -91,7 +91,7 @@ const PostPage = ({ pageContext, data }) => {
           <TOC nativeHtml={posts[0].node.tableOfContents} />
 
 
-          <div id="post" className="mb-20">
+          <div id="post">
             <div dangerouslySetInnerHTML={{ __html: posts[0].node.html }} />
             <Comment />
           </div>
