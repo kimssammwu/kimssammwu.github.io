@@ -14,6 +14,9 @@ type Node = {
     date: string;
     slug: string;
   };
+  internal: {
+    contentFilePath: string;
+  };
 };
 
 type MarkdownFile = {
