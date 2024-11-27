@@ -2,8 +2,11 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `kimssammwu-blog`,
-    siteUrl: `https://kimssammwu.github.io`
+    title: `Kimssammwu Tech Blog`,
+    description: `이민우의 개발 블로그`,
+    // twitterUsername: `@JoneDoe`,
+    image: `/favicons/favicon-96x96.png`,
+    siteUrl: `https://kimssammwu.github.io`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -16,6 +19,13 @@ const config: GatsbyConfig = {
       options: {
         name: `markdown-pages`,
         path: `${__dirname}/content/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `thumbnail-pages`,
+        path: `${__dirname}/content_thumbnail/`,
       },
     },
     {
