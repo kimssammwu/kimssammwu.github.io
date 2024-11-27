@@ -10,13 +10,11 @@ import { expectedReadTime, formatDate, getBasename } from '../../utils';
 
 
 class DefaultPostPage extends PageComponent {
-    private data;
     private property;
 
-    constructor(props: PageComponentProps, data: any) {
+    constructor(props: PageComponentProps) {
         super(props);
         this.property = props;
-        this.data = data;
     }
 
     renderContent() {
@@ -53,9 +51,8 @@ class DefaultPostPage extends PageComponent {
                             </div>
                             
                             
-                            <h1 className="mt-5 text-4xl font-extrabold text-gray-600"> {this.data.title} </h1>
+                            <h1 className="mt-5 text-4xl font-extrabold text-gray-600"> {this.property.title} </h1>
                             <div className="flex text-gray-400 mt-3 mb-32">
-                                {/* {formatDate(post.node.frontmatter.date)} */}
                                 <p>{formatDate(post.node.frontmatter.date)} ·  약 {expectedReadTime(post.node.html)}분 소요</p>
                             </div>
         
