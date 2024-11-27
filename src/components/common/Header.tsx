@@ -1,6 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
+/**
+* @deprecated Please do not use this component anymore. 
+* All pages that inherit from `PageComponent` now share a header using method `renderHeader()`.
+*/
 const Header: React.FC = () => {
   return (
     <header className="flex h-16 border-b">
@@ -15,4 +19,3 @@ const Header: React.FC = () => {
 }
 
 export default Header
-
