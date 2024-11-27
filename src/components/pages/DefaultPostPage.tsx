@@ -1,12 +1,11 @@
 import React from 'react';
 import PageComponent from './PageComponent';
 import { graphql, StaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { PageComponentProps } from '../../interfaces';
 import { useThumbnails } from '../hooks/use-thumbnails';
-import path from "path";
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { expectedReadTime, formatDate } from '../../utils';
+import { expectedReadTime, formatDate, getBasename } from '../../utils';
 
 
 
@@ -37,10 +36,7 @@ class DefaultPostPage extends PageComponent {
                 `}
                 render={data => {
                     const post = data.allMarkdownRemark.edges[0];
-
-                    // TODO: path 문제 해결
-                    const fileslicing = post.node.fileAbsolutePath.split("/");
-                    const basename = fileslicing[fileslicing.length - 1].split(".")[0];
+                    const basename = getBasename(post.node.fileAbsolutePath, ".md");
 
                     const topImage = useThumbnails(basename) ? (
                         <div className="overflow-clip rounded bg-red-100">
@@ -51,7 +47,7 @@ class DefaultPostPage extends PageComponent {
                     return(
                         // TODO: Section 단위로 컴퍼넌트 분리!
                         <div className="flex justify-center">
-                            <div className="w-[700px] mt-8 mb-20 px-12 sm:px-0">}
+                            <div className="w-[700px] mt-8 mb-20 px-12 sm:px-0">
                             <div className="h-40 rounded flex items-center justify-center overflow-clip">
                                 {topImage}
                             </div>
