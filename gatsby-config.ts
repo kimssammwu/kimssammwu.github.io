@@ -15,6 +15,18 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-plugin-postcss`,
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `kimssammwuTechBlog`,
+        short_name: `kimssammwuBlog`,
+        start_url: `/`,
+        background_color: `#000000`,
+        theme_color: `#ffffff`,
+        display: `standalone`,
+        icon: `src/images/icon.png`
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
