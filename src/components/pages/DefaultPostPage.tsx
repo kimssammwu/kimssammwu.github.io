@@ -8,11 +8,8 @@ import { useThumbnails } from "../hooks/use-thumbnails";
 import { expectedReadTime, formatDate, getBasename } from "../../utils";
 
 class DefaultPostPage extends PageComponent {
-  private property;
-
   constructor(props: PageComponentProps) {
     super(props);
-    this.property = props;
   }
 
   renderContent() {
@@ -28,6 +25,7 @@ class DefaultPostPage extends PageComponent {
                   html
                   tableOfContents
                   frontmatter {
+                    title
                     slug
                     date
                   }
@@ -61,8 +59,7 @@ class DefaultPostPage extends PageComponent {
                 </div>
 
                 <h1 className="mt-5 text-4xl font-extrabold text-gray-600">
-                  {" "}
-                  {this.property.title}{" "}
+                  {post.node.frontmatter.title}
                 </h1>
                 <div className="flex text-gray-400 mt-3 mb-32">
                   <p>
