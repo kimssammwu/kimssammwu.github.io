@@ -30,14 +30,14 @@ const config: GatsbyConfig = {
     },
     {
       resolve: `gatsby-plugin-mdx`,
-      options: { 
-        extensions: [".mdx", ".md"], 
+      options: {
+        extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-highlight-code`,
           },
         ],
-      } 
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -56,8 +56,8 @@ const config: GatsbyConfig = {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`
-            }
+              strict: `ignore`,
+            },
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
@@ -68,10 +68,10 @@ const config: GatsbyConfig = {
               removeAccents: true,
               elements: [`h1`, `h2`, `h3`],
             },
-          }
+          },
         ],
       },
-    },  
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -79,9 +79,9 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        userAgent: '*',
-        allow: '/',
-        sitemap: 'https://kimssammwu.github.io/sitemap.xml',
+        userAgent: "*",
+        allow: "/",
+        sitemap: "https://kimssammwu.github.io/sitemap.xml",
       },
     },
     {
@@ -90,7 +90,7 @@ const config: GatsbyConfig = {
         siteUrl: `https://kimssammwu.github.io`,
       },
     },
-  ]
+  ],
 };
 
 export default config;

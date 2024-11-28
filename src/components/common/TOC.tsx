@@ -1,6 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { throttle } from 'lodash';
-
+import React, { ReactNode, useEffect, useState } from "react";
+import { throttle } from "lodash";
 
 type NativeHtml = {
   nativeHtml: string | TrustedHTML;
@@ -9,13 +8,12 @@ type NativeHtml = {
 const getNestedListItems = (element: HTMLElement): HTMLElement[] => {
   const listItems: HTMLElement[] = [];
 
-  const liElements = element.getElementsByTagName('li');
+  const liElements = element.getElementsByTagName("li");
   for (const li of liElements) {
     listItems.push(li);
   }
   return listItems;
 };
-
 
 function minusWeightedFunctionToPositive(value: number) {
   if (value <= 0) {
@@ -24,8 +22,6 @@ function minusWeightedFunctionToPositive(value: number) {
   return value; // 이미 양수
 }
 
-
-
 const TableOfContentElement: React.FC<NativeHtml> = ({ nativeHtml }) => {
   const [headers, setHeaders] = useState<Element[]>([]);
 
@@ -33,43 +29,44 @@ const TableOfContentElement: React.FC<NativeHtml> = ({ nativeHtml }) => {
     let nearestElement: Element | null = null;
     let nearestIndex = -1;
     let currentDistance = Infinity;
-    
+
     headers.forEach((header, index) => {
-      const distance = minusWeightedFunctionToPositive(header.getBoundingClientRect().top);
-      
+      const distance = minusWeightedFunctionToPositive(
+        header.getBoundingClientRect().top
+      );
+
       if (distance < currentDistance) {
         nearestElement = header;
         nearestIndex = index;
         currentDistance = distance;
       }
     });
-    
-    
+
     if (nearestElement) {
       const TOC = document.getElementById("toc");
-      if (TOC == null) { return ; }
+      if (TOC == null) {
+        return;
+      }
       const allListItems = getNestedListItems(TOC);
-      
+
       allListItems.forEach((list) => {
-        list.classList.remove("current-toc")
-      })
+        list.classList.remove("current-toc");
+      });
       const targetList = allListItems[nearestIndex];
-      targetList.classList.add("current-toc")
+      targetList.classList.add("current-toc");
     }
-  }
+  };
 
   const onScroll = throttle(() => {
-    updateTOC()
+    updateTOC();
   }, 100);
-
-
 
   useEffect(() => {
     const headerElements = document.getElementsByClassName("toc-linked-header");
     const headersArray = Array.from(headerElements);
     const realHeaderArray = Array();
 
-    headersArray.forEach(header => {
+    headersArray.forEach((header) => {
       if (header.parentElement?.textContent !== "") {
         realHeaderArray.push(header);
       }
@@ -79,28 +76,37 @@ const TableOfContentElement: React.FC<NativeHtml> = ({ nativeHtml }) => {
   }, []);
 
   useEffect(() => {
-    if (headers.length <= 0) { return ; }
+    if (headers.length <= 0) {
+      return;
+    }
     const TOC = document.getElementById("toc");
-    if (TOC == null) { return ; }
+    if (TOC == null) {
+      return;
+    }
     const allListItems = getNestedListItems(TOC);
     allListItems.forEach((list, index) => {
       const targetHeader = headers[index];
-      const targetHeaderPosTop = targetHeader.getBoundingClientRect().top + window.scrollY;
-      list.addEventListener('click', e => {
-        e.preventDefault()
-        window.scroll({ top: targetHeaderPosTop, behavior: 'smooth' })
-      })
-    })
+      const targetHeaderPosTop =
+        targetHeader.getBoundingClientRect().top + window.scrollY;
+      list.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scroll({ top: targetHeaderPosTop, behavior: "smooth" });
+      });
+    });
 
     updateTOC();
-    window.addEventListener('scroll', onScroll);
-    return () => { window.removeEventListener('scroll', onScroll); };
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [headers]);
 
-
-
   return (
-    <div id="toc" className="hidden xl:block" dangerouslySetInnerHTML={{ __html: nativeHtml }} />
+    <div
+      id="toc"
+      className="hidden xl:block"
+      dangerouslySetInnerHTML={{ __html: nativeHtml }}
+    />
   );
 };
 

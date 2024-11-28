@@ -1,208 +1,233 @@
 html {
-    --text-color-normal: #2C3540;
-    --text-color-header: #2F3B4E;
-    --text-color-disable: #4F5969;
-    --text-color-faint-disable: #B3B8B9;
+  --text-color-normal: #2c3540;
+  --text-color-header: #2f3b4e;
+  --text-color-disable: #4f5969;
+  --text-color-faint-disable: #b3b8b9;
 
-    --hl-color-accent: #1f6feb;
-    --hl-color-success: #3fb950;
-    --hl-color-done: #8957e5;
-    --hl-color-attention: #d29922;
-    --hl-color-danger: #da3633;
+  --hl-color-accent: #1f6feb;
+  --hl-color-success: #3fb950;
+  --hl-color-done: #8957e5;
+  --hl-color-attention: #d29922;
+  --hl-color-danger: #da3633;
 }
 
 #toc::after {
-    width: 350px;
-    margin: 400px;
+  width: 350px;
+  margin: 400px;
 }
 #toc {
-    width: 250px;
-    top: 100px;
-    margin-left: calc(700px + 5rem);
-    position: fixed;
-    padding-left: 20px;
-    color: var(--text-color-faint-disable);
-    border-left: solid 1px rgba(30, 30, 30, 0.1)
+  width: 250px;
+  top: 100px;
+  margin-left: calc(700px + 5rem);
+  position: fixed;
+  padding-left: 20px;
+  color: var(--text-color-faint-disable);
+  border-left: solid 1px rgba(30, 30, 30, 0.1);
 }
 #toc li {
-    margin: 5px 0 5px 10px;
+  margin: 5px 0 5px 10px;
 }
-#toc .current-toc p, #toc .current-toc > a {
-    font-weight: bold;
-    color: var(--text-color-normal);
-    transition: color 0.5s ease;
+#toc .current-toc p,
+#toc .current-toc > a {
+  font-weight: bold;
+  color: var(--text-color-normal);
+  transition: color 0.5s ease;
 }
-
 
 /* DEFAULT TEXT COLOR */
 #post p {
-    color: var(--text-color-normal);
-    line-height: 1.6;
-    /* text-indent: 20px; */
+  color: var(--text-color-normal);
+  line-height: 1.6;
+  /* text-indent: 20px; */
 }
-
 
 /* HEADER */
 #post h1 {
-    font-size: xx-large;
-    font-weight: 800;
-    color: var(--text-color-header);
-    margin: 30px 0;
+  font-size: xx-large;
+  font-weight: 800;
+  color: var(--text-color-header);
+  margin: 30px 0;
 }
 #post h2 {
-    font-size: x-large;
-    font-weight: 600;
-    color: var(--text-color-header);
-    margin: 20px 0;
+  font-size: x-large;
+  font-weight: 600;
+  color: var(--text-color-header);
+  margin: 20px 0;
 }
 #post h3 {
-    font-size: large;
-    font-weight: 600;
-    color: var(--text-color-header);
-    margin: 15px 0;
+  font-size: large;
+  font-weight: 600;
+  color: var(--text-color-header);
+  margin: 15px 0;
 }
-#post h4, #post h5, #post h6 { font-weight: 600; }
-
+#post h4,
+#post h5,
+#post h6 {
+  font-weight: 600;
+}
 
 /* LIST */
 #post ol:not(.contains-task-list) {
-    padding: 0 30px;
-    list-style-type: decimal;
+  padding: 0 30px;
+  list-style-type: decimal;
 }
 #post ul:not(.contains-task-list) {
-    padding: 0 20px;
-    list-style-type: disc;
+  padding: 0 20px;
+  list-style-type: disc;
 }
 #post li {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
 #post li::marker {
-    list-style-type: upper-alpha;
-    color: var(--hl-color-accent);
+  list-style-type: upper-alpha;
+  color: var(--hl-color-accent);
 }
-
 
 /* `highlight` 문법 */
 #post code {
-    background-color: #ffe7e7;
-    padding: 3px 8px;
-    border-radius: 0.5rem;
-    font-style: italic;
-    color: var(--hl-color-danger);
+  background-color: #ffe7e7;
+  padding: 3px 8px;
+  border-radius: 0.5rem;
+  font-style: italic;
+  color: var(--hl-color-danger);
 }
-
 
 /* 인용문 처리 */
 #post blockquote {
-    margin: 0px 0px 1.75em 0px;
-    position: relative;
-    padding: 20px 55px;
+  margin: 0px 0px 1.75em 0px;
+  position: relative;
+  padding: 20px 55px;
   background: #f9f9f9;
 }
 #post blockquote:after {
-    content: "\201C";
-    font-size: 76px;
-    font-family: Georgia;
-    position: absolute;
-    top: -15px;
-    left: 10px;
-    color: #bcbcbc;
+  content: "\201C";
+  font-size: 76px;
+  font-family: Georgia;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  color: #bcbcbc;
 }
-#post blockquote p, #post blockquote { color: var(--text-color-disable); }
-
+#post blockquote p,
+#post blockquote {
+  color: var(--text-color-disable);
+}
 
 /* notice block css 처리 */
 #post .notice_block {
-    color: var(--text-color-disable);
-    background-color: #F6F8FC;
-    margin: 1rem 0rem;
-    padding: 0.5rem 1rem;
+  color: var(--text-color-disable);
+  background-color: #f6f8fc;
+  margin: 1rem 0rem;
+  padding: 0.5rem 1rem;
 }
 #post .notice_block svg {
-    width: 16px;
-    height: 16px;
-    margin: auto 5px auto 0;
+  width: 16px;
+  height: 16px;
+  margin: auto 5px auto 0;
 }
 #post .notice_block .notice_title {
-    display: flex;
-    margin: 0 0 0.5rem 0;
+  display: flex;
+  margin: 0 0 0.5rem 0;
 }
 
-#post .notice_note .notice_title { color: var(--hl-color-accent); }
-#post .notice_note { border-left: solid 4px var(--hl-color-accent); }
-#post .notice_tip .notice_title { color: var(--hl-color-success); }
-#post .notice_tip { border-left: solid 4px var(--hl-color-success); }
-#post .notice_important .notice_title { color: var(--hl-color-done); }
-#post .notice_important { border-left: solid 4px var(--hl-color-done); }
-#post .notice_warning .notice_title { color: var(--hl-color-attention); }
-#post .notice_warning { border-left: solid 4px var(--hl-color-attention); }
-#post .notice_caution .notice_title { color: var(--hl-color-danger); }
-#post .notice_caution { border-left: solid 4px var(--hl-color-danger); }
-
+#post .notice_note .notice_title {
+  color: var(--hl-color-accent);
+}
+#post .notice_note {
+  border-left: solid 4px var(--hl-color-accent);
+}
+#post .notice_tip .notice_title {
+  color: var(--hl-color-success);
+}
+#post .notice_tip {
+  border-left: solid 4px var(--hl-color-success);
+}
+#post .notice_important .notice_title {
+  color: var(--hl-color-done);
+}
+#post .notice_important {
+  border-left: solid 4px var(--hl-color-done);
+}
+#post .notice_warning .notice_title {
+  color: var(--hl-color-attention);
+}
+#post .notice_warning {
+  border-left: solid 4px var(--hl-color-attention);
+}
+#post .notice_caution .notice_title {
+  color: var(--hl-color-danger);
+}
+#post .notice_caution {
+  border-left: solid 4px var(--hl-color-danger);
+}
 
 /* Link */
 #post a {
-    color: var(--hl-color-accent);
-    text-decoration: none;
-    transition: color 0.3s, text-decoration 0.3s;
+  color: var(--hl-color-accent);
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 #post a:hover {
-    color: var(--hl-color-danger);
-    text-decoration: underline;
+  color: var(--hl-color-danger);
+  text-decoration: underline;
 }
 
-
 /* Latex (Katex) */
-#post .katex .katex-html { display: none; }
-
-
+#post .katex .katex-html {
+  display: none;
+}
 
 /* Table */
 table {
-    border-collapse: collapse;
-    width: 80%;
-    margin: 10%;
-}  
-table, th, td { border: 1px solid #ddd; }
-th, td {
-    padding: 8px;
-    text-align: left;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 10%;
 }
-
-
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
 
 /* Task Lists */
 #post .contains-task-list input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1px solid var(--hl-color-accent);
-    background-color: white;
-    cursor: pointer;
-    position: relative;
-    outline: none;
-    transition: background-color 0.3s;
-    margin-right: 8px;
-  }
-#post .contains-task-list input:checked { background-color: var(--hl-color-accent); }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--hl-color-accent);
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+#post .contains-task-list input:checked {
+  background-color: var(--hl-color-accent);
+}
 #post .contains-task-list input:checked::after {
-    content: "✓";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 16px;
-    color: white;
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: white;
 }
 #post .contains-task-list li {
-    display: flex;
-    align-items: center;
-    color: var(--text-color-normal);
+  display: flex;
+  align-items: center;
+  color: var(--text-color-normal);
 }
 
-#post .footnotes  {
-    margin-top: 50px;
+#post .footnotes {
+  margin-top: 50px;
 }
