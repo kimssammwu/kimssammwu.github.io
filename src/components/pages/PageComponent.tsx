@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, ReactNode } from "react";
 import { Link } from "gatsby";
 
 import { PageComponentProps } from "../../interfaces";
 import { SEOForTemplate } from "../common/seo";
 
-abstract class PageComponent extends Component {
+abstract class PageComponent extends Component<PageComponentProps> {
   constructor(props: PageComponentProps) {
     super(props);
   }
@@ -23,21 +23,38 @@ abstract class PageComponent extends Component {
   }
 
   renderFooter() {
-    return <></>;
+    return <footer className="h-16 border-t">Footer Content</footer>;
   }
 
-  abstract renderContent(): React.ReactNode;
+  abstract renderContent(): ReactNode;
+
+  abstract renderLeftSide(): ReactNode;
+
+  abstract renderRightSide(): ReactNode;
 
   render() {
     return (
-      <div id="blog-post-view">
-        <SEOForTemplate />
-
+      <div>
         {/* static header */}
         {this.renderHeader()}
-        {/* sections */}
-        {this.renderContent()}
-        {/* etc comments..? */}
+
+        {/* Main Content */}
+        <div className="flex justify-between ">
+          <div className="hidden md:flex flex-1 justify-end">
+            <div className="hidden xl:contents">{this.renderLeftSide()}</div>
+          </div>
+
+          <div id="flex-1 text-center md:flex-none blog-post-view">
+            <SEOForTemplate />
+            {this.renderContent()}
+          </div>
+
+          <div className="hidden md:flex flex-1 justify-end">
+            <div className="hidden xl:contents">{this.renderRightSide()}</div>
+          </div>
+        </div>
+
+        {/* footer */}
         {this.renderFooter()}
       </div>
     );

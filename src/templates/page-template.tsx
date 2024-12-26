@@ -6,7 +6,8 @@ import "../styles/post.css";
 
 import { PostPageProps } from "../interfaces";
 import DefaultPostPage from "../components/pages/DefaultPostPage";
-// DeckDeckGo Deprecated.
+
+// TODO: DeckDeckGo Deprecated.
 deckDeckGoHighlightElement();
 
 // TODO: attachments 구현하기(첨부파일)
