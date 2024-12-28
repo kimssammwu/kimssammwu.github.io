@@ -22,15 +22,16 @@ abstract class PageComponent extends Component<PageComponentProps> {
     );
   }
 
-  renderFooter() {
-    return <footer className="h-16 border-t">Footer Content</footer>;
-  }
+  abstract renderLeftSide(): ReactNode;
 
   abstract renderContent(): ReactNode;
 
-  abstract renderLeftSide(): ReactNode;
-
   abstract renderRightSide(): ReactNode;
+
+  // TODO: footer 구현
+  renderFooter() {
+    return <footer className="h-20 border-t"></footer>;
+  }
 
   render() {
     return (

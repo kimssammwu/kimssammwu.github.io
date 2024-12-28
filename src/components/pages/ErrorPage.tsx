@@ -5,6 +5,12 @@ import { PageComponentProps } from "../../interfaces";
 import { Link } from "gatsby";
 
 class ErrorPage extends PageComponent {
+  renderLeftSide(): React.ReactNode {
+    return <></>;
+  }
+  renderRightSide(): React.ReactNode {
+    return <></>;
+  }
   constructor(props: PageComponentProps) {
     super(props);
   }

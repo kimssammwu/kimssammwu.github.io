@@ -18,7 +18,8 @@ html {
 #toc {
   width: 250px;
   top: 100px;
-  margin-left: calc(700px + 5rem);
+  right: 20px;
+  /* margin-left: calc(700px + 5rem); */
   position: fixed;
   padding-left: 20px;
   color: var(--text-color-faint-disable);
