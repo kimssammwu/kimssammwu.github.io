@@ -1,6 +1,6 @@
 ---
 title: 클립보드를 활용한 업무 자동화와 효율성 개선
-description: 클립보드를 통한 자동화와 관련한 문제 해결 과정을 다룹니다.
+description: 클립보드를 통한 자동화와 관련한 문제 해결 과정을 다룹니다
 date: "2025-01-13"
 slug: clipboard-automation-efficiency
 private: false
