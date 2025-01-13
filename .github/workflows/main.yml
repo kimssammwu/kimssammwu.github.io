@@ -1,13 +1,9 @@
-name: Gatsby Publish
+name: Gatsby Deploy
 on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**/README.md'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
