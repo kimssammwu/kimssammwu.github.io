@@ -2,10 +2,10 @@ name: Gatsby Publish
 on:
   pull_request:
     branches:
-      - deploy
+      - main
   push:
     branches:
-      - deploy
+      - main
     paths-ignore:
       - '**/README.md'
 jobs:
@@ -16,5 +16,5 @@ jobs:
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: gh-pages
+          deploy-branch: deploy
           skip-publish: false
