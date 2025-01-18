@@ -12,15 +12,16 @@ private: false
 
 ## 문제 상황
 
-&nbsp;&nbsp;&nbsp;한셀에서는 콤마(,)나 탭(Tab), 줄바꿈 기호(\n)가 포함된 데이터를 클립보드에 복사하면 이를 자동으로 표에 맞추어 붙여넣는 기능을 제공합니다. 이를 활용하기 위해 기존의 CSV 저장 과정을 생략하고, 데이터를 클립보드에 직접 복사하는 방식으로 코드를 수정했습니다. 수정된 코드는 아래와 같습니다:
+&nbsp;&nbsp;&nbsp;한셀에서는 콤마(,)나 탭(Tab), 줄바꿈 기호(\n)가 포함된 데이터를 클립보드에 복사하면 이를 자동으로 표에 맞추어 붙여넣는 기능을 제공합니다. 이를 활용하기 위해 기존의 CSV 저장 과정을 생략하고, 데이터를 클립보드에 직접 복사하는 방식으로 코드를 수정했습니다. 수정된 코드는 아래와 같습니다
 
-```python
+```python @title='간단한 클립보드 예제' @icon='python'
 import win32clipboard
 
 target_string = """전처리된 문자열(Tab과 \n으로 구별)"""
 win32clipboard.OpenClipboard()
 win32clipboard.EmptyClipboard()
-win32clipboard.SetClipboardText(target_string, win32clipboard.CF_TEXT)
+win32clipboard.SetClipboardText( target_string,
+                                 win32clipboard.CF_TEXT )
 win32clipboard.CloseClipboard()
 ```
 
@@ -38,7 +39,9 @@ win32clipboard.CloseClipboard()
 
 3. 한글 디벨로퍼
 
-&nbsp;&nbsp;&nbsp;세 번째로, [한글 디벨로퍼](https://developer.hancom.com/) 사이트를 통해 제공되는 win32com 라이브러리를 사용하여 한글 문서를 제어하려 했습니다. 이 방법은 문서 작업 자동화에 적합했지만, 현재 환경에서는 이 라이브러리를 사용할 수 없었습니다.
+&nbsp;&nbsp;&nbsp;세 번째로, [한글 디벨로퍼](https://developer.hancom.com/) 사이트를 통해 제공되는 win32com 라이브러리 활용 예제를 사용하여 한글 문서를 제어하려 했습니다. 이 방법은 문서 작업 자동화에 적합했지만, 현재 환경에서는 이 라이브러리를 사용할 수 없었습니다.
+
+#
 
 위 3가지 방법 모두 환경적인 제약이 없다면 좋은 해결방법이 될 수 있을 것이라 생각합니다.
 
@@ -54,18 +57,20 @@ win32clipboard.CloseClipboard()
 
 &nbsp;&nbsp;&nbsp;HTML이 군대 안에서 가장 쉽게 접근할 수 있는 수단이기 때문에 인터넷 문서 소스를 한 것 이지 다른 조작 가능한 포맷이 있다면 원하는 방법으로도 가능합니다. MS 공식 홈페이지에 HTML 포맷에 대한 문서가 잘 정리되어 있어 따로 해당 게시글에 자세한 내용을 적진 않고 아래(참조)에 링크를 걸어두겠습니다. 코드 상에서 주요 수정 포인트는 아래에 적어두겠습니다.
 
-```python
+```python @title='적용 후' @icon='python'
 target_string = """전처리된 문자열"""
 
-html_main = convert_html_table(target_string) # 기존 문자열 데이터를 HTML 테이블로 만들기
-html_header = generate_html_headers(html_main) # 클립보드 데이터에 맞추어 HEADER 붙이기
+# 기존 문자열 데이터를 HTML 테이블로 만들기
+html_main = convert_html_table(target_string)
+# 클립보드 데이터에 맞추어 HEADER 붙이기
+html_header = generate_html_headers(html_main)
 html_data = html_header + html_main
 
 win32clipboard.OpenClipboard()
 win32clipboard.EmptyClipboard()
 # 1. 기존 SetClipboardText() 에서 SetClipboardData() 함수로 변경
 # 2. 데이터 포맷을 TEXT 형식에서 HTML 형식으로 변경
-win32clipboard.SetClipboardData(html_data, win32clipboard.CF_HTML)
+win32clipboard.SetClipboardData(html_data, win32clipboard.CF_HTML) # [!code ++]
 win32clipboard.CloseClipboard()
 ```
 
