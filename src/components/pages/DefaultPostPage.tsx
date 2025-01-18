@@ -1,14 +1,11 @@
 import React from "react";
 import PageComponent from "./PageComponent";
-import { graphql, StaticQuery, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { PageComponentProps } from "../../interfaces";
 import { useThumbnails } from "../hooks/use-thumbnails";
 import { expectedReadTime, formatDate, getBasename } from "../../utils";
 import TOC from "../common/TOC";
-import TableOfContentElement from "../common/TOC";
-import { json } from "stream/consumers";
 import Comment from "../common/Comment";
 import { usePostData } from "../hooks/use-markdown-data";
 
@@ -25,7 +22,6 @@ class DefaultPostPage extends PageComponent {
 
   renderRightSide(): React.ReactNode {
     const post = usePostData(this.postId);
-
     return <TOC nativeHtml={post.tableOfContents} />;
   }
 

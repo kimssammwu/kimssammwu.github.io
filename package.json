@@ -17,7 +17,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@deckdeckgo/highlight-code": "^3.6.0",
     "@fontsource-variable/jetbrains-mono": "^5.1.2",
     "@fontsource/jetbrains-mono": "^5.1.2",
     "@fontsource/pretendard": "^5.1.0",

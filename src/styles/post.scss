@@ -1,0 +1,364 @@
+$text-color-default: #2c3540;
+$text-color-header: #2f3b4e;
+$text-color-disabled: #4f5969;
+$text-color-faint-disabled: #b3b8b9;
+
+$highlight-accent: #1f6feb;
+$highlight-success: #3fb950;
+$highlight-complete: #8957e5;
+$highlight-warning: #d29922;
+$highlight-danger: #da3633;
+
+$font-default-stack: "Pretendard", sans-serif;
+$font-code-stack: "Pretendard", sans-serif;
+
+/** 
+  TOC 디자인 영역
+*/
+#toc {
+  width: 250px;
+  top: 100px;
+  right: 20px;
+  position: fixed;
+  padding-left: 20px;
+  color: $text-color-faint-disabled;
+  font-family: $font-default-stack;
+  border-left: solid 1px rgba(30, 30, 30, 0.1);
+
+  li {
+    margin: 5px 0 5px 10px;
+  }
+
+  .current-toc {
+    p,
+    > a {
+      font-weight: bold;
+      color: $text-color-default;
+      transition: color 0.5s ease;
+    }
+  }
+}
+
+/** 
+ 본문 텍스트 및 헤더 디자인 영역
+*/
+#post {
+  p {
+    color: $text-color-default;
+    line-height: 1.6;
+    font-family: $font-default-stack;
+  }
+  h1 {
+    font-size: xx-large;
+    font-weight: 800;
+    color: $text-color-header;
+    margin: 30px 0;
+  }
+  h2 {
+    font-size: x-large;
+    font-weight: 600;
+    color: $text-color-header;
+    margin: 20px 0;
+  }
+
+  h3 {
+    font-size: large;
+    font-weight: 600;
+    color: $text-color-header;
+    margin: 15px 0;
+  }
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+}
+
+/** 
+  리스트 디자인
+*/
+#post {
+  ol:not(.contains-task-list) {
+    padding: 0 30px;
+    list-style-type: decimal;
+  }
+  ul:not(.contains-task-list) {
+    padding: 0 20px;
+    list-style-type: disc;
+  }
+  li {
+    margin: 1rem 0;
+
+    &::marker {
+      list-style-type: upper-alpha;
+      color: $highlight-accent;
+    }
+  }
+}
+
+/** 
+  인용문 디자인
+*/
+#post {
+  blockquote {
+    margin: 0px 0px 1.75em 0px;
+    position: relative;
+    padding: 20px 55px;
+    background: #f9f9f9;
+    color: $text-color-disabled;
+
+    p {
+      color: $text-color-disabled;
+    }
+
+    &::after {
+      content: "\201C";
+      font-size: 76px;
+      font-family: Georgia;
+      position: absolute;
+      top: -15px;
+      left: 10px;
+      color: #bcbcbc;
+    }
+  }
+}
+
+/** 
+  알림 블록들 디자인
+*/
+#post {
+  .notice_block {
+    color: $text-color-disabled;
+    background-color: #f6f8fc;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      margin: auto 5px auto 0;
+    }
+
+    .notice_title {
+      display: flex;
+      margin: 0 0 0.5rem 0;
+    }
+  }
+
+  @mixin notice-style($color, $border-color) {
+    .notice_title {
+      color: $color;
+    }
+    border-left: solid 4px $border-color;
+  }
+
+  .notice_note {
+    @include notice-style($highlight-accent, $highlight-accent);
+  }
+
+  .notice_tip {
+    @include notice-style($highlight-success, $highlight-success);
+  }
+
+  .notice_important {
+    @include notice-style($highlight-complete, $highlight-complete);
+  }
+
+  .notice_warning {
+    @include notice-style($highlight-warning, $highlight-warning);
+  }
+
+  .notice_caution {
+    @include notice-style($highlight-danger, $highlight-danger);
+  }
+}
+
+/** 
+  링크 디자인
+*/
+#post {
+  a {
+    color: $highlight-accent;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+
+    &:hover {
+      color: $highlight-danger;
+      text-decoration: underline;
+    }
+  }
+}
+
+/** 
+  Latex 문법 디자인
+*/
+#post {
+  .katex .katex-html {
+    display: none;
+  }
+}
+
+/** 
+  테이블 디자인
+*/
+#post {
+  table {
+    width: 80%;
+    margin: 10%;
+    border-collapse: collapse;
+    color: $text-color-disabled;
+
+    th {
+      color: $text-color-header;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  }
+}
+
+/** 
+  테스크 박스 디자인
+*/
+#post {
+  .contains-task-list {
+    input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid $highlight-accent;
+      background-color: white;
+      cursor: pointer;
+      position: relative;
+      outline: none;
+      transition: background-color 0.3s;
+      margin-right: 8px;
+
+      &:checked {
+        background-color: $highlight-accent;
+
+        &::after {
+          content: "✓";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 16px;
+          color: white;
+        }
+      }
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      color: $text-color-default;
+    }
+  }
+
+  .footnotes {
+    margin-top: 50px;
+  }
+}
+
+/** 
+  코드 블럭 디자인
+*/
+#post {
+  pre.shiki-header {
+    color: #f5f5f5;
+    background: #2d353d;
+    border: 1px solid #4e555b;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    font-family: "JetBrains Mono", monospace;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px 0 0 0;
+
+    .dev-icon {
+      width: 20px;
+      margin-right: 12px;
+    }
+  }
+
+  pre.shiki {
+    border-radius: 0 0 8px 8px;
+    padding: 12px 16px 12px 8px;
+    border: 1px solid #4e555b;
+    background: #282c34;
+    position: relative;
+    overflow-x: hidden;
+    font-family: "JetBrains Mono", monospace, "Pretendard";
+    margin: 0 0 30px 0;
+
+    code {
+      counter-reset: step;
+      counter-increment: step 0;
+      line-height: 1.6;
+    }
+
+    .line {
+      position: relative;
+      &.diff.add {
+        background-color: rgba(76, 175, 80, 0.1);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 25px;
+      }
+
+      &.diff.remove {
+        background-color: rgba(244, 67, 54, 0.1);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 25px;
+      }
+
+      &.highlighted {
+        background-color: rgba(52, 152, 219, 0.1);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 25px;
+      }
+    }
+  }
+}
+
+#post {
+  pre.shiki code .line.highlighted::before,
+  pre.shiki code .line.diff.add::before,
+  pre.shiki code .line.diff.remove::before {
+    margin-left: 8px;
+  }
+
+  pre.shiki code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1.5rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: #535555;
+  }
+}
+
+#post {
+  code:not(pre.shiki code) {
+    background-color: #ffe7e7;
+    padding: 3px 5px;
+    border-radius: 0.5rem;
+    color: var(--hl-color-danger);
+  }
+}
