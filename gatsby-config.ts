@@ -13,6 +13,7 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -23,7 +24,7 @@ const config: GatsbyConfig = {
         background_color: `#000000`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/icon.png`
+        icon: `src/images/icon.png`,
       },
     },
     {
@@ -56,6 +57,7 @@ const config: GatsbyConfig = {
       options: {
         plugins: [
           `gatsby-remark-notice-block`,
+          `gatsby-remark-extended-code`,
           {
             resolve: `gatsby-remark-highlight-code`,
             options: {

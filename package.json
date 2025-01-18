@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@deckdeckgo/highlight-code": "^3.6.0",
+    "@fontsource-variable/jetbrains-mono": "^5.1.2",
+    "@fontsource/jetbrains-mono": "^5.1.2",
     "@fontsource/pretendard": "^5.1.0",
     "@mdx-js/react": "^2.3.0",
     "autoprefixer": "^10.4.20",
@@ -29,6 +31,7 @@
     "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-postcss": "^6.13.1",
     "gatsby-plugin-robots-txt": "^1.8.0",
+    "gatsby-plugin-sass": "^6.14.0",
     "gatsby-plugin-sharp": "^5.14.0",
     "gatsby-plugin-sitemap": "^6.13.1",
     "gatsby-remark-autolink-headers": "^6.13.1",
@@ -42,10 +45,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "sass": "^1.83.4",
+    "shiki": "^1.27.0",
     "tailwindcss": "^3.4.13",
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
+    "@shikijs/transformers": "^1.27.2",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
