@@ -48,7 +48,7 @@ class DefaultPostPage extends PageComponent {
           {topImage}
         </div>
 
-        <h1 className="mt-5 text-4xl font-extrabold text-gray-600">
+        <h1 className="mt-5 text-4xl font-extrabold text-gray-600 dark:text-gray-100">
           {post.frontmatter.title}
         </h1>
         <div className="flex text-gray-400 mt-3 mb-32">

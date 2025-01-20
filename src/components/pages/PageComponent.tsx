@@ -19,6 +19,9 @@ const ThemeButton = () => {
   useEffect(() => {
     document.body.classList.toggle("dark", isDarkMode);
     localStorage.setItem("isDarkMode", `${isDarkMode}`);
+
+    const event = new CustomEvent("themeChange", { detail: isDarkMode });
+    window.dispatchEvent(event);
   }, [isDarkMode]);
 
   return (
@@ -39,11 +42,15 @@ abstract class PageComponent extends Component<PageComponentProps> {
 
   renderHeader() {
     return (
-      <header className="flex h-16 border-b">
+      <header className="flex h-16 border-b dark:border-gray-500">
         <div className="ml-6 my-auto">
           <Link to="/" className="flex">
-            <h1 className="text-gray-950 text-xl font-bold">@Kimssammwu</h1>
-            <p className="text-gray-700 text-xl">&nbsp;Blog</p>
+            <h1 className="text-gray-950 dark:text-gray-100 text-xl font-bold">
+              @Kimssammwu
+            </h1>
+            <p className="text-gray-700 dark:text-gray-300 text-xl">
+              &nbsp;Blog
+            </p>
           </Link>
         </div>
 
