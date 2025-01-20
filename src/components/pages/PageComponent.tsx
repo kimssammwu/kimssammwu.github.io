@@ -1,12 +1,35 @@
-import React, { Component, ReactNode } from "react";
+import React, { Component, ReactNode, useEffect, useState } from "react";
 import { Link } from "gatsby";
 
 import { PageComponentProps } from "../../interfaces";
 import { SEOForTemplate } from "../common/seo";
-import { Github, Sun } from "../icons/solid";
+import { Github, Moon, Sun } from "../icons/solid";
+
+const getDefaultTheme = () => {
+  const savedThemeIsDarkMode = localStorage.getItem("isDarkMode");
+  if (savedThemeIsDarkMode !== null) {
+    return savedThemeIsDarkMode === "true";
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
 
 const ThemeButton = () => {
-  return <Sun className="w-8 fill-slate-300" />;
+  const [isDarkMode, setIsDarkMode] = useState(() => getDefaultTheme());
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", isDarkMode);
+    localStorage.setItem("isDarkMode", `${isDarkMode}`);
+  }, [isDarkMode]);
+
+  return (
+    <button onClick={() => setIsDarkMode((prev) => !prev)}>
+      {isDarkMode ? (
+        <Moon className="w-7 fill-slate-300" />
+      ) : (
+        <Sun className="w-8 fill-slate-300" />
+      )}
+    </button>
+  );
 };
 
 abstract class PageComponent extends Component<PageComponentProps> {
