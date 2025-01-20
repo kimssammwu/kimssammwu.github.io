@@ -1,76 +1,69 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type CommentStatus = "pending" | "success" | "failed";
 
-const Comment = ({ theme = "github-light" }) => {
-  const commentsEl = useRef<HTMLDivElement | null>(null);
-  const [status, setStatus] = useState<CommentStatus>("pending");
-  const [retry, setRetry] = useState<boolean>(false);
+const Comment = ({ theme = "" }) => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedThemeIsDarkMode = localStorage.getItem("isDarkMode");
+    return savedThemeIsDarkMode === "true";
+  });
 
-  const attributes = {
+  useEffect(() => {
+    const handleThemeChange = (event: CustomEvent) => {
+      setIsDarkMode(event.detail);
+    };
+
+    window.addEventListener("themeChange", handleThemeChange);
+
+    return () => {
+      window.removeEventListener("themeChange", handleThemeChange);
+    };
+  }, []);
+
+  const commentsLightRef = useRef<HTMLDivElement | null>(null);
+  const commentsDarkRef = useRef<HTMLDivElement | null>(null);
+
+  const attributes = (themeName: string) => ({
     src: "https://utteranc.es/client.js",
     repo: "kimssammwu/personal-blog-comment",
     "issue-term": "pathname",
     label: "💬 blog comment",
-    theme: theme,
+    theme: themeName,
     crossorigin: "anonymous",
-  };
+  });
 
-  const loadScript = () => {
+  const loadScript = (
+    ref: React.RefObject<HTMLDivElement>,
+    themeName: string
+  ) => {
+    if (!ref.current) return;
+
     const utterancesElement = document.createElement("script");
-    // utterances 이벤트 분기 처리
-    utterancesElement.onload = () => setStatus("success");
-    utterancesElement.onerror = () => {
-      setStatus("failed");
-      setRetry(true);
-    };
-    // utterances 속성 매핑 및 삽입
-    Object.entries(attributes).forEach(([key, value]) => {
+    Object.entries(attributes(themeName)).forEach(([key, value]) => {
       utterancesElement.setAttribute(key, value);
     });
     utterancesElement.async = true;
-    if (commentsEl.current != null) {
-      commentsEl.current.appendChild(utterancesElement);
-    }
+
+    ref.current.appendChild(utterancesElement);
   };
 
   useEffect(() => {
-    loadScript();
+    if (commentsLightRef.current) loadScript(commentsLightRef, "github-light");
+    if (commentsDarkRef.current) loadScript(commentsDarkRef, "photon-dark");
   }, []);
-
-  const handleRetry = () => {
-    setStatus("pending");
-    setRetry(false);
-    loadScript();
-  };
 
   return (
     <div className="comments-wrapper mt-12">
-      {status === "failed" && (
-        <div className="h-24 mt-8 p-6 border border-red-300 rounded-lg shadow-md bg-red-50 flex flex-col items-center justify-center">
-          <p className="text-lg font-semibold text-red-600 text-center">
-            댓글을 불러오지 못했습니다
-          </p>
-          {retry && (
-            <button
-              className="px-4 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-600 transition duration-200"
-              onClick={handleRetry}
-            >
-              재시도
-            </button>
-          )}
-        </div>
-      )}
-
-      {status === "pending" && (
-        <div className="h-24 mt-8 p-6 border border-gray-300 rounded-lg shadow-md bg-gray-50">
-          <p className="text-xl font-semibold text-gray-700 text-center">
-            댓글을 불러오는 중...
-          </p>
-        </div>
-      )}
-
-      <div ref={commentsEl} />
+      {/* 라이트 모드 */}
+      <div
+        ref={commentsLightRef}
+        style={{ display: isDarkMode ? "none" : "block" }}
+      />
+      {/* 다크 모드 */}
+      <div
+        ref={commentsDarkRef}
+        style={{ display: isDarkMode ? "block" : "none" }}
+      />
     </div>
   );
 };

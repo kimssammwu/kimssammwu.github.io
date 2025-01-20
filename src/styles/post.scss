@@ -1,40 +1,53 @@
-$text-color-default: #2c3540;
-$text-color-header: #2f3b4e;
-$text-color-disabled: #4f5969;
-$text-color-faint-disabled: #b3b8b9;
+/** 
+  SCSS 작성 컨벤션
+  @version 0.0.1
+  @date 25.01.20
 
-$highlight-accent: #1f6feb;
-$highlight-success: #3fb950;
-$highlight-complete: #8957e5;
-$highlight-warning: #d29922;
-$highlight-danger: #da3633;
+  - @apply를 통한 tailwind를 주로 사용
+  - 만약 다크모드를 사용할 시 다음과 같은 위계를 가지고 scss 구문 작성
+    1. 다크모드를 제외한 css
+    2. 라이트모드 css
+    3. 다크모드(prefix - dark:) css 
+*/
+
+// VARIABLE
+$bg-point: bg-blue-400;
+$text-point: text-blue-400;
+
+$text-primary-light: text-gray-600;
+$text-highlight-secondary-light: text-gray-700;
+
+$text-primary-dark: text-gray-400;
+$text-highlight-secondary-dark: text-gray-200;
+
+// $dark-text-color-default: theme("colors.gray.300");
 
 $font-default-stack: "Pretendard", sans-serif;
-$font-code-stack: "Pretendard", sans-serif;
+$font-code-stack: "JetBrains Mono", monospace;
+
+body {
+  font-family: $font-default-stack;
+  @apply bg-slate-50;
+  @apply dark:bg-slate-800;
+  @apply transition-all duration-500;
+}
 
 /** 
   TOC 디자인 영역
 */
 #toc {
-  width: 250px;
-  top: 100px;
-  right: 20px;
-  position: fixed;
-  padding-left: 20px;
-  color: $text-color-faint-disabled;
-  font-family: $font-default-stack;
-  border-left: solid 1px rgba(30, 30, 30, 0.1);
+  @apply fixed top-24 right-4 pl-5 text-gray-300 border-l border-gray-200;
+  @apply dark:text-gray-600 dark:border-gray-500;
 
   li {
-    margin: 5px 0 5px 10px;
+    @apply my-1 ml-2;
   }
 
   .current-toc {
     p,
     > a {
-      font-weight: bold;
-      color: $text-color-default;
-      transition: color 0.5s ease;
+      @apply font-bold text-gray-800 transition-all duration-500;
+      @apply dark:text-gray-300;
     }
   }
 }
@@ -44,33 +57,36 @@ $font-code-stack: "Pretendard", sans-serif;
 */
 #post {
   p {
-    color: $text-color-default;
-    line-height: 1.6;
-    font-family: $font-default-stack;
+    @apply leading-relaxed;
+    @apply #{$text-primary-light};
+    @apply dark:#{$text-primary-dark};
   }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-extrabold;
+    @apply #{$text-highlight-secondary-light};
+    @apply dark:fill-gray-400 dark:#{$text-highlight-secondary-dark};
+  }
+
   h1 {
-    font-size: xx-large;
-    font-weight: 800;
-    color: $text-color-header;
-    margin: 30px 0;
+    @apply text-3xl my-8;
   }
+
   h2 {
-    font-size: x-large;
-    font-weight: 600;
-    color: $text-color-header;
-    margin: 20px 0;
+    @apply text-2xl my-5;
   }
 
   h3 {
-    font-size: large;
-    font-weight: 600;
-    color: $text-color-header;
-    margin: 15px 0;
+    @apply text-xl my-4;
   }
+
   h4,
   h5,
   h6 {
-    font-weight: 600;
+    @apply font-semibold;
+    @apply text-gray-200;
   }
 }
 
@@ -79,19 +95,19 @@ $font-code-stack: "Pretendard", sans-serif;
 */
 #post {
   ol:not(.contains-task-list) {
-    padding: 0 30px;
-    list-style-type: decimal;
+    @apply pl-8 list-decimal;
   }
+
   ul:not(.contains-task-list) {
-    padding: 0 20px;
-    list-style-type: disc;
+    @apply pl-5 list-disc;
   }
+
   li {
-    margin: 1rem 0;
+    @apply my-4;
+    @apply dark:#{$text-primary-dark};
 
     &::marker {
-      list-style-type: upper-alpha;
-      color: $highlight-accent;
+      @apply #{$text-point};
     }
   }
 }
@@ -101,24 +117,19 @@ $font-code-stack: "Pretendard", sans-serif;
 */
 #post {
   blockquote {
-    margin: 0px 0px 1.75em 0px;
-    position: relative;
-    padding: 20px 55px;
-    background: #f9f9f9;
-    color: $text-color-disabled;
+    @apply my-7 relative p-5 bg-gray-100 text-gray-500 rounded;
+    @apply dark:bg-gray-600 dark:text-gray-300;
 
     p {
-      color: $text-color-disabled;
+      @apply text-gray-500;
+      @apply dark:text-gray-300;
     }
 
     &::after {
-      content: "\201C";
-      font-size: 76px;
       font-family: Georgia;
-      position: absolute;
-      top: -15px;
-      left: 10px;
-      color: #bcbcbc;
+      content: "\201C";
+      @apply text-6xl absolute top-0 left-2 text-gray-300;
+      @apply dark:text-gray-500;
     }
   }
 }
@@ -126,17 +137,21 @@ $font-code-stack: "Pretendard", sans-serif;
 /** 
   알림 블록들 디자인
 */
+
+$highlight-accent: theme("colors.blue.500");
+$highlight-success: theme("colors.green.500");
+$highlight-complete: theme("colors.purple.500");
+$highlight-warning: theme("colors.yellow.500");
+$highlight-danger: theme("colors.red.500");
+
 #post {
   .notice_block {
-    color: $text-color-disabled;
-    background-color: #f6f8fc;
-    margin: 1rem 0;
-    padding: 0.5rem 1rem;
+    // color: $text-color-disabled;
+    @apply bg-slate-200 text-gray-500 my-4 py-3 px-4;
+    @apply dark:bg-slate-700 dark:text-gray-300;
 
     svg {
-      width: 16px;
-      height: 16px;
-      margin: auto 5px auto 0;
+      @apply w-4 my-auto mr-1.5;
     }
 
     .notice_title {
@@ -178,13 +193,10 @@ $font-code-stack: "Pretendard", sans-serif;
 */
 #post {
   a {
-    color: $highlight-accent;
-    text-decoration: none;
-    transition: color 0.3s, text-decoration 0.3s;
+    @apply no-underline transition-all duration-300 #{$text-point};
 
     &:hover {
-      color: $highlight-danger;
-      text-decoration: underline;
+      @apply text-red-500 underline;
     }
   }
 }
@@ -193,6 +205,10 @@ $font-code-stack: "Pretendard", sans-serif;
   Latex 문법 디자인
 */
 #post {
+  .katex {
+    @apply dark:text-white;
+  }
+
   .katex .katex-html {
     display: none;
   }
@@ -203,20 +219,16 @@ $font-code-stack: "Pretendard", sans-serif;
 */
 #post {
   table {
-    width: 80%;
-    margin: 10%;
-    border-collapse: collapse;
-    color: $text-color-disabled;
+    @apply w-4/5 mx-auto border-collapse text-gray-500;
 
     th {
-      color: $text-color-header;
+      @apply text-gray-700;
+      @apply dark:#{$text-highlight-secondary-dark};
     }
 
     th,
     td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
+      @apply border p-2 text-left border-gray-300;
     }
   }
 }
@@ -227,79 +239,46 @@ $font-code-stack: "Pretendard", sans-serif;
 #post {
   .contains-task-list {
     input {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 1px solid $highlight-accent;
-      background-color: white;
-      cursor: pointer;
-      position: relative;
-      outline: none;
-      transition: background-color 0.3s;
-      margin-right: 8px;
+      @apply appearance-none w-4 h-4 rounded border border-gray-500 bg-white cursor-pointer relative outline-none transition-all duration-300 mr-2;
 
       &:checked {
-        background-color: $highlight-accent;
+        @apply border-none #{$bg-point};
 
         &::after {
           content: "✓";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 16px;
-          color: white;
+          @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white;
         }
       }
     }
 
     li {
-      display: flex;
-      align-items: center;
-      color: $text-color-default;
+      @apply flex items-center text-gray-800;
+      @apply dark:text-gray-400;
     }
   }
 
   .footnotes {
-    margin-top: 50px;
+    @apply mt-12;
   }
 }
 
 /** 
   코드 블럭 디자인
 */
+
 #post {
   pre.shiki-header {
-    color: #f5f5f5;
-    background: #2d353d;
-    border: 1px solid #4e555b;
-    border-bottom: none;
-    border-radius: 8px 8px 0 0;
-    font-family: "JetBrains Mono", monospace;
-    padding: 10px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 20px 0 0 0;
+    @apply text-gray-100 bg-gray-800 border border-b-0 border-gray-500 rounded-t-lg py-2 px-5 flex items-center justify-start mt-5;
 
+    font-family: $font-default-stack;
     .dev-icon {
-      width: 20px;
-      margin-right: 12px;
+      @apply w-5 mr-3;
     }
   }
 
   pre.shiki {
-    border-radius: 0 0 8px 8px;
-    padding: 12px 16px 12px 8px;
-    border: 1px solid #4e555b;
-    background: #282c34;
-    position: relative;
-    overflow-x: hidden;
-    font-family: "JetBrains Mono", monospace, "Pretendard";
-    margin: 0 0 30px 0;
+    @apply rounded-b-lg py-3 px-4 border border-gray-500 bg-gray-900 relative overflow-x-hidden font-mono mb-8;
+    font-family: $font-code-stack;
 
     code {
       counter-reset: step;
@@ -309,28 +288,21 @@ $font-code-stack: "Pretendard", sans-serif;
 
     .line {
       position: relative;
+
+      &.diff,
+      &.highlighted {
+        @apply absolute left-0 w-full h-6;
+      }
       &.diff.add {
         background-color: rgba(76, 175, 80, 0.1);
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 25px;
       }
 
       &.diff.remove {
         background-color: rgba(244, 67, 54, 0.1);
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 25px;
       }
 
       &.highlighted {
         background-color: rgba(52, 152, 219, 0.1);
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 25px;
       }
     }
   }
@@ -340,25 +312,20 @@ $font-code-stack: "Pretendard", sans-serif;
   pre.shiki code .line.highlighted::before,
   pre.shiki code .line.diff.add::before,
   pre.shiki code .line.diff.remove::before {
-    margin-left: 8px;
+    @apply ml-4;
   }
 
   pre.shiki code .line::before {
     content: counter(step);
     counter-increment: step;
-    width: 1.5rem;
-    margin-right: 1.5rem;
-    display: inline-block;
-    text-align: right;
-    color: #535555;
+    @apply text-right w-6 mr-6 inline-block #{$text-primary-light};
   }
 }
 
 #post {
   code:not(pre.shiki code) {
-    background-color: #ffe7e7;
-    padding: 3px 5px;
-    border-radius: 0.5rem;
-    color: var(--hl-color-danger);
+    @apply py-1 px-2 rounded-xl;
+    @apply bg-red-100 text-red-500;
+    @apply dark:bg-green-500 dark:text-green-100;
   }
 }
