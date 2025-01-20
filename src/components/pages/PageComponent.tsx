@@ -3,6 +3,11 @@ import { Link } from "gatsby";
 
 import { PageComponentProps } from "../../interfaces";
 import { SEOForTemplate } from "../common/seo";
+import { Github, Sun } from "../icons/solid";
+
+const ThemeButton = () => {
+  return <Sun className="w-8 fill-slate-300" />;
+};
 
 abstract class PageComponent extends Component<PageComponentProps> {
   constructor(props: PageComponentProps) {
@@ -17,6 +22,18 @@ abstract class PageComponent extends Component<PageComponentProps> {
             <h1 className="text-gray-950 text-xl font-bold">@Kimssammwu</h1>
             <p className="text-gray-700 text-xl">&nbsp;Blog</p>
           </Link>
+        </div>
+
+        <div className="ml-auto my-auto">
+          {/* github */}
+          <Link to="https://github.com/kimssammwu" className="">
+            <Github className="w-6 fill-slate-300"></Github>
+          </Link>
+        </div>
+
+        {/* darkmode */}
+        <div className="h-8 w-8 flex items-center ml-5 mr-6 my-auto">
+          <ThemeButton />
         </div>
       </header>
     );
