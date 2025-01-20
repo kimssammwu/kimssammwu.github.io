@@ -74,7 +74,7 @@ private: false
 
 &nbsp;&nbsp;&nbsp; 며칠 안 되는 짧은 기간 동안 개발하였지만, tailwind css가 각 블로그 게시글에 적용이 안 되는 문제 때문에 골치를 썩였습니다. 아예 적용이 안 되면 어디선가 문제가 있겠구나! 감을 잡았을 것 같은데 폰트에 bold와 24 미만의 크기에서는 작동해서 css 태그를 잘못 건드렸나 계속 확인해 보고 개발자도구도 들락날락했는데 아예 class에 속성값이 적용이 안 되어있었습니다. 계속 원인을 고민하다가 page를 **동적으로 추가하는 코드 때문에 정상적으로 tailwind가 안 불러와지나?** 라는 생각을 하게 되었고 github에서 관련 이슈가 있는지 확인해 보았지만 아쉽게도 원하는 글은 없었습니다. 그러다가 tailwind.config.js 파일을 확인하였는데...
 
-```js
+```js @title='tailwind.config.js' @icon='javascript'
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
