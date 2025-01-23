@@ -6,11 +6,14 @@ import { SEOForTemplate } from "../common/seo";
 import { Github, Moon, Sun } from "../icons/solid";
 
 const getDefaultTheme = () => {
-  const savedThemeIsDarkMode = localStorage.getItem("isDarkMode");
-  if (savedThemeIsDarkMode !== null) {
-    return savedThemeIsDarkMode === "true";
+  if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+    const savedThemeIsDarkMode = localStorage.getItem("isDarkMode");
+    if (savedThemeIsDarkMode !== null) {
+      return savedThemeIsDarkMode === "true";
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return false;
 };
 
 const ThemeButton = () => {

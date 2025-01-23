@@ -4,8 +4,11 @@ type CommentStatus = "pending" | "success" | "failed";
 
 const Comment = ({ theme = "" }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedThemeIsDarkMode = localStorage.getItem("isDarkMode");
-    return savedThemeIsDarkMode === "true";
+    if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+      const savedThemeIsDarkMode = localStorage.getItem("isDarkMode");
+      return savedThemeIsDarkMode === "true";
+    }
+    return false;
   });
 
   useEffect(() => {
