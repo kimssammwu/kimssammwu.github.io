@@ -59,9 +59,9 @@ abstract class PageComponent extends Component<PageComponentProps> {
 
         <div className="ml-auto my-auto">
           {/* github */}
-          <Link to="https://github.com/kimssammwu" className="">
+          <a href="https://github.com/kimssammwu">
             <Github className="w-6 fill-slate-300"></Github>
-          </Link>
+          </a>
         </div>
 
         {/* darkmode */}
