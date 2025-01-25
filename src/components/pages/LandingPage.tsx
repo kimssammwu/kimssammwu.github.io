@@ -23,11 +23,11 @@ const PostCard = (node: any, imageSet: any) => {
     <Link to={postLink}>
       <div className="group w-[700px] py-6 px-2.5">
         <div className="flex">
-          <div className="hidden md:block overflow-hidden rounded border border-gray-200 dark:border-gray-500 mr-4">
+          <div className="hidden md:block h-24 overflow-hidden rounded border border-gray-200 dark:border-gray-500 mr-4">
             {thumbnail}
           </div>
 
-          <div className="w-[520px] ">
+          <div className="w-[520px] h-24">
             <h1 className="block font-semibold text-xl strong group-hover:text-blue-400 dark:text-gray-200">
               {property.title}
             </h1>
