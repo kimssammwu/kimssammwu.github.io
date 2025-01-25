@@ -5,18 +5,14 @@ import { formatDate } from "../../utils";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const PostCard = (
-  node: any,
-  imageSet: any
-) => {
+const PostCard = (node: any, imageSet: any) => {
   const property = getPostProperty(node, imageSet);
   const formattedDate = formatDate(property.date);
   const postLink = "/post/" + property.slug;
 
   const thumbnail = (
     <GatsbyImage
-      className="hidden md:block w-36 h-24 
-      transition duration-300 ease-in-out group-hover:scale-125
+      className="w-36 h-24 transition duration-300 ease-in-out group-hover:scale-125
       "
       image={property.thumbnail}
       alt={property.title}
@@ -27,7 +23,7 @@ const PostCard = (
     <Link to={postLink}>
       <div className="group w-[700px] py-6 px-2.5">
         <div className="flex">
-          <div className="overflow-hidden rounded border border-gray-200 dark:border-gray-500 mr-4">
+          <div className="hidden md:block overflow-hidden rounded border border-gray-200 dark:border-gray-500 mr-4">
             {thumbnail}
           </div>
 
@@ -59,7 +55,6 @@ function getPostProperty(props) {
   const description = node.frontmatter.description;
   const writtenDate = node.frontmatter.date;
   const slug = node.frontmatter.slug;
-  console.log(thumbnailImage);
   return {
     thumbnail: thumbnailImage,
     title: title,
@@ -94,7 +89,6 @@ class LandingPage extends PageComponent {
     return (
       <div>
         {this.posts.allMdx.edges.map(({ node }) => {
-          // return JSON.stringify(node);
           return (
             <PostCard
               key={counter++}
