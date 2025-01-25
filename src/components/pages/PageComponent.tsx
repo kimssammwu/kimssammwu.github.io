@@ -80,7 +80,7 @@ abstract class PageComponent extends Component<PageComponentProps> {
 
   // TODO: footer 구현
   renderFooter() {
-    return <footer className="h-20 border-t"></footer>;
+    return <footer className="h-20 border-t dark:border-gray-500"></footer>;
   }
 
   render() {
