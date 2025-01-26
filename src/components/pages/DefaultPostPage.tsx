@@ -43,7 +43,7 @@ class DefaultPostPage extends PageComponent {
 
     return (
       // TODO: Section 단위로 컴퍼넌트 분리!
-      <div className="md:w-[700px] mt-8 mb-20 px-12 sm:px-0">
+      <div className="md:w-[700px] mt-8 mb-20 px-12 md:px-0">
         <div className="h-40 rounded flex items-center justify-center overflow-clip">
           {topImage}
         </div>

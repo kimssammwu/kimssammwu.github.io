@@ -265,11 +265,16 @@ $highlight-danger: theme("colors.red.500");
 /** 
   코드 블럭 디자인
 */
-
+pre {
+  margin: 0;
+}
 #post {
   pre.shiki-header {
     @apply text-gray-100 bg-gray-800 border border-b-0 border-gray-500 rounded-t-lg py-2 px-5 flex items-center justify-start mt-5;
-
+    @apply w-[calc(100vw-7.5rem)] max-w-[700px];
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: pre;
     font-family: $font-default-stack;
     .dev-icon {
       @apply w-5 mr-3;
@@ -277,7 +282,10 @@ $highlight-danger: theme("colors.red.500");
   }
 
   pre.shiki {
-    @apply rounded-b-lg py-3 px-4 border border-gray-500 bg-gray-900 relative overflow-x-hidden font-mono mb-8;
+    @apply rounded-b-lg py-3 px-4 border border-gray-500 bg-gray-900 relative font-mono mb-8;
+    @apply w-[calc(100vw-7.5rem)] max-w-[700px];
+    overflow-x: scroll;
+
     font-family: $font-code-stack;
 
     code {
@@ -287,11 +295,9 @@ $highlight-danger: theme("colors.red.500");
     }
 
     .line {
-      position: relative;
-
       &.diff,
       &.highlighted {
-        @apply absolute left-0 w-full h-6;
+        @apply absolute left-0 w-full;
       }
       &.diff.add {
         background-color: rgba(76, 175, 80, 0.1);
@@ -305,6 +311,27 @@ $highlight-danger: theme("colors.red.500");
         background-color: rgba(52, 152, 219, 0.1);
       }
     }
+  }
+
+  /* 전체 스크롤바 */
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+  }
+
+  /* 스크롤바 트랙 (배경) */
+  ::-webkit-scrollbar-track {
+    border: solid 1px #888;
+    background: #282c34;
+    border-radius: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* 스크롤바 핸들 (움직이는 부분) */
+  ::-webkit-scrollbar-thumb {
+    background: #282828;
+    border-radius: 10px;
+    border: solid 1px #888;
   }
 }
 
