@@ -3,7 +3,10 @@ import { graphql, useStaticQuery } from "gatsby";
 export const useMarkdownCollection = () => {
   const data = useStaticQuery(graphql`
     query MarkdownCollection {
-      allMdx(filter: { frontmatter: { private: { ne: true } } }) {
+      allMdx(
+        filter: { frontmatter: { private: { ne: true } } }
+        sort: { frontmatter: { date: DESC } }
+      ) {
         edges {
           node {
             id

@@ -39,7 +39,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
 
   // 모든 MDX 노드에 대해 페이지 생성
 
-  // TODO: 파일 순서 날짜순으로 조정
   query.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: `/post/${node.frontmatter.slug}`, // 슬러그 사용
