@@ -10,6 +10,9 @@ future: false
 exclude:
   - README.md
   - DESIGN.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
 
 defaults:
   - scope:
@@ -17,4 +20,3 @@ defaults:
       type: posts
     values:
       layout: post
-
