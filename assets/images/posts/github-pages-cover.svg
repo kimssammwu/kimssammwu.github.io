@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub Pages 블로그</title><desc id="desc">브라우저 창과 연결된 Git 브랜치</desc>
+  <rect width="1440" height="900" fill="#17283b"/><circle cx="1160" cy="150" r="210" fill="#f06d4f"/>
+  <rect x="170" y="170" width="910" height="560" rx="34" fill="#f4efe5" stroke="#0d1825" stroke-width="14"/>
+  <path d="M170 265h910" stroke="#0d1825" stroke-width="14"/><circle cx="225" cy="220" r="13" fill="#f06d4f"/><circle cx="270" cy="220" r="13" fill="#edc16f"/>
+  <path d="M330 420h370M330 500h520M330 580h270" stroke="#17283b" stroke-width="28" stroke-linecap="round"/>
+  <path d="M1010 620c120 0 90-190 210-190m-210 190c120 0 90 130 210 130" fill="none" stroke="#9bb6a6" stroke-width="18"/>
+  <circle cx="1008" cy="620" r="28" fill="#f06d4f"/><circle cx="1220" cy="430" r="28" fill="#edc16f"/><circle cx="1220" cy="750" r="28" fill="#f4efe5"/>
+</svg>
+

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">개발 기록 작성</title><rect width="1440" height="900" fill="#edc16f"/>
+  <rect x="270" y="140" width="650" height="620" rx="28" fill="#f4efe5" transform="rotate(-5 270 140)"/>
+  <path d="M390 300h390M390 390h320M390 480h400M390 570h240" stroke="#17283b" stroke-width="24" stroke-linecap="round" transform="rotate(-5 270 140)"/>
+  <path d="m990 170 130 70-330 500-145 55 15-155z" fill="#f06d4f" stroke="#17283b" stroke-width="14"/>
+  <path d="m645 795 145-55-130-100z" fill="#17283b"/>
+</svg>
+
