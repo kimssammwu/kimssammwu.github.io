@@ -1,0 +1,20 @@
+title: "MINWOO.LOG"
+description: "배운 것과 만든 것을 오래 남기는 개발 블로그"
+url: ""
+baseurl: ""
+lang: ko-KR
+timezone: Asia/Seoul
+markdown: kramdown
+permalink: /posts/:title/
+future: false
+exclude:
+  - README.md
+  - DESIGN.md
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
