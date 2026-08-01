@@ -5,6 +5,10 @@ baseurl: ""
 lang: ko-KR
 timezone: Asia/Seoul
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 permalink: /posts/:title/
 future: false
 exclude:
@@ -14,6 +18,7 @@ exclude:
   - Gemfile.lock
   - vendor
   - .omx
+  - _templates
 
 defaults:
   - scope:

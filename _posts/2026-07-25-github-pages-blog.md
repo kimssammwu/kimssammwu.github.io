@@ -6,6 +6,10 @@ tags: [GitHub Pages, Jekyll, Git]
 image: /assets/images/posts/github-pages-cover.svg
 image_alt: "브라우저 창과 Git 브랜치를 추상화한 일러스트레이션"
 read_time: 6
+actions:
+  - label: GitHub Pages 공식 문서
+    url: https://docs.github.com/pages
+    type: docs
 ---
 
 블로그를 시작할 때 가장 먼저 필요한 것은 화려한 도구가 아니라 **계속 쓸 수 있는 작은 흐름**입니다. 이 블로그는 Markdown 파일을 쓰고 Git에 올리면 GitHub Pages가 공개 사이트로 만들어 주는 구조를 사용합니다.
@@ -42,7 +46,8 @@ git push -u origin content/new-jekyll-post
 
 Pull Request에서 미리보거나 변경 내용을 검토한 뒤 `main`에 합치면 배포가 시작됩니다.
 
+[GitHub Pages 배포 문서 바로가기](https://docs.github.com/pages/getting-started-with-github-pages/creating-a-github-pages-site){: .quick-link data-kind="docs" target="_blank" rel="noreferrer"}
+
 ## 작은 시스템으로 오래 쓰기
 
 좋은 블로그 도구는 글을 대신 써주는 도구가 아니라, 쓰려는 순간 방해하지 않는 도구입니다. 이 구조는 파일 하나와 이미지 몇 장만 추가하면 다음 기록을 공개할 수 있도록 설계했습니다.
-
