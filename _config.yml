@@ -11,6 +11,14 @@ kramdown:
   syntax_highlighter: rouge
 permalink: /posts/:title/
 future: false
+comments:
+  enabled: false
+  provider: giscus
+  repo: "kimssammwu/kimssammwu.github.io"
+  repo_id: ""
+  category: "Announcements"
+  category_id: ""
+  mapping: pathname
 exclude:
   - README.md
   - DESIGN.md

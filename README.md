@@ -69,6 +69,28 @@ actions:
 
 논문 리뷰 시작 템플릿은 `_templates/paper-review.md`에 있습니다.
 
+## 태그
+
+Front Matter의 `tags` 배열은 게시글 상단과 `/tags/` 인덱스에 자동으로 연결됩니다.
+
+```yaml
+tags: [GitHub Pages, Jekyll, Git]
+```
+
+태그 이름을 바꾸면 URL 앵커도 달라지므로 같은 의미의 태그 표기를 일관되게 유지합니다.
+
+## 댓글
+
+댓글은 GitHub Discussions 기반의 [Giscus](https://giscus.app/ko)를 사용하도록 준비되어 있습니다.
+
+1. 댓글을 저장할 공개 GitHub 저장소에서 Discussions를 활성화합니다.
+2. 해당 저장소에 Giscus GitHub App을 설치합니다.
+3. Giscus 설정 페이지에서 저장소와 `Announcements` 카테고리를 선택합니다.
+4. 생성된 `repo-id`와 `category-id`를 `_config.yml`의 `comments` 항목에 입력합니다.
+5. `comments.enabled`를 `true`로 바꿉니다.
+
+경로 기반으로 게시글과 Discussion을 연결하며, 사이트 테마가 바뀌면 댓글 프레임도 라이트·다크 테마로 동기화됩니다.
+
 ## 로컬 실행
 
 ```bash

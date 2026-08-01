@@ -6,6 +6,7 @@
   <nav class="site-nav" aria-label="주요 메뉴">
     <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>홈</a>
     <a href="{{ '/notes/' | relative_url }}"{% if page.url == '/notes/' or page.layout == 'post' %} aria-current="page"{% endif %}>노트</a>
+    <a href="{{ '/tags/' | relative_url }}"{% if page.url == '/tags/' %} aria-current="page"{% endif %}>태그</a>
     <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>소개</a>
   </nav>
   <button class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="테마 전환">

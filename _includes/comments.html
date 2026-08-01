@@ -1,0 +1,26 @@
+{% assign comments = site.comments %}
+{% if comments.enabled and comments.provider == "giscus" and comments.repo != "" and comments.repo_id != "" and comments.category_id != "" %}
+<section class="article-comments" aria-labelledby="comments-title">
+  <div class="comments-heading">
+    <h2 id="comments-title">Comments</h2>
+    <span>GitHub Discussions</span>
+  </div>
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="{{ comments.repo | escape }}"
+          data-repo-id="{{ comments.repo_id | escape }}"
+          data-category="{{ comments.category | escape }}"
+          data-category-id="{{ comments.category_id | escape }}"
+          data-mapping="{{ comments.mapping | default: 'pathname' | escape }}"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="ko"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
+{% endif %}

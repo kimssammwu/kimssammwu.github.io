@@ -3,14 +3,34 @@ const root = document.documentElement;
 const themeToggle = document.querySelector(".theme-toggle");
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
+const syncGiscusTheme = () => {
+  const iframe = document.querySelector("iframe.giscus-frame");
+  if (!iframe) return;
+  iframe.contentWindow?.postMessage(
+    { giscus: { setConfig: { theme: root.dataset.theme === "dark" ? "dark_dimmed" : "light" } } },
+    "https://giscus.app",
+  );
+};
+
 const syncThemeControls = () => {
   const isDark = root.dataset.theme === "dark";
   themeToggle?.setAttribute("aria-label", isDark ? "라이트 모드로 전환" : "다크 모드로 전환");
   themeToggle?.setAttribute("aria-pressed", String(isDark));
   themeMeta?.setAttribute("content", isDark ? "#0b0b0c" : "#ffffff");
+  syncGiscusTheme();
 };
 
 syncThemeControls();
+
+const commentsRoot = document.querySelector(".giscus");
+if (commentsRoot && "MutationObserver" in window) {
+  const commentsObserver = new MutationObserver(() => {
+    if (!commentsRoot.querySelector("iframe.giscus-frame")) return;
+    syncGiscusTheme();
+    commentsObserver.disconnect();
+  });
+  commentsObserver.observe(commentsRoot, { childList: true });
+}
 
 themeToggle?.addEventListener("click", () => {
   const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";

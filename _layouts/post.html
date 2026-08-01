@@ -11,6 +11,13 @@ layout: default
       <span aria-hidden="true">·</span>
       <span>{{ page.read_time | default: 5 }}분 읽기</span>
     </div>
+    {% if page.tags %}
+    <nav class="article-tags" aria-label="게시글 태그">
+      {% for tag in page.tags %}
+      <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>
+      {% endfor %}
+    </nav>
+    {% endif %}
     {% if page.actions %}
     <nav class="article-actions" aria-label="관련 자료 바로가기">
       {% for action in page.actions %}
@@ -32,4 +39,5 @@ layout: default
   {% endif %}
 
   <div class="article-grid"><div class="prose">{{ content }}</div></div>
+  {% include comments.html %}
 </article>

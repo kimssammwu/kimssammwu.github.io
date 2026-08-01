@@ -19,7 +19,7 @@
 
 - Typography: `Inter` and `Noto Sans KR` only; no serif display or reading face.
 - Color: neutral white/black surfaces with one restrained cobalt accent.
-- Layout: 1180px content grid, 720px reading measure, thin rules, broad whitespace.
+- Layout: 1340px content grid, 720px reading measure, thin rules, broad whitespace.
 - Shape: 6px control radius, mostly square media, no pill-heavy UI or shadows.
 - Imagery: local monochrome geometric SVGs with one cobalt element.
 - Motion: subtle hover transitions only; content is never hidden behind entrance animation.
@@ -32,6 +32,7 @@
 - Theme selection follows the OS on first visit, switches from the header button, and persists in `localStorage`.
 - `?theme=light` and `?theme=dark` are deterministic preview states for screenshots.
 - The `theme-color` meta value and accessible theme-toggle label update with the selected theme.
+- An active Giscus frame receives the same light/dark theme through its supported `postMessage` configuration.
 
 ## Components and states
 
@@ -39,6 +40,8 @@
 - Landing: publication wordmark plus an index of real posts; no promotional copy.
 - Notes: `Notes` title, text-only category filters, one featured entry, two-column archive grid.
 - Article: factual metadata, optional research actions, geometric cover, readable prose.
+- Tags: factual hash labels on cards/articles and a dedicated `/tags/` index grouped by tag.
+- Comments: optional Giscus embed backed by GitHub Discussions; absent from the DOM until configuration is complete.
 - Code: Rouge language color, monochrome language icon and label, icon-only copy/copy-success/copy-error states.
 - Research links: front-matter action list and inline `.quick-link`, both rectangular and theme-aware.
 - Empty filter: short factual message.
@@ -63,3 +66,4 @@
 
 - Add a real GitHub/profile URL only when the owner supplies it.
 - Set `_config.yml` `url` and `baseurl` for the final GitHub Pages repository.
+- Enable repository Discussions, install Giscus, fill `repo_id` and `category_id`, then set `comments.enabled: true`.

@@ -1,0 +1,39 @@
+---
+layout: default
+title: Tags
+description: 태그별 게시글 목록
+body_class: tags-page
+---
+<section class="tags-header">
+  <h1>Tags</h1>
+  <span>{{ site.tags.size }}</span>
+</section>
+
+<nav class="tag-cloud" aria-label="전체 태그">
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+  <a href="#{{ tag[0] | slugify }}">#{{ tag[0] }} <span>{{ tag[1].size }}</span></a>
+  {% endfor %}
+</nav>
+
+<div class="tag-groups">
+  {% for tag in sorted_tags %}
+  <section class="tag-group" id="{{ tag[0] | slugify }}" aria-labelledby="tag-{{ tag[0] | slugify }}">
+    <header>
+      <h2 id="tag-{{ tag[0] | slugify }}">#{{ tag[0] }}</h2>
+      <span>{{ tag[1].size }}</span>
+    </header>
+    <ol>
+      {% for post in tag[1] %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time>
+          <span>{{ post.title }}</span>
+          <span>{{ post.category }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endfor %}
+</div>
