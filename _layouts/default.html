@@ -3,13 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f7f4ed">
+    <meta name="theme-color" content="#ffffff">
     <meta name="description" content="{{ page.description | default: site.description | escape }}">
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
     <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      (() => {
+        try {
+          const previewTheme = new URLSearchParams(location.search).get("theme");
+          const savedTheme = localStorage.getItem("minwoo-theme");
+          const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = ["light", "dark"].includes(previewTheme) ? previewTheme : savedTheme || systemTheme;
+        } catch (_) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body class="{{ page.body_class }}">

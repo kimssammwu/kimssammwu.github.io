@@ -4,20 +4,22 @@ title:
 body_class: landing-page
 ---
 <section class="landing-hero" aria-labelledby="landing-title">
-  <div class="landing-copy">
-    <p class="landing-label">A developer's publication</p>
-    <h1 id="landing-title">코드, 생각<br>그리고 기록</h1>
-    <p>개발하며 배운 것과 오래 남기고 싶은 기술의 맥락을 씁니다.</p>
-    <a class="primary-action" href="{{ '/notes/' | relative_url }}">기록 읽기</a>
+  <div class="landing-mark">
+    <p class="landing-index">Archive / {% if site.posts.size < 10 %}0{% endif %}{{ site.posts.size }}</p>
+    <h1 id="landing-title">MINWOO<span>.LOG</span></h1>
   </div>
-  <div class="landing-visual">
-    <img src="{{ '/assets/images/landing-collage.svg' | relative_url }}" alt="코드와 글쓰기를 표현한 초록색 콜라주" width="760" height="680">
+  <div class="landing-notes">
+    <a class="landing-notes-heading" href="{{ '/notes/' | relative_url }}"><span>Notes</span><span aria-hidden="true">↗</span></a>
+    <ol>
+      {% for post in site.posts limit: 3 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <span class="landing-note-number">0{{ forloop.index }}</span>
+          <span>{{ post.title }}</span>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
   </div>
 </section>
-
-<nav class="landing-links" aria-label="보조 메뉴">
-  <a href="{{ '/about/' | relative_url }}">소개</a>
-  <a href="{{ '/notes/' | relative_url }}">모든 기록</a>
-  <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-  <span>Built with Jekyll</span>
-</nav>

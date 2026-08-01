@@ -20,7 +20,7 @@ GitHub Pages에서 무료로 호스팅되는 Jekyll 기반 개발 블로그입�
 ```yaml
 ---
 title: "글 제목"
-description: "목록과 검색 결과에 보일 한 문장"
+description: "검색 결과와 공유 미리보기에 보일 한 문장"
 category: "Engineering"
 tags: [Git, GitHub Pages]
 image: /assets/images/posts/my-post/cover.jpg
@@ -77,6 +77,8 @@ bundle exec jekyll serve
 ```
 
 `http://localhost:4000`에서 확인할 수 있습니다.
+
+첫 방문에는 운영체제 테마를 따르고, 헤더의 테마 버튼으로 선택한 값을 저장합니다. 캡처나 디자인 확인 시에는 `?theme=light` 또는 `?theme=dark`를 URL에 붙여 테마를 고정할 수 있습니다.
 
 ## GitHub Pages 배포
 

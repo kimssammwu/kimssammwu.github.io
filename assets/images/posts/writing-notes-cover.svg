@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
-  <title id="title">개발 기록 작성</title><rect width="1440" height="900" fill="#edc16f"/>
-  <rect x="270" y="140" width="650" height="620" rx="28" fill="#f4efe5" transform="rotate(-5 270 140)"/>
-  <path d="M390 300h390M390 390h320M390 480h400M390 570h240" stroke="#17283b" stroke-width="24" stroke-linecap="round" transform="rotate(-5 270 140)"/>
-  <path d="m990 170 130 70-330 500-145 55 15-155z" fill="#f06d4f" stroke="#17283b" stroke-width="14"/>
-  <path d="m645 795 145-55-130-100z" fill="#17283b"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">개발 기록 작성</title>
+  <desc id="desc">검은 원과 점선 원, 코발트색 점으로 구성한 추상적인 기록 구조</desc>
+  <rect width="1440" height="900" fill="#f8f8fa"/>
+  <g fill="none" stroke="#a9a9b0" stroke-width="2">
+    <path d="M150 450h1140M540 130v640M980 130v640"/>
+    <circle cx="980" cy="450" r="210" stroke-dasharray="8 8"/>
+  </g>
+  <circle cx="540" cy="450" r="150" fill="#111113"/>
+  <circle cx="1190" cy="450" r="26" fill="#4f46e5"/>
+  <path d="M690 450h274" stroke="#111113" stroke-width="8"/>
 </svg>
-

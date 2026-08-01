@@ -3,10 +3,9 @@ layout: default
 ---
 <article class="article">
   <header class="article-header">
-    <a class="back-link" href="{{ '/notes/' | relative_url }}">← 모든 기록</a>
-    <p class="article-kicker">{{ page.category }}</p>
+    <a class="back-link" href="{{ '/notes/' | relative_url }}">← Notes</a>
+    <p class="article-kicker">{{ page.category }} / {{ page.date | date: "%Y" }}</p>
     <h1>{{ page.title }}</h1>
-    <p class="article-description">{{ page.description }}</p>
     <div class="article-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y. %m. %d" }}</time>
       <span aria-hidden="true">·</span>

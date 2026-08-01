@@ -1,9 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
-  <title id="title">Git 브랜치 작업 흐름</title><rect width="1440" height="900" fill="#d9e3dc"/>
-  <path d="M210 450h1020" stroke="#17283b" stroke-width="22" stroke-linecap="round"/>
-  <path d="M420 450c100 0 80-220 190-220h300c110 0 90 220 190 220" fill="none" stroke="#f06d4f" stroke-width="22" stroke-linecap="round"/>
-  <path d="M600 450c70 0 60 210 150 210h180c90 0 80-210 150-210" fill="none" stroke="#edb955" stroke-width="22" stroke-linecap="round"/>
-  <g fill="#f4efe5" stroke="#17283b" stroke-width="12"><circle cx="210" cy="450" r="42"/><circle cx="420" cy="450" r="42"/><circle cx="750" cy="450" r="42"/><circle cx="1100" cy="450" r="42"/><circle cx="1230" cy="450" r="42"/></g>
-  <circle cx="610" cy="230" r="42" fill="#f06d4f"/><circle cx="750" cy="660" r="42" fill="#edb955"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Git 브랜치 작업 흐름</title>
+  <desc id="desc">점과 수직선, 사각형으로 구성한 추상적인 분기 구조</desc>
+  <rect width="1440" height="900" fill="#f8f8fa"/>
+  <g stroke="#a9a9b0" stroke-width="2">
+    <path d="M180 190v520M240 190v520M300 190v520M360 190v520"/>
+    <rect x="565" y="225" width="430" height="430" fill="none"/>
+    <path d="M1130 190v520"/>
+  </g>
+  <g fill="#b7b7be">
+    <circle cx="640" cy="300" r="3"/><circle cx="680" cy="300" r="3"/><circle cx="720" cy="300" r="3"/><circle cx="760" cy="300" r="3"/><circle cx="800" cy="300" r="3"/>
+    <circle cx="640" cy="340" r="3"/><circle cx="680" cy="340" r="3"/><circle cx="720" cy="340" r="3"/><circle cx="760" cy="340" r="3"/><circle cx="800" cy="340" r="3"/>
+    <circle cx="640" cy="380" r="3"/><circle cx="680" cy="380" r="3"/><circle cx="720" cy="380" r="3"/><circle cx="760" cy="380" r="3"/><circle cx="800" cy="380" r="3"/>
+    <circle cx="640" cy="420" r="3"/><circle cx="680" cy="420" r="3"/><circle cx="720" cy="420" r="3"/><circle cx="760" cy="420" r="3"/><circle cx="800" cy="420" r="3"/>
+  </g>
+  <rect x="565" y="540" width="68" height="68" fill="#4f46e5"/>
+  <rect x="1096" y="306" width="68" height="68" fill="#111113"/>
+  <rect x="1096" y="506" width="68" height="68" fill="#111113"/>
 </svg>
-

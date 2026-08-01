@@ -5,11 +5,7 @@ description: 개발하며 배운 것과 생각을 정리한 기록
 body_class: notes-page
 ---
 <section class="notes-header">
-  <div>
-    <p class="section-kicker">MINWOO.LOG</p>
-    <h1>읽고, 만들고,<br>다시 쓰는 기록</h1>
-  </div>
-  <p>개발 과정에서 얻은 기술적 맥락과 선택의 이유를 나중에도 다시 사용할 수 있도록 정리합니다.</p>
+  <h1>Notes</h1>
 </section>
 
 <div class="topic-bar" aria-label="글 주제 필터">
@@ -19,24 +15,18 @@ body_class: notes-page
   <button class="topic-filter" type="button" data-topic="writing">Writing</button>
 </div>
 
-<section class="feed-shell" aria-labelledby="latest-title">
-  <div class="story-feed">
-    <h2 id="latest-title">Latest notes</h2>
+<section class="notes-grid" aria-label="글 목록">
     {% for post in site.posts %}
-    <article class="story-row reveal" data-category="{{ post.category | downcase }}">
-      <a class="story-content" href="{{ post.url | relative_url }}">
-        <div class="story-author"><span class="author-avatar" aria-hidden="true">M</span><span>MINWOO.LOG</span><span>·</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time></div>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
-        <div class="story-meta"><span>{{ post.category }}</span><span>{{ post.read_time | default: 5 }}분 읽기</span><span class="story-arrow" aria-hidden="true">→</span></div>
+    <article class="story-row{% if forloop.first %} story-row--featured{% endif %}" data-category="{{ post.category | downcase }}">
+      <a class="story-link" href="{{ post.url | relative_url }}">
+        <div class="story-content">
+          <span class="story-number">0{{ forloop.index }}</span>
+          <h2>{{ post.title }}</h2>
+          <div class="story-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time><span aria-hidden="true">·</span><span>{{ post.category }}</span></div>
+        </div>
+        {% if post.image %}<span class="story-thumb" aria-hidden="true"><img src="{{ post.image | relative_url }}" alt="" width="720" height="450" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"></span>{% endif %}
       </a>
-      {% if post.image %}<a class="story-thumb" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ post.image | relative_url }}" alt="" width="260" height="174" loading="lazy"></a>{% endif %}
     </article>
     {% endfor %}
-    <p class="empty-filter" hidden>이 주제의 기록이 아직 없습니다.</p>
-  </div>
-  <aside class="feed-aside">
-    <div class="aside-block"><h2>이 블로그에서 다루는 것</h2><p>코드 그 자체보다 문제를 발견하고 선택을 검증하는 과정에 관심이 있습니다.</p><div class="aside-topics"><span>프로그래밍</span><span>도구</span><span>기록</span><span>생각</span></div></div>
-    <div class="aside-block"><h2>About</h2><p>만들며 배우고, 배운 것을 글로 정리하는 개발자입니다.</p><a href="{{ '/about/' | relative_url }}">더 알아보기 →</a></div>
-  </aside>
+    <p class="empty-filter" hidden>아직 글이 없습니다.</p>
 </section>

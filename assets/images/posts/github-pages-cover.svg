@@ -1,10 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
-  <title id="title">GitHub Pages 블로그</title><desc id="desc">브라우저 창과 연결된 Git 브랜치</desc>
-  <rect width="1440" height="900" fill="#17283b"/><circle cx="1160" cy="150" r="210" fill="#f06d4f"/>
-  <rect x="170" y="170" width="910" height="560" rx="34" fill="#f4efe5" stroke="#0d1825" stroke-width="14"/>
-  <path d="M170 265h910" stroke="#0d1825" stroke-width="14"/><circle cx="225" cy="220" r="13" fill="#f06d4f"/><circle cx="270" cy="220" r="13" fill="#edc16f"/>
-  <path d="M330 420h370M330 500h520M330 580h270" stroke="#17283b" stroke-width="28" stroke-linecap="round"/>
-  <path d="M1010 620c120 0 90-190 210-190m-210 190c120 0 90 130 210 130" fill="none" stroke="#9bb6a6" stroke-width="18"/>
-  <circle cx="1008" cy="620" r="28" fill="#f06d4f"/><circle cx="1220" cy="430" r="28" fill="#edc16f"/><circle cx="1220" cy="750" r="28" fill="#f4efe5"/>
+  <title id="title">GitHub Pages 블로그</title>
+  <desc id="desc">얇은 선과 검은 면, 코발트색 면으로 구성한 추상 공간</desc>
+  <rect width="1440" height="900" fill="#f8f8fa"/>
+  <g fill="none" stroke="#b7b7be" stroke-width="2">
+    <path d="M120 732 720 386l600 346"/>
+    <path d="M120 168v564M420 168v391M720 120v684M1020 168v391M1320 168v564"/>
+    <path d="M120 168h1200M120 732h1200"/>
+  </g>
+  <path d="m420 284 176 102v280L420 564Z" fill="#111113"/>
+  <path d="m596 386 124-72v280l-124 72Z" fill="#e4e4e8" stroke="#a9a9b0" stroke-width="2"/>
+  <path d="m890 523 168 97v112l-168-97Z" fill="#4f46e5"/>
+  <g fill="#111113">
+    <circle cx="786" cy="250" r="4"/><circle cx="816" cy="250" r="4"/><circle cx="846" cy="250" r="4"/>
+    <circle cx="786" cy="280" r="4"/><circle cx="816" cy="280" r="4"/><circle cx="846" cy="280" r="4"/>
+    <circle cx="786" cy="310" r="4"/><circle cx="816" cy="310" r="4"/><circle cx="846" cy="310" r="4"/>
+  </g>
 </svg>
-

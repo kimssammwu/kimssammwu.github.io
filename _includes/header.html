@@ -4,9 +4,12 @@
     {{ site.title }}
   </a>
   <nav class="site-nav" aria-label="주요 메뉴">
-    <a href="{{ '/about/' | relative_url }}">소개</a>
-    <a href="{{ '/notes/' | relative_url }}">기록</a>
-    <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-    <a class="nav-action" href="{{ '/notes/' | relative_url }}">읽기 시작</a>
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>홈</a>
+    <a href="{{ '/notes/' | relative_url }}"{% if page.url == '/notes/' or page.layout == 'post' %} aria-current="page"{% endif %}>노트</a>
+    <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>소개</a>
   </nav>
+  <button class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="테마 전환">
+    <svg class="theme-icon theme-icon--light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+    <svg class="theme-icon theme-icon--dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg>
+  </button>
 </header>
