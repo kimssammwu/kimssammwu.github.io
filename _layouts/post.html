@@ -18,6 +18,17 @@ layout: default
       {% endfor %}
     </nav>
     {% endif %}
+    {% if page.collection_id %}
+      {% assign collection_data = site.data.post_collections | where: "id", page.collection_id | first %}
+      {% assign collection_posts = site.posts | where: "collection_id", page.collection_id %}
+      {% if collection_data %}
+      <a class="article-collection" href="{{ '/collections/' | relative_url }}#{{ collection_data.id | slugify }}">
+        <span>Collection</span>
+        <strong>{{ collection_data.title }}</strong>
+        <span>{{ collection_posts.size }} notes <span aria-hidden="true">↗</span></span>
+      </a>
+      {% endif %}
+    {% endif %}
     {% if page.actions %}
     <nav class="article-actions" aria-label="관련 자료 바로가기">
       {% for action in page.actions %}

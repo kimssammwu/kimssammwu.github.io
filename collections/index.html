@@ -1,0 +1,35 @@
+---
+layout: default
+title: Collections
+description: 여러 게시글을 맥락별로 묶은 컬렉션
+body_class: collections-page
+---
+<section class="collections-header">
+  <h1>Collections</h1>
+  <span>{{ site.data.post_collections.size }}</span>
+</section>
+
+<div class="collection-list">
+  {% for collection in site.data.post_collections %}
+    {% assign collection_posts = site.posts | where: "collection_id", collection.id %}
+    {% if collection_posts.size > 0 %}
+    <section class="collection-block" id="{{ collection.id | slugify }}" aria-labelledby="collection-{{ collection.id | slugify }}">
+      <header>
+        <p>Collection / {{ collection_posts.size }}</p>
+        <h2 id="collection-{{ collection.id | slugify }}">{{ collection.title }}</h2>
+      </header>
+      <ol>
+        {% for post in collection_posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">
+            <span class="collection-post-number">0{{ forloop.index }}</span>
+            <span>{{ post.title }}</span>
+            <span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time> / {{ post.category }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+  {% endfor %}
+</div>

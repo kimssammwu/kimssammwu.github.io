@@ -79,6 +79,23 @@ tags: [GitHub Pages, Jekyll, Git]
 
 태그 이름을 바꾸면 URL 앵커도 달라지므로 같은 의미의 태그 표기를 일관되게 유지합니다.
 
+## 컬렉션
+
+여러 글을 같은 맥락으로 묶을 때 `_data/post_collections.yml`에 컬렉션을 등록합니다.
+
+```yaml
+- id: blog-build
+  title: Blog Build
+```
+
+포함할 게시글의 Front Matter에는 같은 `collection_id`를 지정합니다.
+
+```yaml
+collection_id: blog-build
+```
+
+컬렉션은 `/collections/`에 자동으로 나타나며, 글 상단과 Notes 목록에서도 연결됩니다. 한 게시글은 하나의 컬렉션에만 속하고, 컬렉션 내부에서는 최신 글부터 표시됩니다.
+
 ## 댓글
 
 댓글은 GitHub Discussions 기반의 [Giscus](https://giscus.app/ko)를 사용하도록 준비되어 있습니다.

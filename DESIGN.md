@@ -41,6 +41,7 @@
 - Notes: `Notes` title, text-only category filters, one featured entry, two-column archive grid.
 - Article: factual metadata, optional research actions, geometric cover, readable prose.
 - Tags: factual hash labels on cards/articles and a dedicated `/tags/` index grouped by tag.
+- Collections: centrally named groups in `_data/post_collections.yml`, linked from cards/articles and listed at `/collections/`; membership is optional and single-valued.
 - Comments: optional Giscus embed backed by GitHub Discussions; absent from the DOM until configuration is complete.
 - Code: Rouge language color, monochrome language icon and label, icon-only copy/copy-success/copy-error states.
 - Research links: front-matter action list and inline `.quick-link`, both rectangular and theme-aware.

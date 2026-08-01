@@ -3,6 +3,7 @@ title: "혼자 개발해도 브랜치가 필요한 이유"
 description: "작업의 목적을 분리하고 main을 안전하게 유지하는 가벼운 Git 브랜치 규칙입니다."
 category: "Workflow"
 tags: [Git, Branch, Pull Request]
+collection_id: blog-build
 image: /assets/images/posts/branch-workflow-cover.svg
 image_alt: "서로 갈라졌다 다시 합쳐지는 세 개의 Git 브랜치"
 read_time: 4
@@ -17,4 +18,3 @@ read_time: 4
 ## 합치기 전 확인할 것
 
 링크와 이미지 경로를 확인하고, 로컬 빌드가 성공하는지 확인합니다. 커밋 메시지는 바뀐 파일 목록보다 왜 바꿨는지를 남기는 편이 미래의 나에게 더 유용합니다.
-
