@@ -13,6 +13,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - .omx
 
 defaults:
   - scope:

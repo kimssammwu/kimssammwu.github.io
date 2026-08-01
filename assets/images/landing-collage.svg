@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 680" role="img" aria-labelledby="title desc">
+  <title id="title">코드와 기록의 콜라주</title>
+  <desc id="desc">초록색 코드 창, 문서, 연결선을 겹쳐 표현한 추상 이미지</desc>
+  <rect width="760" height="680" fill="#f7f4ed"/>
+  <g fill="none" stroke="#191919" stroke-width="2">
+    <path d="M80 558c132-95 255-63 350-169 63-70 100-161 242-160" stroke-dasharray="8 9"/>
+    <path d="M404 102h225v174H404z"/>
+    <path d="m442 226 53-67 37 35 50-66"/>
+    <circle cx="442" cy="226" r="6" fill="#191919"/><circle cx="495" cy="159" r="6" fill="#191919"/><circle cx="532" cy="194" r="6" fill="#191919"/>
+  </g>
+  <g fill="#2fb344"><path d="M151 92c58-38 112 6 101 65 56-29 106 20 77 70 58 11 66 78 13 103-37 19-73-2-91-28-14 46-81 54-106 12-23-38 1-77 36-89-52-17-61-91-30-133z"/><path d="M318 350h292v202H318z"/></g>
+  <g fill="#f7f4ed" stroke="#191919" stroke-width="2"><path d="M354 406c42-19 81-13 116 21 35-34 75-40 116-21v105c-43-14-82-6-116 27-34-33-73-41-116-27z"/><path d="M470 427v111"/><path d="M376 435c27-7 50-3 70 11M376 464c27-7 50-3 70 11M494 446c20-14 43-18 70-11M494 475c20-14 43-18 70-11" fill="none" stroke-width="7"/></g>
+  <g transform="translate(46 395) rotate(-8)"><rect width="205" height="154" fill="#fff" stroke="#191919" stroke-width="2"/><path d="M25 38h128M25 67h154M25 96h112" stroke="#191919" stroke-width="8"/><circle cx="176" cy="124" r="12" fill="#2fb344"/></g>
+  <g fill="#191919"><path d="m576 560 25 9-25 9 9 25-23-14-12 24-2-28-27 5 21-18-19-20 27 8 5-27 9 26z"/><circle cx="90" cy="611" r="7"/><circle cx="121" cy="589" r="4"/><circle cx="650" cy="335" r="6"/></g>
+</svg>
