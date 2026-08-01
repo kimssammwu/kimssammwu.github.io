@@ -1,14 +1,12 @@
 <a class="skip-link" href="#content">본문으로 건너뛰기</a>
 <header class="site-header">
   <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} 홈">
-    <span class="brand-mark" aria-hidden="true">M</span>
-    <span>{{ site.title }}</span>
+    {{ site.title }}
   </a>
   <nav class="site-nav" aria-label="주요 메뉴">
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/#notes' | relative_url }}">Notes</a>
-    <a href="{{ '/about/' | relative_url }}">About</a>
-    <a class="nav-github" href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+    <a href="{{ '/about/' | relative_url }}">소개</a>
+    <a href="{{ '/notes/' | relative_url }}">기록</a>
+    <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+    <a class="nav-action" href="{{ '/notes/' | relative_url }}">읽기 시작</a>
   </nav>
 </header>
-

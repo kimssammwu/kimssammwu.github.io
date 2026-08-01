@@ -1,78 +1,23 @@
 ---
 layout: default
 title:
+body_class: landing-page
 ---
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">Developer · Builder · Note-taker</p>
-    <h1>배운 것을 연결하고,<br><em>만든 것을 기록합니다.</em></h1>
-    <p class="hero-description">개발하며 마주친 문제와 해결 과정, 오래 기억하고 싶은 아이디어를 한 편씩 정리하는 개인 기술 블로그입니다.</p>
-    <a class="text-link" href="#notes">최근 기록 보기 <span>↓</span></a>
+<section class="landing-hero" aria-labelledby="landing-title">
+  <div class="landing-copy">
+    <p class="landing-label">A developer's publication</p>
+    <h1 id="landing-title">코드, 생각<br>그리고 기록</h1>
+    <p>개발하며 배운 것과 오래 남기고 싶은 기술의 맥락을 씁니다.</p>
+    <a class="primary-action" href="{{ '/notes/' | relative_url }}">기록 읽기</a>
   </div>
-  <div class="hero-art" aria-hidden="true">
-    <div class="orbit orbit-one"></div>
-    <div class="orbit orbit-two"></div>
-    <div class="art-card">
-      <span>01</span>
-      <strong>Think</strong>
-      <i></i>
-      <strong>Build</strong>
-      <i></i>
-      <strong>Write</strong>
-    </div>
+  <div class="landing-visual">
+    <img src="{{ '/assets/images/landing-collage.svg' | relative_url }}" alt="코드와 글쓰기를 표현한 초록색 콜라주" width="760" height="680">
   </div>
 </section>
 
-{% assign featured = site.posts | first %}
-{% if featured %}
-<section class="featured-section" aria-labelledby="featured-title">
-  <div class="section-label"><span>Featured note</span><span>선택한 기록</span></div>
-  <a class="featured-card" href="{{ featured.url | relative_url }}">
-    <div class="featured-image">
-      <img src="{{ featured.image | relative_url }}" alt="{{ featured.image_alt | escape }}" width="1440" height="900">
-    </div>
-    <div class="featured-copy">
-      <p class="post-category">{{ featured.category }}</p>
-      <h2 id="featured-title">{{ featured.title }}</h2>
-      <p>{{ featured.description }}</p>
-      <div class="post-meta"><time>{{ featured.date | date: "%Y. %m. %d" }}</time><span>{{ featured.read_time | default: 5 }}분 읽기</span></div>
-      <span class="round-arrow" aria-hidden="true">↗</span>
-    </div>
-  </a>
-</section>
-{% endif %}
-
-<section class="notes-section" id="notes" aria-labelledby="notes-title">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">Archive</p>
-      <h2 id="notes-title">최근 기록</h2>
-    </div>
-    <p>새로운 기록부터 천천히 둘러보세요.</p>
-  </div>
-
-  <div class="post-grid">
-    {% for post in site.posts %}
-    <article class="post-card">
-      <a class="post-image" href="{{ post.url | relative_url }}">
-        <img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | escape }}" width="720" height="450" loading="lazy">
-      </a>
-      <div class="post-card-copy">
-        <p class="post-category">{{ post.category }}</p>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.description }}</p>
-        <div class="post-meta"><time>{{ post.date | date: "%Y. %m. %d" }}</time><span>{{ post.read_time | default: 5 }}분 읽기</span></div>
-      </div>
-    </article>
-    {% else %}
-    <p class="empty-state">첫 기록을 준비하고 있습니다.</p>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="about-strip">
-  <p class="eyebrow">About this blog</p>
-  <blockquote>“좋은 기록은 정답을 보관하지 않고, 다음 질문을 시작하게 한다.”</blockquote>
-  <a class="text-link" href="{{ '/about/' | relative_url }}">블로그 소개 <span>→</span></a>
-</section>
-
+<nav class="landing-links" aria-label="보조 메뉴">
+  <a href="{{ '/about/' | relative_url }}">소개</a>
+  <a href="{{ '/notes/' | relative_url }}">모든 기록</a>
+  <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+  <span>Built with Jekyll</span>
+</nav>
