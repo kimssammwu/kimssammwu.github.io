@@ -83,6 +83,75 @@ topicButtons.forEach((button) => {
   });
 });
 
+const toc = document.querySelector("[data-post-toc]");
+const tocList = toc?.querySelector("[data-toc-list]");
+const tocCount = toc?.querySelector("[data-toc-count]");
+const proseHeadings = [...document.querySelectorAll(".prose h2, .prose h3")];
+
+const createHeadingId = (heading, index) => {
+  const base = heading.textContent
+    .trim()
+    .toLocaleLowerCase()
+    .normalize("NFKC")
+    .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
+    .replace(/^-|-$/g, "") || `section-${index + 1}`;
+  let candidate = base;
+  let suffix = 2;
+  while (document.getElementById(candidate)) {
+    candidate = `${base}-${suffix}`;
+    suffix += 1;
+  }
+  return candidate;
+};
+
+if (toc && tocList && proseHeadings.length >= 2) {
+  const links = new Map();
+  proseHeadings.forEach((heading, index) => {
+    if (!heading.id) heading.id = createHeadingId(heading, index);
+
+    const item = document.createElement("li");
+    item.dataset.level = heading.tagName === "H3" ? "3" : "2";
+
+    const link = document.createElement("a");
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent;
+    item.append(link);
+    tocList.append(item);
+    links.set(heading, link);
+  });
+
+  toc.hidden = false;
+  if (tocCount) tocCount.textContent = String(proseHeadings.length).padStart(2, "0");
+
+  const desktopToc = window.matchMedia("(min-width: 901px)");
+  const syncTocMode = () => {
+    toc.open = desktopToc.matches;
+  };
+  syncTocMode();
+  desktopToc.addEventListener?.("change", syncTocMode);
+
+  let tocFrame;
+  const syncActiveHeading = () => {
+    let activeHeading = proseHeadings[0];
+    proseHeadings.forEach((heading) => {
+      if (heading.getBoundingClientRect().top <= 150) activeHeading = heading;
+    });
+    links.forEach((link, heading) => {
+      const isActive = heading === activeHeading;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+    tocFrame = undefined;
+  };
+
+  syncActiveHeading();
+  window.addEventListener("scroll", () => {
+    if (tocFrame) return;
+    tocFrame = window.requestAnimationFrame(syncActiveHeading);
+  }, { passive: true });
+}
+
 const languageNames = {
   bash: "Bash",
   css: "CSS",

@@ -40,6 +40,7 @@
 - Landing: publication wordmark plus an index of real posts; no promotional copy.
 - Notes: `Notes` title, text-only category filters, one featured entry, two-column archive grid.
 - Article: factual metadata, optional research actions, geometric cover, readable prose.
+- TOC: generated from article `h2`/`h3`; sticky with active-section state on desktop and collapsible on mobile.
 - Tags: factual hash labels on cards/articles and a dedicated `/tags/` index grouped by tag.
 - Collections: centrally named groups in `_data/post_collections.yml`, linked from cards/articles and listed at `/collections/`; membership is optional and single-valued.
 - Comments: optional Giscus embed backed by GitHub Discussions; absent from the DOM until configuration is complete.

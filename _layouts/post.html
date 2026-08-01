@@ -49,6 +49,12 @@ layout: default
   </figure>
   {% endif %}
 
-  <div class="article-grid"><div class="prose">{{ content }}</div></div>
+  <div class="article-body">
+    <details class="article-toc" data-post-toc hidden>
+      <summary><span>Contents</span><span data-toc-count></span></summary>
+      <nav aria-label="게시글 목차"><ol data-toc-list></ol></nav>
+    </details>
+    <div class="article-grid"><div class="prose">{{ content }}</div></div>
+  </div>
   {% include comments.html %}
 </article>
