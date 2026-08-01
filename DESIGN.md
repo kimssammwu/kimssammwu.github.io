@@ -42,13 +42,13 @@
 
 ## Components
 - Existing components to reuse: Jekyll header/footer, post front matter and cover assets
-- New/changed components: landing hero, collage, landing utility links, notes header, topic filters, story rows, context rail
-- Variants and states: active topic, empty filter, hover, revealed story, scrolled header
+- New/changed components: landing hero, collage, landing utility links, notes header, topic filters, story rows, context rail, code toolbar, article action links, inline quick links
+- Variants and states: active topic, empty filter, hover, revealed story, scrolled header, copied/copy-failed code state, paper/code/demo/slides/data/docs action types
 - Token/component ownership: CSS tokens and components in `assets/css/style.css`
 
 ## Accessibility
 - Target standard: WCAG 2.2 AA oriented
-- Keyboard/focus behavior: visible green focus rings; filters are native buttons
+- Keyboard/focus behavior: visible green focus rings; filters and code-copy controls are native buttons; article actions remain standard links
 - Contrast/readability: black/cream and black/white primary contrast; limited muted copy
 - Screen-reader semantics: landmark navigation, labeled filters, ordered headings, meaningful landing image alt
 - Reduced motion and sensory considerations: nonessential animation disabled with `prefers-reduced-motion`
@@ -62,14 +62,14 @@
 - Loading: static document, font-display behavior handled by browser
 - Empty: filter-specific empty message
 - Error: GitHub Pages default 404
-- Success: active filter, hover underline/arrow, scrolled-header divider
+- Success: active filter, hover underline/arrow, scrolled-header divider, temporary `복사됨` code feedback
 - Disabled: none
 - Offline/slow network: system serif/sans fallbacks preserve layout when Google Fonts is unavailable
 
 ## Content voice
 - Tone: concise, reflective Korean with technical terms only where useful
 - Terminology: publication is `MINWOO.LOG`; posts are `기록`
-- Microcopy rules: short actions such as `기록 읽기`, `읽기 시작`, `더 알아보기`
+- Microcopy rules: short actions such as `기록 읽기`, `읽기 시작`, `더 알아보기`; external resources state their destination such as `논문 원문`, `공식 코드`, `데이터셋`
 
 ## Implementation constraints
 - Framework/styling system: GitHub Pages-compatible Jekyll, native CSS and JavaScript

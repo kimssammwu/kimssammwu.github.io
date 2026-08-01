@@ -34,6 +34,41 @@ image_alt: "이미지를 설명하는 대체 텍스트"
 ![이미지 설명]({{ '/assets/images/posts/my-post/example.png' | relative_url }})
 ```
 
+### 코드블록
+
+Markdown fenced code에 언어를 지정하면 Rouge 문법 강조와 언어 라벨, 복사 버튼이 자동으로 적용됩니다.
+
+````markdown
+```python
+def hello():
+    print("Hello")
+```
+````
+
+### 관련 자료 바로가기
+
+글 상단에 논문·코드·데모 같은 버튼을 표시하려면 Front Matter에 `actions`를 추가합니다.
+
+```yaml
+actions:
+  - label: 논문 원문
+    url: https://arxiv.org/abs/0000.00000
+    type: paper
+  - label: 공식 코드
+    url: https://github.com/example/repository
+    type: code
+```
+
+지원 유형은 `paper`, `code`, `demo`, `slides`, `data`, `docs`입니다. `new_tab: false`를 추가하면 현재 탭에서 엽니다.
+
+본문 중간에 특수 바로가기를 넣을 수도 있습니다.
+
+```markdown
+[논문 원문](https://arxiv.org/abs/0000.00000){: .quick-link data-kind="paper" target="_blank" rel="noreferrer"}
+```
+
+논문 리뷰 시작 템플릿은 `_templates/paper-review.md`에 있습니다.
+
 ## 로컬 실행
 
 ```bash
@@ -46,4 +81,3 @@ bundle exec jekyll serve
 ## GitHub Pages 배포
 
 저장소의 Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 설정합니다. 이후 `main` 브랜치에 변경이 들어올 때마다 `.github/workflows/pages.yml`이 사이트를 빌드하고 배포합니다.
-

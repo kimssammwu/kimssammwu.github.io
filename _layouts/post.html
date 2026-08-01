@@ -12,6 +12,18 @@ layout: default
       <span aria-hidden="true">·</span>
       <span>{{ page.read_time | default: 5 }}분 읽기</span>
     </div>
+    {% if page.actions %}
+    <nav class="article-actions" aria-label="관련 자료 바로가기">
+      {% for action in page.actions %}
+      {% assign action_kind = action.type | default: "link" | downcase %}
+      <a class="article-action article-action--{{ action_kind | escape }}" href="{{ action.url | escape }}"{% unless action.new_tab == false %} target="_blank" rel="noreferrer"{% endunless %}>
+        <span class="article-action-kind">{{ action_kind }}</span>
+        <span>{{ action.label | escape }}</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      {% endfor %}
+    </nav>
+    {% endif %}
   </header>
 
   {% if page.image %}
