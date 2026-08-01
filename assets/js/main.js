@@ -86,6 +86,55 @@ const languageNames = {
   zsh: "Zsh",
 };
 
+const languageIconTypes = {
+  bash: "terminal",
+  css: "braces",
+  html: "markup",
+  javascript: "javascript",
+  js: "javascript",
+  json: "braces",
+  markdown: "document",
+  md: "document",
+  python: "python",
+  py: "python",
+  ruby: "ruby",
+  rb: "ruby",
+  shell: "terminal",
+  sh: "terminal",
+  sql: "database",
+  typescript: "typescript",
+  ts: "typescript",
+  yaml: "yaml",
+  yml: "yaml",
+  zsh: "terminal",
+};
+
+const iconMarkup = {
+  terminal: '<path d="m4 7 4 4-4 4M10 16h7"/>',
+  braces: '<path d="M9 4H7a2 2 0 0 0-2 2v3a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h2M15 4h2a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3a2 2 0 0 1-2 2h-2"/>',
+  markup: '<path d="m9 5-6 7 6 7M15 5l6 7-6 7"/>',
+  javascript: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8v6.5c0 1-.6 1.5-1.5 1.5H7M14 15c.6.7 1.4 1 2.3 1 1 0 1.7-.5 1.7-1.3 0-1.8-3.7-1.3-3.7-4 0-1.5 1.2-2.7 3-2.7.8 0 1.5.2 2.1.7"/>',
+  typescript: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 9h6M10 9v7M14 15c.6.7 1.4 1 2.3 1 1 0 1.7-.5 1.7-1.3 0-1.8-3.7-1.3-3.7-4 0-1.5 1.2-2.7 3-2.7.8 0 1.5.2 2.1.7"/>',
+  document: '<path d="M6 3h8l4 4v14H6zM14 3v5h5M9 13h6M9 17h5"/>',
+  python: '<path d="M12 3H8a3 3 0 0 0-3 3v4h8a2 2 0 0 1 2 2v1M12 21h4a3 3 0 0 0 3-3v-4h-8a2 2 0 0 1-2-2v-1M9 6h.01M15 18h.01"/>',
+  ruby: '<path d="m12 3 7 6-7 12L5 9zM5 9h14M8 9l4 12 4-12M9 3 5 9M15 3l4 6"/>',
+  database: '<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/>',
+  yaml: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="m7 8 3 4 3-4M10 12v4M15 8v8M15 8l3 4 3-4M18 12v4"/>',
+  code: '<path d="m9 5-6 7 6 7M15 5l6 7-6 7M14 3l-4 18"/>',
+  copy: '<rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+  error: '<path d="M6 6l12 12M18 6 6 18"/>',
+};
+
+const createToolbarIcon = (type, className) => {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.classList.add(className);
+  svg.innerHTML = iconMarkup[type] || iconMarkup.code;
+  return svg;
+};
+
 const copyText = async (text) => {
   if (navigator.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
@@ -111,30 +160,42 @@ document.querySelectorAll(".prose .highlighter-rouge").forEach((block) => {
   const toolbar = document.createElement("div");
   toolbar.className = "code-toolbar";
 
+  const languageInfo = document.createElement("span");
+  languageInfo.className = "code-language-info";
+  languageInfo.append(createToolbarIcon(languageIconTypes[language] || "code", "code-language-icon"));
+
   const label = document.createElement("span");
   label.className = "code-language";
   label.textContent = languageNames[language] || language.toUpperCase();
+  languageInfo.append(label);
 
   const button = document.createElement("button");
   button.className = "code-copy";
   button.type = "button";
-  button.textContent = "복사";
+  button.title = "코드 복사";
   button.setAttribute("aria-label", `${label.textContent} 코드 복사`);
+  button.append(createToolbarIcon("copy", "code-copy-icon"));
   button.addEventListener("click", async () => {
     try {
       await copyText(code.textContent);
-      button.textContent = "복사됨";
+      button.replaceChildren(createToolbarIcon("check", "code-copy-icon"));
+      button.title = "복사됨";
+      button.setAttribute("aria-label", `${label.textContent} 코드 복사됨`);
       button.classList.add("is-copied");
     } catch {
-      button.textContent = "복사 실패";
+      button.replaceChildren(createToolbarIcon("error", "code-copy-icon"));
+      button.title = "복사 실패";
+      button.setAttribute("aria-label", `${label.textContent} 코드 복사 실패`);
     }
     window.setTimeout(() => {
-      button.textContent = "복사";
+      button.replaceChildren(createToolbarIcon("copy", "code-copy-icon"));
+      button.title = "코드 복사";
+      button.setAttribute("aria-label", `${label.textContent} 코드 복사`);
       button.classList.remove("is-copied");
     }, 1600);
   });
 
-  toolbar.append(label, button);
+  toolbar.append(languageInfo, button);
   block.prepend(toolbar);
   block.dataset.enhanced = "true";
 });

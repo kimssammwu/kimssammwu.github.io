@@ -181,8 +181,11 @@ html[data-theme="dark"] .theme-icon--dark { display: none; }
 /* Rouge code blocks */
 .prose .highlighter-rouge { margin: 36px 0; overflow: hidden; border: 1px solid var(--code-line); border-radius: var(--radius); color: #e6e6eb; background: var(--code-bg); font-family: var(--mono); }
 .code-toolbar { min-height: 43px; padding: 0 10px 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--code-line); background: var(--code-surface); }
+.code-language-info { display: inline-flex; align-items: center; gap: 8px; color: #b9b9c2; }
+.code-language-icon { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.45; stroke-linecap: round; stroke-linejoin: round; }
 .code-language { color: #a9a9b3; font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
-.code-copy { min-width: 56px; min-height: 29px; padding: 0 9px; border: 1px solid #45454f; border-radius: 4px; color: #d7d7dd; background: transparent; font-size: 10px; cursor: pointer; transition: border-color .18s ease, color .18s ease, background-color .18s ease; }
+.code-copy { width: 31px; height: 31px; padding: 0; display: grid; place-items: center; border: 1px solid #45454f; border-radius: 4px; color: #d7d7dd; background: transparent; cursor: pointer; transition: border-color .18s ease, color .18s ease, background-color .18s ease; }
+.code-copy-icon { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .code-copy:hover { border-color: #777784; color: #fff; background: #303038; }
 .code-copy.is-copied { border-color: #818cf8; color: #a5b4fc; }
 .prose .highlighter-rouge .highlight { margin: 0; background: transparent; }

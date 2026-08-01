@@ -39,7 +39,7 @@
 - Landing: publication wordmark plus an index of real posts; no promotional copy.
 - Notes: `Notes` title, text-only category filters, one featured entry, two-column archive grid.
 - Article: factual metadata, optional research actions, geometric cover, readable prose.
-- Code: Rouge language color, language label, copy/copy-success/copy-error states.
+- Code: Rouge language color, monochrome language icon and label, icon-only copy/copy-success/copy-error states.
 - Research links: front-matter action list and inline `.quick-link`, both rectangular and theme-aware.
 - Empty filter: short factual message.
 
