@@ -91,6 +91,39 @@ viewButtons.forEach((button) => {
   });
 });
 
+const collectionFolders = [...document.querySelectorAll("[data-collection-folder]")];
+
+const setCollectionFolderState = (button, isOpen) => {
+  const folder = button.closest(".collection-folder");
+  folder?.classList.toggle("is-open", isOpen);
+  button.setAttribute("aria-pressed", String(isOpen));
+  const title = button.dataset.collectionTitle;
+  const count = button.dataset.collectionCount;
+  button.setAttribute(
+    "aria-label",
+    `${title} 컬렉션 폴더 ${isOpen ? "닫기" : "열기"}, 게시글 ${count}개`,
+  );
+};
+
+collectionFolders.forEach((button) => {
+  button.addEventListener("click", () => {
+    const folder = button.closest(".collection-folder");
+    const nextOpen = !folder?.classList.contains("is-open");
+    collectionFolders.forEach((item) => setCollectionFolderState(item, item === button && nextOpen));
+    if (!folder || !history.replaceState) return;
+    const nextUrl = nextOpen
+      ? `${location.pathname}${location.search}#${folder.id}`
+      : `${location.pathname}${location.search}`;
+    history.replaceState(null, "", nextUrl);
+  });
+});
+
+if (location.hash) {
+  const hashFolder = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  const hashButton = hashFolder?.querySelector("[data-collection-folder]");
+  if (hashButton) setCollectionFolderState(hashButton, true);
+}
+
 const toc = document.querySelector("[data-post-toc]");
 const tocList = toc?.querySelector("[data-toc-list]");
 const tocCount = toc?.querySelector("[data-toc-count]");

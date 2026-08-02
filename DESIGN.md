@@ -62,17 +62,17 @@
 ## Components
 
 - Existing components to reuse: site header/footer, Notes metadata rows, story cover treatment, collection membership metadata, theme tokens, focus rings
-- New/changed components: collection shelf grid, archive-folder card, compact collection detail list, empty collection state
+- New/changed components: collection shelf grid, interactive archive-folder card, empty collection state
 - Variants and states: default, hover, keyboard focus, current anchor, no-cover fallback, empty/hidden collection
 - Token/component ownership: `assets/css/style.css`; collection metadata remains in `_data/post_collections.yml`
 
 ### Collection page composition
 
 1. Keep the existing `Collections` title and total count as a restrained page header.
-2. Replace the current large repeated title/list blocks with a responsive shelf of archive-folder cards.
-3. Each card links to its existing `#collection-id` detail anchor, preserving static URLs and no-JavaScript behavior.
-4. Place compact post lists below the shelf. Reuse the visual density of Notes' All view rather than 92px oversized collection rows.
-5. When the number of collections becomes large enough to make the detail section unwieldy, graduate to dedicated collection routes; do not add those routes prematurely.
+2. Replace the current large repeated title/list blocks with a responsive shelf of archive-folder cards only; do not render a second detail list below it.
+3. Hover/focus fans the document layers slightly. Click toggles one folder into a more open state and closes the previously open folder.
+4. Preserve `#collection-id` anchors so article-level collection links can open the matching folder state.
+5. Add dedicated collection routes only when readers need direct access to every contained post from this surface; do not reintroduce an oversized inline list.
 
 ## Accessibility
 

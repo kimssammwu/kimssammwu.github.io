@@ -9,27 +9,40 @@ body_class: collections-page
   <span>{{ site.data.post_collections.size }}</span>
 </section>
 
-<div class="collection-list">
+<section class="collection-shelf" aria-label="컬렉션 폴더">
   {% for collection in site.data.post_collections %}
     {% assign collection_posts = site.posts | where: "collection_id", collection.id %}
     {% if collection_posts.size > 0 %}
-    <section class="collection-block" id="{{ collection.id | slugify }}" aria-labelledby="collection-{{ collection.id | slugify }}">
-      <header>
-        <p>Collection / {{ collection_posts.size }}</p>
-        <h2 id="collection-{{ collection.id | slugify }}">{{ collection.title }}</h2>
-      </header>
-      <ol>
-        {% for post in collection_posts %}
-        <li>
-          <a href="{{ post.url | relative_url }}">
-            <span class="collection-post-number">0{{ forloop.index }}</span>
-            <span>{{ post.title }}</span>
-            <span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time> / {{ post.category }}</span>
-          </a>
-        </li>
-        {% endfor %}
-      </ol>
-    </section>
+    {% assign collection_number = forloop.index %}
+    <article class="collection-folder" id="{{ collection.id | slugify }}">
+      <button
+        class="collection-folder-toggle"
+        type="button"
+        data-collection-folder
+        data-collection-title="{{ collection.title | escape }}"
+        data-collection-count="{{ collection_posts.size }}"
+        aria-pressed="false"
+        aria-label="{{ collection.title | escape }} 컬렉션 폴더 열기, 게시글 {{ collection_posts.size }}개"
+      >
+        <span class="collection-folder-art" aria-hidden="true">
+          <span class="collection-folder-back"></span>
+          {% for post in collection_posts limit: 3 %}
+          <span class="collection-paper collection-paper--{{ forloop.index }}">
+            {% if post.image %}
+            <img src="{{ post.image | relative_url }}" alt="" width="360" height="225" loading="lazy">
+            {% endif %}
+          </span>
+          {% endfor %}
+          <span class="collection-folder-front">
+            <span class="collection-folder-index">{% if collection_number < 10 %}0{% endif %}{{ collection_number }}</span>
+            <span class="collection-folder-label">
+              <strong>{{ collection.title }}</strong>
+              <span>{{ collection_posts.size }} notes</span>
+            </span>
+          </span>
+        </span>
+      </button>
+    </article>
     {% endif %}
   {% endfor %}
-</div>
+</section>
