@@ -4,68 +4,117 @@
 
 - Status: Active
 - Last refreshed: 2026-08-02
-- Approved reference: `.omx/artifacts/visual-ralph/clean-publication/reference-copyless.png`
-- Primary surfaces: landing `/`, notes index `/notes/`, article `/posts/:title/`, about `/about/`
-- Reference principles: Linear-like grid restraint with Vercel-like technical clarity, implemented as an original light/dark publication system
+- Primary product surfaces: landing `/`, notes `/notes/`, article `/posts/:title/`, tags `/tags/`, collections `/collections/`, intentionally blank about `/about/`
+- Evidence reviewed: `assets/css/style.css`, `assets/js/main.js`, `notes/index.html`, `collections/index.html`, `_layouts/post.html`, `_data/post_collections.yml`, local geometric cover assets, and the user-provided folder/portfolio references
+- Approved baseline reference: `.omx/artifacts/visual-ralph/clean-publication/reference-copyless.png`
 
-## Product direction
+## Brand
 
-- The landing and notes index are separate routes.
-- The interface does not explain itself with a slogan. Actual post titles, dates, categories, and navigation provide the content hierarchy.
-- Long-form reading and technical utilities remain the priority on article pages.
-- Avoid generated-sounding introductions, decorative editorial copy, and placeholder social links.
+- Personality: quiet, technical, precise, independent, editorial without magazine ornament
+- Trust signals: real post titles and dates, explicit metadata, readable long-form typography, visible source structure
+- Avoid: generated-sounding copy, glossy skeuomorphism, decorative gradients, pill-heavy controls, large shadows, noisy dashboards, social-network styling
+
+## Product goals
+
+- Goals: make recent writing discoverable, keep a growing archive scannable, group related posts into meaningful reading sequences, preserve excellent technical reading ergonomics
+- Non-goals: social feed behavior, engagement gamification, generic personal-brand landing copy, CMS-like administration UI
+- Success signals: a reader can distinguish recent/all/popular posts, understand a collection before opening it, and move through a long article without losing context
+
+## Personas and jobs
+
+- Primary personas: the author maintaining a long-lived technical archive; developers and researchers arriving from a shared link
+- User jobs: find a relevant post, scan the complete archive, follow a related series, inspect references/code, return to the current reading position
+- Key contexts of use: desktop deep reading, mobile link visits, dark-mode browsing, keyboard navigation
+
+## Information architecture
+
+- Primary navigation: Home, Notes, Tags, Collections, About, theme control
+- Core routes/screens: copy-free landing, five-post Notes main view, compact complete archive, curated popular view, tag index, collection index/detail anchors, article, blank About
+- Content hierarchy: collection → ordered related posts; category → broad editorial topic; tag → cross-cutting keyword; `popular: true` → manually curated discovery signal
+
+## Design principles
+
+- Real content creates hierarchy: titles, dates, counts, covers, and relationships replace explanatory marketing copy.
+- Functional ornament only: a visual metaphor must explain structure or state, not merely decorate empty space.
+- Density follows intent: Main can be expressive, while All and collection detail lists stay compact and scalable.
+- References are translated, not copied: retain the folder references' layering and grouping cues while using the site's monochrome publication language.
+- Progressive enhancement: content, links, and collection membership remain useful without JavaScript.
+- Tradeoff: the collection index may use slightly stronger object-like visuals than Notes, but it must keep the same typography, rules, spacing, and dark-mode behavior.
 
 ## Visual language
 
-- Typography: `Inter` and `Noto Sans KR` only; no serif display or reading face.
-- Color: neutral white/black surfaces with one restrained cobalt accent.
-- Layout: 1340px content grid, 720px reading measure, thin rules, broad whitespace.
-- Shape: 6px control radius, mostly square media, no pill-heavy UI or shadows.
-- Imagery: local monochrome geometric SVGs with one cobalt element.
-- Motion: subtle hover transitions only; content is never hidden behind entrance animation.
+- Color: neutral white/black surfaces with one restrained cobalt accent; folder layers use existing `--surface`, `--surface-strong`, `--line`, and `--accent` tokens
+- Typography: `Inter` and `Noto Sans KR`; no serif display face and no novelty folder labels
+- Spacing/layout rhythm: 1340px page grid, 720px article measure, broad section whitespace, compact 90–105px archive rows
+- Shape/radius/elevation: 6px control radius, mostly square media; depth is made with 1px outlines and offset layers rather than drop shadows
+- Motion: 3–6px paper/folder layer movement on hover or focus; no whole-card zoom, parallax, or entrance animation
+- Imagery/iconography: local monochrome geometric SVGs and actual post covers; folder previews may expose up to three recent covers, with neutral paper fallbacks
 
-## Theme tokens
+### Collection visual direction: Monochrome Archive Folder
 
-- Token owner: `assets/css/style.css` under `:root` and `html[data-theme="dark"]`.
-- Light: `#ffffff` background, `#0a0a0a` text, `#e7e7e9` rules, `#4f46e5` accent.
-- Dark: `#0b0b0c` background, `#f5f5f5` text, `#29292d` rules, `#818cf8` accent.
-- Theme selection follows the OS on first visit, switches from the header button, and persists in `localStorage`.
-- `?theme=light` and `?theme=dark` are deterministic preview states for screenshots.
-- The `theme-color` meta value and accessible theme-toggle label update with the selected theme.
-- An active Giscus frame receives the same light/dark theme through its supported `postMessage` configuration.
+- Translate the supplied folder references into a flat archive object: two or three offset document layers sit behind a solid folder front.
+- Use an approximately `4 / 3` cover area. The folder front owns the title, post count, and optional last-updated date.
+- Recent post covers may peek above the folder front as clipped rectangles. They remain secondary and decorative.
+- Use one cobalt edge, tab, or index mark per card. Do not assign unrelated rainbow colors to collections.
+- The folder silhouette should be built with CSS and existing assets, not a new raster illustration dependency.
+- Hover/focus slightly fans the document layers and strengthens the border. The title and target remain stable.
 
-## Components and states
+## Components
 
-- Header: centered navigation, active underline, compact theme toggle.
-- Landing: publication wordmark plus an index of real posts; no promotional copy.
-- Notes: `Notes` title, text-only category filters, one featured entry, two-column archive grid.
-- Article: factual metadata, optional research actions, geometric cover, readable prose.
-- TOC: generated from article `h2`/`h3`; sticky with active-section state on desktop and collapsible on mobile.
-- Tags: factual hash labels on cards/articles and a dedicated `/tags/` index grouped by tag.
-- Collections: centrally named groups in `_data/post_collections.yml`, linked from cards/articles and listed at `/collections/`; membership is optional and single-valued.
-- Comments: optional Giscus embed backed by GitHub Discussions; absent from the DOM until configuration is complete.
-- Code: Rouge language color, monochrome language icon and label, icon-only copy/copy-success/copy-error states.
-- Research links: front-matter action list and inline `.quick-link`, both rectangular and theme-aware.
-- Empty filter: short factual message.
+- Existing components to reuse: site header/footer, Notes metadata rows, story cover treatment, collection membership metadata, theme tokens, focus rings
+- New/changed components: collection shelf grid, archive-folder card, compact collection detail list, empty collection state
+- Variants and states: default, hover, keyboard focus, current anchor, no-cover fallback, empty/hidden collection
+- Token/component ownership: `assets/css/style.css`; collection metadata remains in `_data/post_collections.yml`
 
-## Accessibility and responsive behavior
+### Collection page composition
 
-- Visible keyboard focus uses the theme accent and native buttons/links retain their semantics.
-- Color pairs target WCAG AA contrast.
-- Mobile uses one-column stories, horizontally scrollable category tabs, and a 40px reading gutter.
-- Reduced-motion preference disables nonessential transitions.
-- SVG cover descriptions remain available on article pages; list thumbnails are decorative.
+1. Keep the existing `Collections` title and total count as a restrained page header.
+2. Replace the current large repeated title/list blocks with a responsive shelf of archive-folder cards.
+3. Each card links to its existing `#collection-id` detail anchor, preserving static URLs and no-JavaScript behavior.
+4. Place compact post lists below the shelf. Reuse the visual density of Notes' All view rather than 92px oversized collection rows.
+5. When the number of collections becomes large enough to make the detail section unwieldy, graduate to dedicated collection routes; do not add those routes prematurely.
 
-## Verification contract
+## Accessibility
 
-- Build: `bundle exec jekyll build`.
-- JavaScript syntax: `node --check assets/js/main.js`.
-- Desktop visual viewport: `1440x1100` for `/notes/?theme=light` and `/notes/?theme=dark`.
-- Mobile visual viewport: `390x844` for `/notes/?theme=light`.
-- Artifacts live in `.omx/artifacts/visual-ralph/clean-publication/`.
+- Target standard: WCAG 2.2 AA for contrast, focus visibility, semantics, and touch target sizing
+- Keyboard/focus behavior: every folder card is one real link; hover motion is mirrored on `:focus-visible`; anchor targets account for the sticky header
+- Contrast/readability: folder layers must remain distinguishable in both themes without relying on color alone
+- Screen-reader semantics: folder artwork is `aria-hidden`; accessible names include collection title and post count; contained posts remain an ordered list
+- Reduced motion and sensory considerations: layer movement is disabled by the existing reduced-motion rule; information does not depend on motion
 
-## Open deployment items
+## Responsive behavior
 
-- Add a real GitHub/profile URL only when the owner supplies it.
-- Set `_config.yml` `url` and `baseurl` for the final GitHub Pages repository.
-- Enable repository Discussions, install Giscus, fill `repo_id` and `category_id`, then set `comments.enabled: true`.
+- Supported breakpoints/devices: wide desktop, tablet around 900–1180px, mobile around 390px, narrow mobile around 320px
+- Layout adaptations: three folder cards on wide desktop, two on tablet and normal mobile, one below roughly 340px; detail lists become title-first mobile rows
+- Touch/hover differences: touch receives no required reveal behavior; all metadata needed to choose a collection is visible at rest
+
+## Interaction states
+
+- Loading: static HTML renders complete collection names and links without a loading skeleton
+- Empty: collections with no posts are omitted from the primary shelf; an author-only build warning may be added later
+- Error: missing cover art falls back to neutral paper layers without a broken-image icon
+- Success: the selected anchor receives a brief accent rule/current marker, not a toast
+- Disabled: not used for navigable collections
+- Offline/slow network: CSS folder geometry and text render before optional cover images
+
+## Content voice
+
+- Tone: factual, compact, author-written, Korean-first with established technical English terms
+- Terminology: use `Collection` consistently in navigation and metadata; use `N notes` or a localized equivalent consistently after implementation review
+- Microcopy rules: show title, count, and date; omit generic collection descriptions unless the author provides meaningful copy
+
+## Implementation constraints
+
+- Framework/styling system: GitHub Pages-compatible Jekyll, Liquid templates, vanilla CSS and JavaScript
+- Design-token constraints: extend existing variables before introducing tokens; no new component framework or icon dependency
+- Performance constraints: no large folder bitmap assets; preview images use existing optimized post covers and lazy loading
+- Compatibility constraints: light/dark themes, reduced motion, keyboard access, optional images, collections with varying post counts
+- Test/screenshot expectations: `bundle exec jekyll build`, `node --check assets/js/main.js` when JavaScript changes, desktop 1440px and mobile 390/320px collection screenshots, horizontal-overflow checks
+
+## Open questions
+
+- [ ] Implementation review: should preview papers show actual recent post covers or remain fully abstract for stronger visual consistency?
+- [ ] Content owner: should collection order be manually defined in `_data/post_collections.yml` or derived from the most recently updated post?
+- [ ] Architecture threshold: move to dedicated collection routes only when the shelf/detail page becomes difficult to scan (working threshold: more than 8 collections or 20 posts in one collection).
+- [ ] Deployment: set `_config.yml` `url` and `baseurl` for the final GitHub Pages repository.
+- [ ] Comments: enable Discussions/Giscus only after real repository IDs are available.
