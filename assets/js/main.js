@@ -216,10 +216,12 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const rows = [...document.querySelectorAll(".story-row")];
+const archiveRows = [...document.querySelectorAll("[data-notes-archive] .story-row")];
 const viewButtons = [...document.querySelectorAll("[data-view]")];
 const emptyFilter = document.querySelector(".empty-filter");
-const notesGrid = document.querySelector(".notes-grid");
+const notesGrid = document.querySelector("[data-notes-grid]");
+const notesMain = document.querySelector("[data-notes-main]");
+const notesArchive = document.querySelector("[data-notes-archive]");
 
 viewButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -229,20 +231,19 @@ viewButtons.forEach((button) => {
       item.setAttribute("aria-pressed", String(isActive));
     });
     const view = button.dataset.view;
+    if (notesMain) notesMain.hidden = view !== "main";
+    if (notesArchive) notesArchive.hidden = view === "main";
     notesGrid?.classList.toggle("is-filtered", view === "popular");
     notesGrid?.classList.toggle("is-list-view", view === "all");
     let visibleCount = 0;
-    rows.forEach((row) => {
-      const postIndex = Number(row.dataset.postIndex);
-      const visible = view === "all"
-        || (view === "main" && postIndex < 5)
-        || (view === "popular" && row.dataset.popular === "true");
+    archiveRows.forEach((row) => {
+      const visible = view === "all" || (view === "popular" && row.dataset.popular === "true");
       row.hidden = !visible;
       if (visible) {
         visibleCount += 1;
       }
     });
-    if (emptyFilter) emptyFilter.hidden = visibleCount !== 0;
+    if (emptyFilter) emptyFilter.hidden = view === "main" || visibleCount !== 0;
   });
 });
 

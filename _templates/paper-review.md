@@ -1,10 +1,15 @@
 ---
 title: "논문 제목"
 description: "논문의 문제 설정, 핵심 방법, 결과와 한계를 한 문장으로 요약합니다."
+review_type: paper
 tags: [Paper, 분야]
 image: /assets/images/posts/paper-cover.jpg
 image_alt: "논문의 핵심 구조를 설명하는 이미지"
 read_time: 10
+paper:
+  authors: "저자"
+  venue: "학회 또는 저널"
+  year: 2026
 actions:
   - label: 논문 원문
     url: https://arxiv.org/abs/0000.00000

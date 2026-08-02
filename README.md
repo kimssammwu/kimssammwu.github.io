@@ -1,4 +1,4 @@
-# MINWOO.LOG
+# sefaul
 
 GitHub Pages에서 무료로 호스팅되는 Jekyll 기반 개발 블로그입니다.
 
@@ -96,6 +96,20 @@ tags: [GitHub Pages, Jekyll, Git]
 
 태그 이름을 바꾸면 URL 앵커도 달라지므로 같은 의미의 태그 표기를 일관되게 유지합니다.
 
+## 리뷰
+
+`/notes/`의 메인 탭은 블로그 게시글, 논문, 도서를 서로 다른 썸네일 레이아웃으로 보여 줍니다. 논문 리뷰는 `16:10` 도판형, 도서 리뷰는 `2:3` 표지형 이미지를 권장합니다. 전체 탭에서는 유형 레이블로 세 종류를 구분합니다.
+
+새 글은 `_templates/paper-review.md` 또는 `_templates/book-review.md`를 복사해 작성합니다. `review_type` 값에 따라 Notes 메인의 해당 영역에 자동으로 배치됩니다.
+
+```yaml
+review_type: paper # 또는 book
+image: /assets/images/posts/review-name/cover.jpg
+image_alt: "썸네일 설명"
+```
+
+도서 리뷰가 없을 때도 `Books` 채널 제목과 `0` 카운트는 유지되며, 더미 카드나 미리보기 문구는 표시하지 않습니다.
+
 ## 컬렉션
 
 여러 글을 같은 맥락으로 묶을 때 `_data/post_collections.yml`에 컬렉션을 등록합니다.
@@ -139,3 +153,9 @@ bundle exec jekyll serve
 ## GitHub Pages 배포
 
 저장소의 Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 설정합니다. 이후 `main` 브랜치에 변경이 들어올 때마다 `.github/workflows/pages.yml`이 사이트를 빌드하고 배포합니다.
+
+## SEO
+
+GitHub Pages에서 지원하는 `jekyll-seo-tag`, `jekyll-sitemap`, `jekyll-feed`를 사용합니다. 빌드하면 canonical URL, Open Graph/Twitter 메타데이터, JSON-LD, `/sitemap.xml`, `/feed.xml`, `/robots.txt`가 자동으로 생성됩니다.
+
+대표 주소는 `https://kimssammwu.github.io`이며 `_config.yml`의 `url`에 설정합니다. 게시글의 `title`, `description`, `image`, `image_alt`는 검색 결과와 링크 공유 미리보기에 사용되므로 새 글을 작성할 때 반드시 입력합니다.

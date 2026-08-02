@@ -1,0 +1,37 @@
+---
+layout: default
+title: "404"
+description: "요청한 페이지를 찾을 수 없습니다."
+permalink: /404.html
+body_class: not-found-page
+noindex: true
+sitemap: false
+---
+
+<section class="not-found-shell" aria-labelledby="not-found-title">
+  <header class="not-found-system-line" aria-label="오류 상태">
+    <span>Error / Not Found</span>
+    <span>HTTP 404</span>
+  </header>
+
+  <div class="not-found-grid">
+    <div class="not-found-copy">
+      <div>
+        <h1 id="not-found-title">404<span>Signal lost</span></h1>
+        <p>요청한 페이지가 없습니다.<br>주소를 확인하거나 다른 기록을 둘러보세요.</p>
+      </div>
+
+      <nav class="not-found-actions" aria-label="404 페이지 이동">
+        <a href="{{ '/' | relative_url }}">홈으로 <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/notes/' | relative_url }}">노트 보기 <span aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+
+    <figure class="not-found-visual">
+      <span class="not-found-visual-index" aria-hidden="true">Fig. 404 / Offline</span>
+      <img src="{{ '/assets/images/404/crt-terminal.webp' | relative_url }}" alt="화면에 404가 표시된 가상의 CRT 터미널" width="1536" height="1024" decoding="sync" fetchpriority="high">
+      <figcaption class="visually-hidden">현재 주소에서 페이지를 찾지 못했습니다.</figcaption>
+      <span class="not-found-visual-status" aria-hidden="true">No signal <b>_</b></span>
+    </figure>
+  </div>
+</section>

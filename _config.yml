@@ -1,9 +1,19 @@
-title: "MINWOO.LOG"
-description: "배운 것과 만든 것을 오래 남기는 개발 블로그"
-url: ""
+title: "sefaul"
+tagline: "기술과 연구를 오래 남기는 기록"
+description: "개발, 시스템 설계, 논문과 도서를 깊이 읽고 정리하는 sefaul의 기술 블로그"
+url: "https://kimssammwu.github.io"
 baseurl: ""
 lang: ko-KR
+locale: ko_KR
 timezone: Asia/Seoul
+author:
+  name: "sefaul"
+  url: "https://github.com/kimssammwu"
+social:
+  name: "sefaul"
+  links:
+    - "https://github.com/kimssammwu"
+repository: "kimssammwu/kimssammwu.github.io"
 markdown: kramdown
 highlighter: rouge
 kramdown:
@@ -11,6 +21,12 @@ kramdown:
   syntax_highlighter: rouge
 permalink: /posts/:title/
 future: false
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+feed:
+  path: feed.xml
 comments:
   enabled: false
   provider: giscus
