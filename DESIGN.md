@@ -56,28 +56,28 @@
 - Use an approximately `4 / 3` cover area. The folder front owns the title, post count, and optional last-updated date.
 - Recent post covers may peek above the folder front as clipped rectangles. They remain secondary and decorative.
 - Use one cobalt edge, tab, or index mark per card. Do not assign unrelated rainbow colors to collections.
-- The folder silhouette should be built with CSS and existing assets, not a new raster illustration dependency.
+- The folder front is one continuous inline SVG path so its tab and body share a clean outline; papers and labels remain HTML/CSS.
 - Hover/focus slightly fans the document layers and strengthens the border. The title and target remain stable.
 
 ## Components
 
 - Existing components to reuse: site header/footer, Notes metadata rows, story cover treatment, collection membership metadata, theme tokens, focus rings
-- New/changed components: collection shelf grid, interactive archive-folder card, empty collection state
+- New/changed components: collection shelf grid, interactive archive-folder card, on-demand collection detail list, empty collection state
 - Variants and states: default, hover, keyboard focus, current anchor, no-cover fallback, empty/hidden collection
 - Token/component ownership: `assets/css/style.css`; collection metadata remains in `_data/post_collections.yml`
 
 ### Collection page composition
 
 1. Keep the existing `Collections` title and total count as a restrained page header.
-2. Replace the current large repeated title/list blocks with a responsive shelf of archive-folder cards only; do not render a second detail list below it.
-3. Hover/focus fans the document layers slightly. Click toggles one folder into a more open state and closes the previously open folder.
-4. Preserve `#collection-id` anchors so article-level collection links can open the matching folder state.
-5. Add dedicated collection routes only when readers need direct access to every contained post from this surface; do not reintroduce an oversized inline list.
+2. Keep the resting page limited to a responsive shelf of archive-folder cards; no detail list is visible by default.
+3. Hover/focus fans the document layers slightly. Click opens one folder, closes the previous folder, and reveals that collection's compact post list below the shelf.
+4. The revealed list is replaced in place when another folder is selected and can be closed without navigation.
+5. Preserve `#collection-id` anchors so article-level collection links open the matching folder and detail state.
 
 ## Accessibility
 
 - Target standard: WCAG 2.2 AA for contrast, focus visibility, semantics, and touch target sizing
-- Keyboard/focus behavior: every folder card is one real link; hover motion is mirrored on `:focus-visible`; anchor targets account for the sticky header
+- Keyboard/focus behavior: every folder card is a real disclosure button with `aria-expanded`/`aria-controls`; hover motion is mirrored on `:focus-visible`; detail links and close control follow in DOM order
 - Contrast/readability: folder layers must remain distinguishable in both themes without relying on color alone
 - Screen-reader semantics: folder artwork is `aria-hidden`; accessible names include collection title and post count; contained posts remain an ordered list
 - Reduced motion and sensory considerations: layer movement is disabled by the existing reduced-motion rule; information does not depend on motion

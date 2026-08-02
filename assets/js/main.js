@@ -92,17 +92,33 @@ viewButtons.forEach((button) => {
 });
 
 const collectionFolders = [...document.querySelectorAll("[data-collection-folder]")];
+const collectionDetails = [...document.querySelectorAll("[data-collection-detail]")];
+const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+
+const hideCollectionDetail = (detail) => {
+  detail.classList.remove("is-visible");
+  detail.hidden = true;
+};
 
 const setCollectionFolderState = (button, isOpen) => {
   const folder = button.closest(".collection-folder");
+  const detailId = button.getAttribute("aria-controls");
+  const detail = detailId ? document.getElementById(detailId) : null;
   folder?.classList.toggle("is-open", isOpen);
-  button.setAttribute("aria-pressed", String(isOpen));
+  button.setAttribute("aria-expanded", String(isOpen));
   const title = button.dataset.collectionTitle;
   const count = button.dataset.collectionCount;
   button.setAttribute(
     "aria-label",
     `${title} 컬렉션 폴더 ${isOpen ? "닫기" : "열기"}, 게시글 ${count}개`,
   );
+  if (!detail) return;
+  if (!isOpen) {
+    hideCollectionDetail(detail);
+    return;
+  }
+  detail.hidden = false;
+  window.requestAnimationFrame(() => detail.classList.add("is-visible"));
 };
 
 collectionFolders.forEach((button) => {
@@ -115,6 +131,23 @@ collectionFolders.forEach((button) => {
       ? `${location.pathname}${location.search}#${folder.id}`
       : `${location.pathname}${location.search}`;
     history.replaceState(null, "", nextUrl);
+    if (nextOpen) {
+      const detail = document.getElementById(button.getAttribute("aria-controls"));
+      window.setTimeout(
+        () => detail?.scrollIntoView({ behavior: reducedMotion?.matches ? "auto" : "smooth", block: "nearest" }),
+        reducedMotion?.matches ? 0 : 220,
+      );
+    }
+  });
+});
+
+collectionDetails.forEach((detail) => {
+  detail.querySelector("[data-collection-close]")?.addEventListener("click", () => {
+    const button = collectionFolders.find((item) => item.getAttribute("aria-controls") === detail.id);
+    if (!button) return;
+    setCollectionFolderState(button, false);
+    history.replaceState?.(null, "", `${location.pathname}${location.search}`);
+    button.focus();
   });
 });
 

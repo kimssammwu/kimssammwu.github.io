@@ -21,7 +21,8 @@ body_class: collections-page
         data-collection-folder
         data-collection-title="{{ collection.title | escape }}"
         data-collection-count="{{ collection_posts.size }}"
-        aria-pressed="false"
+        aria-expanded="false"
+        aria-controls="collection-{{ collection.id | slugify }}-details"
         aria-label="{{ collection.title | escape }} 컬렉션 폴더 열기, 게시글 {{ collection_posts.size }}개"
       >
         <span class="collection-folder-art" aria-hidden="true">
@@ -34,6 +35,9 @@ body_class: collections-page
           </span>
           {% endfor %}
           <span class="collection-folder-front">
+            <svg class="collection-folder-shell" viewBox="0 0 400 220" preserveAspectRatio="none" focusable="false">
+              <path d="M 8 48 Q 8 40 16 40 H 36 L 54 14 Q 58 8 66 8 H 150 Q 158 8 162 14 L 180 40 H 384 Q 392 40 392 48 V 208 Q 392 216 384 216 H 16 Q 8 216 8 208 Z"></path>
+            </svg>
             <span class="collection-folder-index">{% if collection_number < 10 %}0{% endif %}{{ collection_number }}</span>
             <span class="collection-folder-label">
               <strong>{{ collection.title }}</strong>
@@ -43,6 +47,36 @@ body_class: collections-page
         </span>
       </button>
     </article>
+    {% endif %}
+  {% endfor %}
+
+  {% for collection in site.data.post_collections %}
+    {% assign collection_posts = site.posts | where: "collection_id", collection.id %}
+    {% if collection_posts.size > 0 %}
+    <section
+      class="collection-detail"
+      id="collection-{{ collection.id | slugify }}-details"
+      data-collection-detail="{{ collection.id | slugify }}"
+      aria-labelledby="collection-{{ collection.id | slugify }}-title"
+      hidden
+    >
+      <header class="collection-detail-header">
+        <p>Collection / {{ collection_posts.size }}</p>
+        <h2 id="collection-{{ collection.id | slugify }}-title">{{ collection.title }}</h2>
+        <button class="collection-detail-close" type="button" data-collection-close aria-label="{{ collection.title | escape }} 상세 목록 닫기">×</button>
+      </header>
+      <ol class="collection-detail-list">
+        {% for post in collection_posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">
+            <span class="collection-detail-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <strong>{{ post.title }}</strong>
+            <span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time> / {{ post.category }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
     {% endif %}
   {% endfor %}
 </section>
