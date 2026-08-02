@@ -4,8 +4,8 @@
 
 - Status: Active
 - Last refreshed: 2026-08-02
-- Primary product surfaces: landing `/`, notes `/notes/`, article `/posts/:title/`, tags `/tags/`, collections `/collections/`, intentionally blank about `/about/`
-- Evidence reviewed: `assets/css/style.css`, `assets/js/main.js`, `notes/index.html`, `collections/index.html`, `_layouts/post.html`, `_data/post_collections.yml`, local geometric cover assets, and the user-provided folder/portfolio references
+- Primary product surfaces: landing `/`, notes `/notes/`, article `/posts/:title/`, tags `/tags/`, collections `/collections/`, global search, intentionally blank about `/about/`
+- Evidence reviewed: `assets/css/style.css`, `assets/js/main.js`, `_includes/header.html`, `notes/index.html`, `collections/index.html`, `_layouts/post.html`, `_data/post_collections.yml`, local geometric cover assets, and the user-provided folder/portfolio references
 - Approved baseline reference: `.omx/artifacts/visual-ralph/clean-publication/reference-copyless.png`
 
 ## Brand
@@ -28,9 +28,9 @@
 
 ## Information architecture
 
-- Primary navigation: Home, Notes, Tags, Collections, About, theme control
+- Primary navigation: Home, Notes, Tags, Collections, About, global search, theme control
 - Core routes/screens: copy-free landing, five-post Notes main view, compact complete archive, curated popular view, tag index, collection index/detail anchors, article, blank About
-- Content hierarchy: collection → ordered related posts; category → broad editorial topic; tag → cross-cutting keyword; `popular: true` → manually curated discovery signal
+- Content hierarchy: collection → ordered related posts; tag → cross-cutting keyword; `popular: true` → manually curated discovery signal
 
 ## Design principles
 
@@ -55,14 +55,14 @@
 - Translate the supplied folder references into a flat archive object: two or three offset document layers sit behind a solid folder front.
 - Use an approximately `4 / 3` cover area. The folder front owns the title, post count, and optional last-updated date.
 - Recent post covers may peek above the folder front as clipped rectangles. They remain secondary and decorative.
-- Use one cobalt edge, tab, or index mark per card. Do not assign unrelated rainbow colors to collections.
+- Keep folder geometry monochrome; do not add decorative index marks or unrelated colors to collections.
 - The folder front is one continuous inline SVG path so its tab and body share a clean outline; papers and labels remain HTML/CSS.
 - Hover/focus slightly fans the document layers and strengthens the border. The title and target remain stable.
 
 ## Components
 
 - Existing components to reuse: site header/footer, Notes metadata rows, story cover treatment, collection membership metadata, theme tokens, focus rings
-- New/changed components: collection shelf grid, interactive archive-folder card, on-demand collection detail list, empty collection state
+- New/changed components: collection shelf grid, interactive archive-folder card, on-demand collection detail list, global search dialog, static search index, empty states
 - Variants and states: default, hover, keyboard focus, current anchor, no-cover fallback, empty/hidden collection
 - Token/component ownership: `assets/css/style.css`; collection metadata remains in `_data/post_collections.yml`
 
@@ -77,7 +77,7 @@
 ## Accessibility
 
 - Target standard: WCAG 2.2 AA for contrast, focus visibility, semantics, and touch target sizing
-- Keyboard/focus behavior: every folder card is a real disclosure button with `aria-expanded`/`aria-controls`; hover motion is mirrored on `:focus-visible`; detail links and close control follow in DOM order
+- Keyboard/focus behavior: every folder card is a real disclosure button with `aria-expanded`/`aria-controls`; search is a native modal dialog opened by its header button, `/`, or `⌘/Ctrl+K` and closed by `Esc`; hover motion is mirrored on `:focus-visible`
 - Contrast/readability: folder layers must remain distinguishable in both themes without relying on color alone
 - Screen-reader semantics: folder artwork is `aria-hidden`; accessible names include collection title and post count; contained posts remain an ordered list
 - Reduced motion and sensory considerations: layer movement is disabled by the existing reduced-motion rule; information does not depend on motion
@@ -90,9 +90,9 @@
 
 ## Interaction states
 
-- Loading: static HTML renders complete collection names and links without a loading skeleton
-- Empty: collections with no posts are omitted from the primary shelf; an author-only build warning may be added later
-- Error: missing cover art falls back to neutral paper layers without a broken-image icon
+- Loading: static HTML renders complete collection names and links without a loading skeleton; the search index loads once on first use
+- Empty: collections with no posts are omitted from the primary shelf; an empty search shows a single compact status line
+- Error: missing cover art falls back to neutral paper layers without a broken-image icon; search-index failure is announced in its live status region
 - Success: the selected anchor receives a brief accent rule/current marker, not a toast
 - Disabled: not used for navigable collections
 - Offline/slow network: CSS folder geometry and text render before optional cover images
@@ -105,9 +105,9 @@
 
 ## Implementation constraints
 
-- Framework/styling system: GitHub Pages-compatible Jekyll, Liquid templates, vanilla CSS and JavaScript
+- Framework/styling system: GitHub Pages-compatible Jekyll, Liquid templates, vanilla CSS and JavaScript; search data is generated at build time in `search.json`
 - Design-token constraints: extend existing variables before introducing tokens; no new component framework or icon dependency
-- Performance constraints: no large folder bitmap assets; preview images use existing optimized post covers and lazy loading
+- Performance constraints: no large folder bitmap assets or search dependency; preview images use existing optimized post covers and lazy loading; client search caps rendered results
 - Compatibility constraints: light/dark themes, reduced motion, keyboard access, optional images, collections with varying post counts
 - Test/screenshot expectations: `bundle exec jekyll build`, `node --check assets/js/main.js` when JavaScript changes, desktop 1440px and mobile 390/320px collection screenshots, horizontal-overflow checks
 

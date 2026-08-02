@@ -61,6 +61,161 @@ const syncHeader = () => {
 syncHeader();
 window.addEventListener("scroll", syncHeader, { passive: true });
 
+const searchToggle = document.querySelector(".search-toggle");
+const searchDialog = document.querySelector("[data-search-dialog]");
+const searchClose = searchDialog?.querySelector("[data-search-close]");
+const searchForm = searchDialog?.querySelector("[data-search-form]");
+const searchInput = searchDialog?.querySelector("[data-search-input]");
+const searchStatus = searchDialog?.querySelector("[data-search-status]");
+const searchResults = searchDialog?.querySelector("[data-search-results]");
+let searchIndexPromise;
+let searchEntries = [];
+
+const normalizeSearchText = (value) => String(value || "")
+  .normalize("NFKC")
+  .toLocaleLowerCase()
+  .replace(/\s+/g, " ")
+  .trim();
+
+const loadSearchIndex = () => {
+  if (!searchDialog) return Promise.resolve([]);
+  if (!searchIndexPromise) {
+    searchIndexPromise = fetch(searchDialog.dataset.searchIndex)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Search index request failed: ${response.status}`);
+        return response.json();
+      })
+      .then((entries) => {
+        searchEntries = entries;
+        return entries;
+      });
+  }
+  return searchIndexPromise;
+};
+
+const createSearchResult = (entry) => {
+  const item = document.createElement("li");
+  item.className = "search-result";
+
+  const link = document.createElement("a");
+  link.href = entry.url;
+
+  const meta = document.createElement("div");
+  meta.className = "search-result-meta";
+  const date = document.createElement("span");
+  date.textContent = entry.date;
+  meta.append(date);
+  if (entry.tags?.length) {
+    const tags = document.createElement("span");
+    tags.textContent = entry.tags.slice(0, 3).map((tag) => `#${tag}`).join(" ");
+    meta.append(tags);
+  }
+
+  const title = document.createElement("h3");
+  title.textContent = entry.title;
+  link.append(meta, title);
+
+  if (entry.description) {
+    const description = document.createElement("p");
+    description.textContent = entry.description;
+    link.append(description);
+  }
+
+  item.append(link);
+  return item;
+};
+
+const renderSearchResults = (rawQuery) => {
+  if (!searchStatus || !searchResults) return;
+  const query = normalizeSearchText(rawQuery);
+  searchResults.replaceChildren();
+  if (!query) {
+    searchStatus.textContent = "검색어를 입력하세요.";
+    return;
+  }
+
+  const terms = query.split(" ");
+  const matches = searchEntries
+    .map((entry) => {
+      const title = normalizeSearchText(entry.title);
+      const description = normalizeSearchText(entry.description);
+      const tags = normalizeSearchText(entry.tags?.join(" "));
+      const content = normalizeSearchText(entry.content);
+      const searchable = `${title} ${description} ${tags} ${content}`;
+      if (!terms.every((term) => searchable.includes(term))) return null;
+      const score = terms.reduce((total, term) => total
+        + (title.startsWith(term) ? 12 : title.includes(term) ? 8 : 0)
+        + (tags.includes(term) ? 5 : 0)
+        + (description.includes(term) ? 3 : 0)
+        + (content.includes(term) ? 1 : 0), 0);
+      return { entry, score };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.score - a.score || Number(b.entry.timestamp) - Number(a.entry.timestamp))
+    .slice(0, 12);
+
+  searchStatus.textContent = matches.length ? `${matches.length}개의 글` : "검색 결과 없음";
+  searchResults.append(...matches.map(({ entry }) => createSearchResult(entry)));
+};
+
+const openSearch = () => {
+  if (!searchDialog || searchDialog.open) return;
+  if (typeof searchDialog.showModal === "function") searchDialog.showModal();
+  else searchDialog.setAttribute("open", "");
+  document.body.classList.add("is-search-open");
+  searchInput?.focus();
+  loadSearchIndex()
+    .then(() => renderSearchResults(searchInput?.value))
+    .catch(() => {
+      if (searchStatus) searchStatus.textContent = "검색을 불러오지 못했습니다.";
+    });
+};
+
+const closeSearch = () => {
+  if (!searchDialog?.open) return;
+  if (typeof searchDialog.close === "function") searchDialog.close();
+  else searchDialog.removeAttribute("open");
+};
+
+searchToggle?.addEventListener("click", openSearch);
+searchClose?.addEventListener("click", closeSearch);
+searchDialog?.addEventListener("click", (event) => {
+  if (event.target === searchDialog) closeSearch();
+});
+searchDialog?.addEventListener("close", () => {
+  document.body.classList.remove("is-search-open");
+  if (searchInput) searchInput.value = "";
+  renderSearchResults("");
+});
+searchInput?.addEventListener("input", () => {
+  loadSearchIndex()
+    .then(() => renderSearchResults(searchInput.value))
+    .catch(() => {
+      if (searchStatus) searchStatus.textContent = "검색을 불러오지 못했습니다.";
+    });
+});
+searchForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  searchResults?.querySelector("a")?.click();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && searchDialog?.open) {
+    event.preventDefault();
+    closeSearch();
+    return;
+  }
+  const target = event.target;
+  const isEditing = target instanceof HTMLElement
+    && (target.matches("input, textarea, select") || target.isContentEditable);
+  const isSearchShortcut = event.key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey;
+  const isCommandShortcut = event.key.toLocaleLowerCase() === "k" && (event.metaKey || event.ctrlKey);
+  if (!isEditing && (isSearchShortcut || isCommandShortcut)) {
+    event.preventDefault();
+    openSearch();
+  }
+});
+
 const rows = [...document.querySelectorAll(".story-row")];
 const viewButtons = [...document.querySelectorAll("[data-view]")];
 const emptyFilter = document.querySelector(".empty-filter");

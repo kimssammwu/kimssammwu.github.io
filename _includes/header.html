@@ -10,8 +10,32 @@
     <a href="{{ '/collections/' | relative_url }}"{% if page.url == '/collections/' %} aria-current="page"{% endif %}>컬렉션</a>
     <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>소개</a>
   </nav>
-  <button class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="테마 전환">
-    <svg class="theme-icon theme-icon--light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
-    <svg class="theme-icon theme-icon--dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg>
-  </button>
+  <div class="header-actions">
+    <button class="search-toggle" type="button" aria-label="게시글 검색" aria-haspopup="dialog" title="검색">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg>
+    </button>
+    <button class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="테마 전환">
+      <svg class="theme-icon theme-icon--light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="theme-icon theme-icon--dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg>
+    </button>
+  </div>
 </header>
+
+<dialog class="search-dialog" data-search-dialog data-search-index="{{ '/search.json' | relative_url }}" aria-labelledby="search-title">
+  <div class="search-shell">
+    <header class="search-dialog-header">
+      <h2 id="search-title">Search</h2>
+      <button class="search-close" type="button" data-search-close aria-label="검색 닫기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+      </button>
+    </header>
+    <form class="search-form" role="search" data-search-form>
+      <label class="visually-hidden" for="site-search-input">게시글 검색어</label>
+      <svg class="search-field-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg>
+      <input id="site-search-input" type="search" inputmode="search" autocomplete="off" placeholder="검색" data-search-input>
+      <kbd>ESC</kbd>
+    </form>
+    <p class="search-status" data-search-status aria-live="polite">검색어를 입력하세요.</p>
+    <ol class="search-results" data-search-results></ol>
+  </div>
+</dialog>
