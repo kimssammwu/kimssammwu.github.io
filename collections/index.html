@@ -13,7 +13,6 @@ body_class: collections-page
   {% for collection in site.data.post_collections %}
     {% assign collection_posts = site.posts | where: "collection_id", collection.id %}
     {% if collection_posts.size > 0 %}
-    {% assign collection_number = forloop.index %}
     <article class="collection-folder" id="{{ collection.id | slugify }}">
       <button
         class="collection-folder-toggle"
@@ -38,7 +37,6 @@ body_class: collections-page
             <svg class="collection-folder-shell" viewBox="0 0 400 220" preserveAspectRatio="none" focusable="false">
               <path d="M 8 48 Q 8 40 16 40 H 36 L 54 14 Q 58 8 66 8 H 150 Q 158 8 162 14 L 180 40 H 384 Q 392 40 392 48 V 208 Q 392 216 384 216 H 16 Q 8 216 8 208 Z"></path>
             </svg>
-            <span class="collection-folder-index">{% if collection_number < 10 %}0{% endif %}{{ collection_number }}</span>
             <span class="collection-folder-label">
               <strong>{{ collection.title }}</strong>
               <span>{{ collection_posts.size }} notes</span>
