@@ -75,6 +75,7 @@ viewButtons.forEach((button) => {
     });
     const view = button.dataset.view;
     notesGrid?.classList.toggle("is-filtered", view === "popular");
+    notesGrid?.classList.toggle("is-list-view", view === "all");
     let visibleCount = 0;
     rows.forEach((row) => {
       const postIndex = Number(row.dataset.postIndex);
