@@ -1,2 +1,6 @@
 - id: blog-build
   title: Blog Build
+- id: frontend-systems
+  title: Frontend Systems
+- id: research-log
+  title: Research Log
