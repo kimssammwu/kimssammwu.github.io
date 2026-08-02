@@ -8,16 +8,15 @@ body_class: notes-page
   <h1>Notes</h1>
 </section>
 
-<div class="topic-bar" aria-label="글 주제 필터">
-  <button class="topic-filter is-active" type="button" data-topic="all">전체</button>
-  <button class="topic-filter" type="button" data-topic="engineering">Engineering</button>
-  <button class="topic-filter" type="button" data-topic="workflow">Workflow</button>
-  <button class="topic-filter" type="button" data-topic="writing">Writing</button>
+<div class="topic-bar" aria-label="글 보기 방식">
+  <button class="topic-filter is-active" type="button" data-view="main" aria-pressed="true">메인</button>
+  <button class="topic-filter" type="button" data-view="all" aria-pressed="false">전체</button>
+  <button class="topic-filter" type="button" data-view="popular" aria-pressed="false">인기글</button>
 </div>
 
 <section class="notes-grid" aria-label="글 목록">
     {% for post in site.posts %}
-    <article class="story-row{% if forloop.first %} story-row--featured{% endif %}" data-category="{{ post.category | downcase }}">
+    <article class="story-row{% if forloop.first %} story-row--featured{% endif %}" data-post-index="{{ forloop.index0 }}" data-popular="{% if post.popular %}true{% else %}false{% endif %}"{% if forloop.index > 5 %} hidden{% endif %}>
       <a class="story-link" href="{{ post.url | relative_url }}">
         <div class="story-content">
           <span class="story-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>

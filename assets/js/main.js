@@ -62,18 +62,25 @@ syncHeader();
 window.addEventListener("scroll", syncHeader, { passive: true });
 
 const rows = [...document.querySelectorAll(".story-row")];
-const topicButtons = [...document.querySelectorAll(".topic-filter")];
+const viewButtons = [...document.querySelectorAll("[data-view]")];
 const emptyFilter = document.querySelector(".empty-filter");
 const notesGrid = document.querySelector(".notes-grid");
 
-topicButtons.forEach((button) => {
+viewButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    topicButtons.forEach((item) => item.classList.toggle("is-active", item === button));
-    const topic = button.dataset.topic;
-    notesGrid?.classList.toggle("is-filtered", topic !== "all");
+    viewButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+    const view = button.dataset.view;
+    notesGrid?.classList.toggle("is-filtered", view === "popular");
     let visibleCount = 0;
     rows.forEach((row) => {
-      const visible = topic === "all" || row.dataset.category === topic;
+      const postIndex = Number(row.dataset.postIndex);
+      const visible = view === "all"
+        || (view === "main" && postIndex < 5)
+        || (view === "popular" && row.dataset.popular === "true");
       row.hidden = !visible;
       if (visible) {
         visibleCount += 1;

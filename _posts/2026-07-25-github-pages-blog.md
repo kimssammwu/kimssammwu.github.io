@@ -4,6 +4,7 @@ description: "저장소 하나로 글쓰기부터 무료 배포까지 이어지�
 category: "Engineering"
 tags: [GitHub Pages, Jekyll, Git]
 collection_id: blog-build
+popular: true
 image: /assets/images/posts/github-pages-cover.svg
 image_alt: "브라우저 창과 Git 브랜치를 추상화한 일러스트레이션"
 read_time: 6

@@ -4,6 +4,7 @@ description: "게시글, 태그, 컬렉션이 늘어날 때 데이터 구조와 
 category: "Engineering"
 tags: [Jekyll, Architecture, Content]
 collection_id: blog-build
+popular: true
 image: /assets/images/posts/writing-notes-cover.svg
 image_alt: "여러 콘텐츠 항목을 카드 구조로 표현한 일러스트레이션"
 read_time: 12

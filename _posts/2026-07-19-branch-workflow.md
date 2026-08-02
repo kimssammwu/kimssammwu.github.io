@@ -4,6 +4,7 @@ description: "작업의 목적을 분리하고 main을 안전하게 유지하는
 category: "Workflow"
 tags: [Git, Branch, Pull Request]
 collection_id: blog-build
+popular: true
 image: /assets/images/posts/branch-workflow-cover.svg
 image_alt: "서로 갈라졌다 다시 합쳐지는 세 개의 Git 브랜치"
 read_time: 4

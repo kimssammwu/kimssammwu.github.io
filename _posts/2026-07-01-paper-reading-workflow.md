@@ -4,6 +4,7 @@ description: "초록부터 구현 가능성까지 단계별로 질문을 좁혀 
 category: "Workflow"
 tags: [Paper, Research, Review]
 collection_id: research-log
+popular: true
 image: /assets/images/posts/writing-notes-cover.svg
 image_alt: "논문 읽기와 메모를 표현한 카드 일러스트레이션"
 read_time: 8
