@@ -1,7 +1,6 @@
 ---
 title: "키보드로도 자연스러운 내비게이션 만들기"
 description: "포커스 순서와 현재 위치 표현을 중심으로 블로그 내비게이션을 점검합니다."
-category: "Engineering"
 tags: [Accessibility, HTML, Navigation]
 collection_id: frontend-systems
 image: /assets/images/posts/branch-workflow-cover.svg

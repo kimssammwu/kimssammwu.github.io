@@ -1,8 +1,7 @@
 ---
 title: "논문 리뷰에서 주장과 감상을 분리하기"
 description: "저자의 주장, 실험 근거, 개인적인 해석을 구분해 리뷰의 신뢰도를 높입니다."
-category: "Writing"
-tags: [Paper, Review, Writing]
+tags: [Paper, Review]
 collection_id: research-log
 image: /assets/images/posts/writing-notes-cover.svg
 image_alt: "논문 리뷰 노트를 카드로 표현한 일러스트레이션"

@@ -1,7 +1,6 @@
 ---
 title: "정적 사이트의 체감 속도를 결정하는 것들"
 description: "작은 블로그에서도 바로 확인할 수 있는 렌더링과 이미지 성능 기준을 정리합니다."
-category: "Engineering"
 tags: [Performance, Jekyll, Web]
 collection_id: blog-build
 image: /assets/images/posts/github-pages-cover.svg

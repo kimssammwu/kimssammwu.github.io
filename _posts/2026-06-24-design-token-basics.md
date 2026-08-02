@@ -1,7 +1,6 @@
 ---
 title: "작은 사이트에도 디자인 토큰이 필요한 순간"
 description: "색상과 간격을 변수로 관리할 때 얻는 일관성과 다크 모드 대응을 살펴봅니다."
-category: "Engineering"
 tags: [CSS, Design System, Dark Mode]
 collection_id: frontend-systems
 image: /assets/images/posts/github-pages-cover.svg

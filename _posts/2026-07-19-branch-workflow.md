@@ -1,7 +1,6 @@
 ---
 title: "혼자 개발해도 브랜치가 필요한 이유"
 description: "작업의 목적을 분리하고 main을 안전하게 유지하는 가벼운 Git 브랜치 규칙입니다."
-category: "Workflow"
 tags: [Git, Branch, Pull Request]
 collection_id: blog-build
 popular: true

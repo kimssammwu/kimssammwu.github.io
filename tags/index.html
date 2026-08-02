@@ -29,7 +29,6 @@ body_class: tags-page
         <a href="{{ post.url | relative_url }}">
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time>
           <span>{{ post.title }}</span>
-          <span>{{ post.category }}</span>
         </a>
       </li>
       {% endfor %}

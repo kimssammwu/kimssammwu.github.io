@@ -1,7 +1,6 @@
 ---
 title: "다시 읽히는 개발 기록을 쓰는 법"
 description: "문제와 선택, 검증 결과를 중심으로 미래의 나에게 유용한 기술 기록을 남깁니다."
-category: "Writing"
 tags: [Documentation, TIL]
 image: /assets/images/posts/writing-notes-cover.svg
 image_alt: "메모 카드와 연필을 단순한 형태로 표현한 일러스트레이션"
@@ -17,4 +16,3 @@ read_time: 5
 ## 실패도 결과다
 
 시도했지만 선택하지 않은 방법과 그 이유를 짧게 남기면 같은 길을 다시 탐색하는 시간을 줄일 수 있습니다.
-

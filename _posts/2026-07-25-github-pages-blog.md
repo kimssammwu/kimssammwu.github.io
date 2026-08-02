@@ -1,7 +1,6 @@
 ---
 title: "GitHub Pages로 나만의 기술 블로그 시작하기"
 description: "저장소 하나로 글쓰기부터 무료 배포까지 이어지는 가장 단순한 블로그 흐름을 정리합니다."
-category: "Engineering"
 tags: [GitHub Pages, Jekyll, Git]
 collection_id: blog-build
 popular: true

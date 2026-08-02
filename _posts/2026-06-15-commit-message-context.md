@@ -1,8 +1,7 @@
 ---
 title: "변경 내용보다 맥락을 남기는 커밋 메시지"
 description: "몇 달 뒤에도 결정을 복원할 수 있도록 제약과 검증 결과를 커밋에 남깁니다."
-category: "Workflow"
-tags: [Git, Documentation, Workflow]
+tags: [Git, Documentation]
 collection_id: blog-build
 image: /assets/images/posts/branch-workflow-cover.svg
 image_alt: "커밋의 연결 관계를 분기된 선으로 표현한 일러스트레이션"

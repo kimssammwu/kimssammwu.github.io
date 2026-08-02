@@ -1,7 +1,6 @@
 ---
 title: "논문을 끝까지 읽기 위한 세 번의 패스"
 description: "초록부터 구현 가능성까지 단계별로 질문을 좁혀 가는 논문 읽기 흐름입니다."
-category: "Workflow"
 tags: [Paper, Research, Review]
 collection_id: research-log
 popular: true

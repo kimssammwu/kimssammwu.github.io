@@ -1,7 +1,6 @@
 ---
 title: "레이아웃이 한 픽셀씩 밀릴 때 확인하는 순서"
 description: "가로 넘침과 정렬 오류를 빠르게 좁혀 가는 CSS 디버깅 순서입니다."
-category: "Workflow"
 tags: [CSS, Debugging, Layout]
 collection_id: frontend-systems
 image: /assets/images/posts/branch-workflow-cover.svg

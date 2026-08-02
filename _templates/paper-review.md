@@ -1,7 +1,6 @@
 ---
 title: "논문 제목"
 description: "논문의 문제 설정, 핵심 방법, 결과와 한계를 한 문장으로 요약합니다."
-category: "Paper Review"
 tags: [Paper, 분야]
 image: /assets/images/posts/paper-cover.jpg
 image_alt: "논문의 핵심 구조를 설명하는 이미지"

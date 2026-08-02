@@ -14,14 +14,13 @@ GitHub Pages에서 무료로 호스팅되는 Jekyll 기반 개발 블로그입�
 ## 새 글 작성
 
 1. `_posts/YYYY-MM-DD-slug.md` 파일을 복사해 만듭니다.
-2. Front Matter의 `title`, `description`, `category`, `tags`, `image`, `image_alt`를 수정합니다.
+2. Front Matter의 `title`, `description`, `tags`, `image`, `image_alt`를 수정합니다.
 3. 이미지는 `assets/images/posts/글-이름/` 아래에 넣습니다.
 
 ```yaml
 ---
 title: "글 제목"
 description: "검색 결과와 공유 미리보기에 보일 한 문장"
-category: "Engineering"
 tags: [Git, GitHub Pages]
 image: /assets/images/posts/my-post/cover.jpg
 image_alt: "이미지를 설명하는 대체 텍스트"

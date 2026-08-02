@@ -1,7 +1,6 @@
 ---
 title: "글이 많아져도 유지되는 Jekyll 콘텐츠 구조"
 description: "게시글, 태그, 컬렉션이 늘어날 때 데이터 구조와 화면을 함께 점검합니다."
-category: "Engineering"
 tags: [Jekyll, Architecture, Content]
 collection_id: blog-build
 popular: true

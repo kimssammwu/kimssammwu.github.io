@@ -1,7 +1,6 @@
 ---
 title: "Web Vitals 측정값을 기록으로 남기는 법"
 description: "성능 숫자를 변경 전후의 판단 근거로 남기는 간단한 기록 양식입니다."
-category: "Writing"
 tags: [Performance, Documentation, Web]
 collection_id: frontend-systems
 image: /assets/images/posts/github-pages-cover.svg

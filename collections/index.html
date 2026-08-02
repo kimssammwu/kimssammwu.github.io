@@ -69,7 +69,7 @@ body_class: collections-page
           <a href="{{ post.url | relative_url }}">
             <span class="collection-detail-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
             <strong>{{ post.title }}</strong>
-            <span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time> / {{ post.category }}</span>
+            <span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d" }}</time></span>
           </a>
         </li>
         {% endfor %}
