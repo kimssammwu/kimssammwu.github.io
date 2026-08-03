@@ -28,13 +28,14 @@ plugins:
 feed:
   path: feed.xml
 comments:
-  enabled: false
+  enabled: true
   provider: giscus
   repo: "kimssammwu/kimssammwu.github.io"
-  repo_id: ""
+  repo_id: "R_kgDOTrPBzA"
   category: "Announcements"
-  category_id: ""
+  category_id: "DIC_kwDOTrPBzM4DCjwZ"
   mapping: pathname
+  strict: false
 exclude:
   - README.md
   - DESIGN.md
