@@ -273,6 +273,11 @@ html[data-theme="dark"] .theme-icon--dark { display: none; }
 .prose a.quick-link::after { margin-left: 2px; content: "↗"; }
 .prose a.quick-link:hover { border-color: var(--ink); background: var(--surface); }
 
+/* MathJax */
+.prose mjx-container { color: inherit; }
+.prose mjx-container[display="true"] { max-width: 100%; margin: 38px 0; padding: 7px 0 11px; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.prose mjx-container[display="true"] > mjx-math { min-width: max-content; }
+
 /* Rouge code blocks */
 .prose .highlighter-rouge { margin: 36px 0; overflow: hidden; border: 1px solid var(--code-line); border-radius: var(--radius); color: #e6e6eb; background: var(--code-bg); font-family: var(--mono); }
 .code-toolbar { min-height: 43px; padding: 0 10px 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--code-line); background: var(--code-surface); }

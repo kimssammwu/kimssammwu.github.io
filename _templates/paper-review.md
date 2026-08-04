@@ -34,6 +34,12 @@ actions:
 
 논문의 접근법을 수식이나 그림과 함께 설명합니다.
 
+핵심 목적함수는 $\mathcal{L}(\theta)$로 표기합니다.
+
+$$
+\mathcal{L}(\theta) = \sum_{i=1}^{n} \ell\bigl(f_\theta(x_i), y_i\bigr)
+$$
+
 ```python
 def core_idea(inputs):
     """논문의 핵심 과정을 단순화한 예제입니다."""
