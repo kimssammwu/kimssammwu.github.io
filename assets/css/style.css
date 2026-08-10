@@ -460,6 +460,39 @@ html[data-theme="dark"] .theme-icon--dark { display: none; }
 .not-found-page .site-footer { min-height: 112px; padding-top: 30px; border-top: 0; }
 @keyframes not-found-cursor { 50% { opacity: 0; } }
 
+/* About */
+.about-shell { width: var(--page); margin: 0 auto; padding: 72px 0 140px; }
+.about-hero { min-height: 390px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 430px); grid-template-rows: auto 1fr; gap: 0 64px; border-bottom: 1px solid var(--ink); }
+.about-kicker { grid-column: 1 / -1; margin: 0; color: var(--muted); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; }
+.about-hero h1 { margin: 0; align-self: end; font-size: clamp(76px, 10vw, 144px); font-weight: 650; line-height: .88; letter-spacing: -.075em; }
+.about-intro { max-width: 390px; margin: 0 0 8px; align-self: end; color: var(--muted); font-size: 16px; line-height: 1.75; letter-spacing: -.015em; word-break: keep-all; }
+.about-directory { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--ink); }
+.about-panel { min-width: 0; padding: 42px 0 56px; }
+.about-panel + .about-panel { padding-left: 48px; border-left: 1px solid var(--line); }
+.about-panel:first-child { padding-right: 48px; }
+.about-panel-header { min-height: 38px; display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.about-panel-header h2, .about-panel-header span { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; }
+.about-panel-header span { color: var(--accent); }
+.about-details { margin: 0; }
+.about-details > div { min-height: 82px; display: grid; grid-template-columns: 110px minmax(0, 1fr); align-items: center; gap: 20px; border-bottom: 1px solid var(--line); }
+.about-details dt { color: var(--muted); font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; }
+.about-details dd { min-width: 0; margin: 0; overflow-wrap: anywhere; font-size: 15px; font-weight: 500; letter-spacing: -.02em; }
+.about-details a:hover { color: var(--accent); }
+.about-links a { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); font-size: 18px; font-weight: 600; letter-spacing: -.025em; transition: color .18s ease; }
+.about-link-name { display: inline-flex; align-items: center; gap: 13px; }
+.about-link-icon { width: 21px; height: 21px; flex: 0 0 auto; fill: currentColor; }
+.about-links a span:last-child { color: var(--accent); font-size: 14px; transition: transform .18s ease; }
+.about-links .about-link-name span:last-child { color: inherit; font-size: inherit; transition: none; }
+.about-links a:hover { color: var(--muted); }
+.about-links a:hover span:last-child { transform: translate(3px, -3px); }
+.about-links a:hover .about-link-name span:last-child { transform: none; }
+.about-timeline { padding-top: 78px; }
+.about-timeline ol { margin: 0; padding: 0; list-style: none; }
+.about-timeline li { min-height: 112px; display: grid; grid-template-columns: minmax(170px, 1fr) 2fr; align-items: start; gap: 40px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.about-timeline time { color: var(--muted); font-family: var(--mono); font-size: 10px; }
+.about-timeline h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -.025em; }
+.about-timeline p { max-width: 640px; margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; word-break: keep-all; }
+
 /* Footer */
 .site-footer { width: var(--page); min-height: 150px; margin: 0 auto; padding: 42px 0; display: flex; align-items: end; justify-content: space-between; gap: 30px; border-top: 1px solid var(--ink); color: var(--muted); font-size: 10px; }
 .site-footer p { margin: 0; }
@@ -489,6 +522,9 @@ html[data-theme="dark"] .book-review-page .article-cover img { filter: none; }
   .not-found-grid { min-height: 0; grid-template-columns: 1fr; }
   .not-found-copy { min-height: 500px; padding: 58px 0 46px; border-right: 0; border-bottom: 1px solid var(--line); }
   .not-found-visual { min-height: 0; aspect-ratio: 3 / 2; }
+  .about-hero { min-height: 350px; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; gap: 28px; padding-bottom: 44px; }
+  .about-hero h1 { align-self: end; }
+  .about-intro { max-width: 500px; margin: 0; }
 }
 
 @media (max-width: 680px) {
@@ -593,6 +629,18 @@ html[data-theme="dark"] .book-review-page .article-cover img { filter: none; }
   .not-found-visual-index { top: 16px; left: 16px; }
   .not-found-visual-status { right: 16px; bottom: 16px; }
   .not-found-page .site-footer { min-height: 140px; padding-top: 34px; }
+  .about-shell { padding: 42px 0 96px; }
+  .about-hero { min-height: 310px; gap: 24px; padding-bottom: 34px; }
+  .about-hero h1 { font-size: clamp(68px, 24vw, 96px); }
+  .about-intro { font-size: 14px; }
+  .about-directory { grid-template-columns: 1fr; }
+  .about-panel, .about-panel:first-child, .about-panel + .about-panel { padding: 34px 0 46px; border-left: 0; }
+  .about-panel + .about-panel { border-top: 1px solid var(--ink); }
+  .about-details > div { min-height: 74px; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; }
+  .about-details dd { font-size: 14px; }
+  .about-links a { min-height: 74px; font-size: 17px; }
+  .about-timeline { padding-top: 58px; }
+  .about-timeline li { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
 }
 
 @media (max-width: 360px) {

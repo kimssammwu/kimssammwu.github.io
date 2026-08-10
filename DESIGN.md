@@ -3,8 +3,8 @@
 ## Source of truth
 
 - Status: Active
-- Last refreshed: 2026-08-03
-- Primary product surfaces: landing `/`, unified notes `/notes/`, article `/posts/:title/`, tags `/tags/`, collections `/collections/`, global search, error `/404.html`, intentionally blank about `/about/`
+- Last refreshed: 2026-08-10
+- Primary product surfaces: landing `/`, unified notes `/notes/`, article `/posts/:title/`, tags `/tags/`, collections `/collections/`, global search, error `/404.html`, profile-focused about `/about/`
 - Evidence reviewed: `assets/css/style.css`, `assets/js/main.js`, `_includes/header.html`, `notes/index.html`, `collections/index.html`, `_layouts/post.html`, `_data/post_collections.yml`, local geometric cover assets, and the user-provided folder/portfolio references
 - Approved baseline references: `.omx/artifacts/visual-ralph/clean-publication/reference-copyless.png`, `.omx/artifacts/visual-ralph/404-retro-terminal/reference-v2.png`
 
@@ -29,7 +29,7 @@
 ## Information architecture
 
 - Primary navigation: Home, Notes, Tags, Collections, About, global search, theme control
-- Core routes/screens: copy-free landing, type-separated Notes main view, compact typed archive, curated popular view, tag index, collection index/detail anchors, article, 404 recovery page, blank About
+- Core routes/screens: copy-free landing, type-separated Notes main view, compact typed archive, curated popular view, tag index, collection index/detail anchors, article, 404 recovery page, profile-focused About
 - Content hierarchy: collection → ordered related posts; review type → paper or book; tag → cross-cutting keyword; `popular: true` → manually curated discovery signal
 
 ## Design principles
@@ -77,7 +77,7 @@
 ## Components
 
 - Existing components to reuse: site header/footer, Notes metadata rows, story cover treatment, collection membership metadata, theme tokens, focus rings
-- New/changed components: collection shelf grid, interactive archive-folder card, on-demand collection detail list, Notes content channels, archive type labels, paper figure grid, book cover shelf, global search dialog, static search index, 404 error grid, empty states
+- New/changed components: collection shelf grid, interactive archive-folder card, on-demand collection detail list, Notes content channels, archive type labels, paper figure grid, book cover shelf, global search dialog, static search index, 404 error grid, About profile directory and optional timeline, empty states
 - Variants and states: default, hover, keyboard focus, current anchor, no-cover fallback, empty/hidden collection
 - Token/component ownership: `assets/css/style.css`; collection metadata remains in `_data/post_collections.yml`
 
@@ -105,6 +105,14 @@
 - Contrast/readability: folder layers must remain distinguishable in both themes without relying on color alone
 - Screen-reader semantics: folder artwork is `aria-hidden`; accessible names include collection title and post count; contained posts remain an ordered list
 - Reduced motion and sensory considerations: layer movement is disabled by the existing reduced-motion rule; information does not depend on motion
+
+### About page composition
+
+1. Present a restrained profile header followed by two directory-like columns for education/contact information and external profiles.
+2. Keep profile fields and links in page front matter so the author can update content without changing layout markup.
+3. Render only links with a non-empty URL; GitHub and LinkedIn use dependency-free monochrome inline marks that inherit the active theme color, and external profiles open in a new tab with safe relationship attributes.
+4. Keep the timeline absent by default. `timeline_enabled` is the single author-controlled switch, and timeline markup is not rendered while it is false.
+5. On mobile, stack information and links into one column while retaining rules, compact labels, and full-width touch targets.
 
 ## Responsive behavior
 
