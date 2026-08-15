@@ -14,6 +14,8 @@ links:
     url: "https://github.com/kimssammwu"
   - label: LinkedIn
     url: "https://www.linkedin.com/in/minwoo-lee-158514375/"
+  - label: devminwoolee@gmail.com
+    url: "mailto:devminwoolee@gmail.com"
 timeline_enabled: false
 timeline:
   - period: "2026 — Present"
@@ -46,12 +48,12 @@ timeline:
           <dd>{{ page.profile.major }}</dd>
         </div>
         {% endif %} -->
-        {% if page.profile.email %}
+        <!-- {% if page.profile.email %}
         <div>
           <dt>Contact</dt>
           <dd><a href="mailto:{{ page.profile.email }}">{{ page.profile.email }}</a></dd>
         </div>
-        {% endif %}
+        {% endif %} -->
       </dl>
     </section>
 
@@ -73,6 +75,10 @@ timeline:
                 {% when "LinkedIn" %}
                 <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/>
+                </svg>
+                {% when "devminwoolee@gmail.com" %}
+                <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 4h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm9 8.3L20.2 6H3.8L12 12.3ZM3 18h18V8.5l-8.4 6.46a1 1 0 0 1-1.2 0L3 8.5V18Z"/>
                 </svg>
               {% endcase %}
               <span>{{ link.label }}</span>
